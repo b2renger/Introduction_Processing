@@ -17,6 +17,9 @@ Notes :
  * [Exemple d’utilisation des variables](#exemples)<br>
  * [Variables globales de processing](#globales)<br>
 * [L’aléatoire](#L’aléatoire)<br>
+ * [random()](#random)<br>
+ * [noise()](#noise)<br>
+ * [randomSeed() et noiseSeed()](#randomSeed)<br>
 * [Les boucles](#Les-boucles)<br>
 * [Couleurs](#Couleurs)<br>
 * [Primitives de dessin](#Primitives-de-dessin)<br>
@@ -204,5 +207,128 @@ Habituellement on a tendance à créer les variables tout en haut de notre progr
 Il existe dans processing des variables globales, qui sont donc accessibles partout dans processing, ces variables sont définies par défaut et gérée par processing lui-même, il faut mieux éviter d’utiliser leur nom pour définir ses propres variables.
 
 C’est le cas entre autres de :
+
 **width** : (float) qui est associée par défaut à largeur de la fenêtre de dessin.
-**height** : (float)qui est associée par défaut à la hauteur de la fenêtre de dessin.
+**height** : (float) qui est associée par défaut à la hauteur de la fenêtre de dessin.
+
+<a name="L'aléatoire"/>
+#L'aléatoire
+
+En informatique et en design génératif , l’aléatoire est très souvent utilisé pour obtenir des résultats présentant des variantes contraintes, c’est-à-dire pour obtenir plusieurs variations d’un même algorithme.
+
+Il existe deux principales façon d’obtenir des nombres aléatoires ou plutôt pseudo-aléatoire, car il n’existe pas en informatique de méthode permettant d’obtenir un résultat réellement et statistiquement complètement aléatoire.
+
+<a name="random"/>
+##random()
+
+La fonction random() renvoit donc des résultats aléatoires en fonction d’un argument qui sera spécifié entre les parenthèses. Ce nombre aléatoire sera de type float.
+Par exemple :
+```java
+float nb_aleatoire = random(100) ;
+println(nb_aleatoire) ;
+ ```
+nous obtiendrons avec ce code un nombre aléatoire compris entre 0 et 100.
+
+Il est aussi possible de spécifier un borne supérieur, ainsi qu’un borne inférieure, ainsi :
+```java
+float nb_aleatoire = random(20,50) ;
+println(nb_aleatoire) ;
+```
+renverra une valeur aléatoire comprise entre 20 et 50 ;
+
+```java
+/* voici mon premier programme utilisant des variables et de l’aléatoire */
+int size ;
+float xpos, ypos ;
+
+void setup() {
+  size(200, 200) ;
+  size = 25 ;
+  xpos = random(0, width) ;
+  ypos = random(0, height) ;
+  background(0 ) ; // utilisons un fond noir.
+}
+
+void draw() {
+  background(0) ; 
+  stroke(180) ; 
+  strokeWeight(2) ; 
+  fill(255) ;
+  // à chaque image calculée on définit une nouvelle position
+  xpos = random(0, width) ;
+  ypos = random(0, height) ;
+  /* on dessine notre ellipse en utilisant nos variables*/
+  ellipse(xpos, ypos, size, size) ;
+}
+```
+
+Ce programme va dessiner, à chaque image, un cercle positionné aléatoirement dans la fenêtre de dessin.
+
+![exemples_pdf/Sketch_1_03.pde](assets/004_Aléatoire.png)
+
+<a name="noise"/>
+##noise()
+
+La fonction noise() est un peu particulière puisque elle permet de générer des suites de nombres très proches les uns des autres. Cela permet notament de créer des mouvement et des contours qui paraissent plus naturels.
+
+Son usage est un peu plus compliqué car il faut lui fournir un argument  « évolutif », celle-ci renvoi des valeurs comprises entre 0 et 1. Il faut donc souvent adapter le résultat obtenu en fonction de nos besoins.
+
+```java
+float noiseF; // facteur évolutif de notre fonction noise
+float xpos, ypos; // coordonnées de notre forme
+
+void setup() {
+  size(200, 200);
+  background(0);
+  noStroke();
+  fill(255);
+  // on initialise notre facteur à une valeur aléatoire
+  noiseF = random(500) ;
+  // on place notre forme au centre de la fenetre.
+  xpos = width/2;
+  ypos = height/2;
+}
+
+void draw() {
+  background(0);
+  /* on ajoute à notre position une valeur comprise entre      -1 et 1, résultante de notre fonction noise. */
+  xpos += noise(noiseF, 10, 20)*2-1;
+  ypos += noise(noiseF, 85, 140)*2 -1;
+  ellipse(xpos, ypos, 5, 5);  
+  // on incrémente notre facteur noise d’une petite valeur
+  noiseF += 0.005;
+}
+```
+![exemples_pdf/Sketch_1_04.pde](assets/005_Noise.png)
+
+Ce programme dessine un cercle qui va se déplacer aléatoirement dans l’espace de dessin. Il est d’ailleurs fort probable qu’il en sorte, mais nous y reviendrons plus tard.
+
+<a name="randomSeed"/>
+##randomSeed() et noiseSeed()
+
+Ces deux fonctions permettent de pouvoir retrouver un résultat qui a été obtenu avec des nombres aléatoires. Comme mentionné ci-dessus, les ordinateurs ne permettent pas d’avoir des générateurs de nombres complétement aléatoires, dans certain cas cela peut-être un avantage, notament quand il s’agit de pouvoir régénérer exactement la même image avec un algorithme qui utilise pourtant des nombres aléatoires.
+
+Ces fonctions s’utilisent de la même façon ( exemples_pdf/Sketch_1_05.pde ) :
+
+```java
+int seed ;
+seed = 123;
+
+randomSeed(seed);
+float a = random(500);
+println("seed" + seed +" : " + a); 
+
+seed = 52;
+randomSeed(seed);
+a = random(500);
+println("seed" + seed +" : " + a); 
+
+seed = 123;
+randomSeed(seed);
+a = random(500);
+println("seed" + seed +" : " + a); 
+```
+
+
+
+
