@@ -3,7 +3,8 @@ This respository is a french introduction to the Processing programming language
 
 
 ##### Contenus
-[Introduction] (#Introduction)
+[Introduction] (#Introduction)--
+
 [Premier Programme] (#Premier Programme)
 [Les variables] (#Les variables)
 [L’aléatoire] (#L’aléatoire)
@@ -19,5 +20,5 @@ This respository is a french introduction to the Processing programming language
 [Emergence : Un programme interactif complexe] (# Emergence : Un programme interactif complexe)
 [Les Librairies] (#Les Librairies)
 [Travailler avec les images] (#Travailler avec les images)
-[Trucs et astuces] (##Trucs et astuces)	
+[Trucs et astuces] (#Trucs et astuces)	
 [Ressources] (#Ressources)
