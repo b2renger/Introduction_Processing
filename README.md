@@ -21,7 +21,14 @@ Notes :
  * [noise()](#noise)<br>
  * [randomSeed() et noiseSeed()](#randomSeed)<br>
 * [Les boucles](#Les-boucles)<br>
+ * [for()](#for)<br>
+ * [while()](#while)<br>
+ * [Exemple](#exemple)<br>
 * [Couleurs](#Couleurs)<br>
+ * [Niveaux de gris](#gris)<br>
+ * [Mode RGB](#rgb)<br>
+ * [Mode HSB](#hsb)<br>
+ * [Transparence](#transparence)<br>
 * [Primitives de dessin](#Primitives-de-dessin)<br>
 * [Transformation de l’espace](#Transformation-de-l’espace)<br>
 * [Coder ses propres fonctions](#Coder-ses-propres-fonctions)<br>	
