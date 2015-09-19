@@ -1,8 +1,9 @@
 # Introduction_Processing
 This respository is a french introduction to the Processing programming language
-[TOC]
 
-##### Contenus
+`[TOC]`
+
+# Contenus
 [Introduction] (#Introduction)
 [Premier Programme] (#Premier Programme)
 [Les variables] (#Les variables)
