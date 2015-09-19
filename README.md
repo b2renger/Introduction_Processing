@@ -329,6 +329,182 @@ a = random(500);
 println("seed" + seed +" : " + a); 
 ```
 
+<a name="Les-boucles"/>
+#Les Boucles
+
+C’est un des point primordiaux de la programmation objet, le boucles permette de répéter une action ou une suite d’instruction un nombre limité de fois. Il existe les boucles dites « for », et les boucles dites « while ». 
+
+Dans le cadre de ce document nous n’allons traiter que les boucles «for », les boucles « while » étant relativement rarement usitées.
+
+<a name="for"/>
+##for()
+voici un exemple de boucle « for » :
+
+```java
+for (int i  = 0 ; i < 10 ; i=i+1){
+	noStroke() ;
+	fill(255) ;
+	ellipse (10+i*10, 10+i*10, 5,5) ;
+}
+```
+
+Un boucle for se compose, de deux parties :
+
+* Un bloc d’instructions à exécuter,  situé entre les deux accolades.
+
+* Entre les parenthèses  ce sont les conditions d’exécution de la boucle qui sont séparées par des points virgules. 
+ * D’abord, on définit un nombre entier appelé « i » que l’on initialise à  0, 
+ * ensuite on précise que l’on exécutera le bloc d’instruction uniquement si  « i » reste strictement inférieur à 10, 
+ * puis on incrémente « i » de 1 en lui ajoutant la valeur 1.
+
+Le code présenté ci-dessus permet donc de dessiner 10 cercles blancs de 5 pixels de diamètre, le premier étant situé en haut à gauche aux coordonnées (10,10), le dernier au coordonnées (100,100).(100 = 10 + 9*10).
+
+Comme nous le verrons ces boucles sont très utilisées en programmation objet car elles permettent d’itérer une série d’instructions sur les éléments d’un tableau.
+
+<a name="while"/>
+##While()
+
+La boucle while() est moins usitée en programmation objet, mais très commune en électronique, elle permet de réaliser un bloc d’instruction tant qu’une condition est vérifiée.
+
+```java
+int i =0 ;
+while (i < width){	
+noStroke();
+fill(255);
+      ellipse(i,height/2,5,5);
+i+=5;
+}
+```
+Ici, nous avons un variable initialisée à zéro, tant que cette variable est inférieure à la largeur de notre fenêtre de dessin, nous dessinons une ellipse blanche, de 5 pixels de diamètre placée en abscisses à la valeur de « i » et en ordonnées au milieu de notre fenêtre de dessin.
+
+<a name="exemple"/>
+##Exemple
+
+```java
+/* voici mon premier programme utilisant des variables et de l’aléatoire et une boucle for*/
+int size ;
+float xpos,ypos ;
+  
+void setup(){
+  size(200,200) ;
+  size = 25 ;
+  xpos = random(0,width) ;
+  ypos = random(0,height) ;
+  background(0 ) ; // utilisons un fond noir.
+}
+ 
+void draw(){
+  background(0) ; 
+  stroke(180) ; 
+  strokeWeight(2) ; 
+  fill(255) ;
+  for (int i = 0 ; i <10 ; i++){
+  // à chaque image calculée on définit une nouvelle position
+  xpos = random(0,width) ;
+  ypos = random(0,height) ;
+  ellipse(xpos,ypos,size,size) ; 
+  }
+}
+``` 
+
+![exemples_pdf/Sketch_1_06.pde](assets/006_boucles.png)
+
+
+<a name="couleur"/>
+#Couleur
+
+<a name="gris"/>
+##Niveaux de gris
+
+Dans processing il existe trois mode principaux de couleurs. Le premier mode est celui que nous avons déjà utilisé dans les exemples précédents : le mode grayscale ou niveau de gris. Dans ce mode il s’agit de signifier un nombre entre 0 et 255 ; 0 étant le noir et 255 le blanc.
+
+```java
+stroke(0) ;
+fill(180) ;
+ellipse(width/2,height/2,50,50) ;
+```
+Le code va donc dessiner un cercle gris souris avec un contour noir.
+
+<a name="rgb"/>
+##Le mode RGB
+
+Le mode de couleur par défaut de processing est le mode RGB (« Red Green Blue »), pour créer des couleurs il s’agit alors de spécifier les niveau de rouge, vert et de bleu que l’on souhaite entre 0 et 255 ;
+
+```java
+noStroke() ;
+fill(255,0,0) ; // Rouge
+ellipse(width/5,height/2,10,10) ;
+fill(0,255,0);// Vert
+ellipse(width*2/5,height/2,10,10);
+fill(0,0,255);// Bleu
+ellipse(width*3/5,height/2,10,10);
+fill(255,100,100);// Rose
+ellipse(width*4/5,height/2,10,10);
+```
+
+<a name="hsb"/>
+##Le mode HSB
+
+Le mode HSB correspond à la specification de niveau de Hue (teinte), Saturation (contraste), Brightness (luminosité). Lorsque l’on définie le mode HSB on spécifie généralement l’étendue de la plage que doivent occuper ces valeurs.
+
+```java
+colorMode(HSB,360,100,100) ; 
+```
+
+Cette ligne précise que l’on va spécifier les valeurs de teinte entre 0 et 360, les autres valeurs seron spécifiées entre 0 et 100.
+Ce mode rend très facile la création de dégradés.
+
+```java
+size(360,100) ;
+colorMode(HSB,360,100,100) ;
+for (int i =0 ; i < width ; i++){
+   stroke(i,100,100);
+   line(i,0,i,height);
+}
+```
+
+<a name="transparence"/>
+##La transparence
+
+Il suffit d’ajouter un paramètre final à nos couleurs quelque soit le mode choisit. Ce dernier paramètre réglera le niveau de transparence à spécifier entre 0 et 255 ; 0 étant complétement transparent (soit invisible) et 255 étant entièrement opaque.
+
+Dans la création graphique la superposition de plusieurs couches transparentes donne des effets de textures souvent intéressants. L’utilisation de la transparence dans certain cas facilite l’émergence de motifs complexes.
+
+```java
+/* voici mon premier programme utilisant des variables et de l’aléatoire et une boucle for et de couleurs !*/
+int size ;
+float xpos, ypos ;
+
+void setup() {
+  size(200, 200) ;
+  size = 25 ;
+  xpos = random(0, width) ;
+  ypos = random(0, height) ;
+  colorMode(HSB, 360, 100, 100) ;
+  background(0 ) ;
+}
+
+void draw() {
+  // blur « maison »
+  fill(0, 20) ;
+  rect(0, 0, width, height) ;
+  noStroke() ; 
+  for (int i = 0 ; i <10 ; i++) {
+    xpos = random(0, width) ;
+    ypos = random(0, height) ;
+    fill(random(360), 100, 100) ;
+    ellipse(xpos, ypos, size, size) ;
+  }
+}
+```
+
+![exemples_pdf/Sketch_1_07.pde](assets/007_couleurs.png)
+
+
+
+
+
+
 
 
 
