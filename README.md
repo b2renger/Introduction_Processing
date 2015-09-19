@@ -737,4 +737,51 @@ void draw() {
 Si vous intervertissez rotate() et translate() l’effet ne sera plus du tout le même, idem si l’on oublie d’utiliser pushMatrix() et popMatrix().
 
 
+<a name="Coder-ses-propres-fonctions"/>
+#Coder ses propres fonctions
+
+A partir de ces transformations simples nous allons créer une texture mouvante en quelques lignes de code. Le principe est simple  nous allons utiliser le principe du carré tournant autour de son point supérieur gauche, mais nous allons créer une grille de carrés sur toute la surface de l’écran. 
+
+Pour simplifier le code nous allons écrire une fonction.  Cette fonction aura pour objectif de dessiner un carré situé à des coordonnées spécifiques avec un angle de rotation propre. Cette fonction étant une fonction de dessin, elle sera de type « void », et elle acceptera les 3 paramètres sus-cités , on la déclarera de cette façon :
+
+```java
+void draw_rect(float xpos, float ypos, float rotation) {
+	// suite d’instructions à écrire
+}
+```
+
+Pour utiliser cette fonction il suffit alors de l’  « appeler » :
+
+```java
+draw_rect(50,50,PI/2) ;
+```
+On dessinera ainsi un rectangle au point de coordonnées (50,50), tourné d’un angle  de PI/2 radians, si le code écrit à l’intérieur de notre fonction est le bon. Heureusement nous avons appris à précédemment à faire exactement cela :
+```java
+void draw_rect(float xpos, float ypos, float rotation) {
+	pushMatrix(); 
+	fill(100,100,255,2);
+	stroke(255,100,100,5);
+	strokeWeight(2);
+	translate(xpos, ypos); 
+	rotate(rotation);
+	rect(0, 0, 35, 35);  
+	popMatrix();
+}
+```
+
+Nous avons maintenant ce qu’il nous faut, il ne nous reste maintenant plus qu’à écrire notre code autour…  Pour animer notre image, nous allons utiliser une variable pour stocker l’angle auquel seront dessinés nos carrés, à chaque image (donc à chaque répétition de la boucle draw) nous allons augmenter la valeur de cet angle. Une petite astuce pour obtenir un rendu plus « ondulant » sera d’attribuer des valeurs d’angles différentes en fonction de la position du carré dans la grille !
+
+Vous pouvez aussi le voire ici :
+http://www.openprocessing.org/sketch/60014
+
+et consulter la vidéo d'abe pazos de funprogamming dont ce code est tirée : http://funprogramming.org/35-A-grid-of-rotating-objects-creates-a-wave-of-rectangles.html
+
+![exemples_pdf/Sketch_1_10.pde](assets/010_grid.png)
+
+
+
+
+
+
+
 
