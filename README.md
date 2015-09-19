@@ -44,13 +44,11 @@ de dessin. Il a été crée spécialement dans le but de faciliter l’apprentis
 programmation objet, via la création graphique permettant ainsi d’obtenir des résultats valorisants
 très rapidement.
 
-```
 <p><i>
 Processing seeks to ruin the careers of talented designers by tempting them away from their
 usual tools and into the world of programming and computation. Similarly, the project is designed
 to turn engineers and computer scientists to less gainful employment as artists and designers.
 </i>.</p>
-```
 
 Au-delà du fait d’être un formidable outil de dessin et de prototypage rapide en terme de design
 d’interaction. Processing est un réel langage de programmation capable de réaliser n’importe quelle
