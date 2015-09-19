@@ -104,10 +104,10 @@ void draw() {
 ```
 ![exemples_pdf/Sketch_1_01.pde](assets/002_PremierProgramme.png)
 
-Ce programme se compose de deux parties principales, appelées aussi « fonctions » qui se démarquent par l’utilisation de mots clés *« void »* ainsi que la paire d’accolade *{* *}* qui délimite les instructions exécutées lors de l’appel de la fonction.
+Ce programme se compose de deux parties principales, appelées aussi « fonctions » qui se démarquent par l’utilisation de mots clés **« void »** ainsi que la paire d’accolade **{** **}** qui délimite les instructions exécutées lors de l’appel de la fonction.
 
-* Les lignes 02 à 05 : présentent la fonction *setup()*. Cette fonction est appelée une seule fois au démarrage du programme, c’est un initialisation.
-* Les lignes 06 à 12 : présentent la fonction *draw()*, qui est le cœur du programme. La suite d’instruction enfermée entre les accolades est exécutée en boucle, le plus rapidement possible.
+* Les lignes 02 à 05 : présentent la fonction **setup()**. Cette fonction est appelée une seule fois au démarrage du programme, c’est un initialisation.
+* Les lignes 06 à 12 : présentent la fonction **draw()**, qui est le cœur du programme. La suite d’instruction enfermée entre les accolades est exécutée en boucle, le plus rapidement possible.
 
 Il existe des fonction spécifique au langage processing appelée primitives, on peut les appeler simplement en utilisant leur syntaxe spécifique. Chaque fonction indiquée en surbrillance possède une documentation en ligne, il est fortement conseillé de s’y référer pour savoir comment les utiliser.
 
