@@ -732,7 +732,7 @@ void draw() {
 }
 ```
 
-![exemples_pdf/Sketch_1_09.pde](assets/009__translate_rotate.png)
+![exemples_pdf/Sketch_1_09.pde](assets/009_translate_rotate.png)
 
 Si vous intervertissez rotate() et translate() l’effet ne sera plus du tout le même, idem si l’on oublie d’utiliser pushMatrix() et popMatrix().
 
