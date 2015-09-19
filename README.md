@@ -79,12 +79,39 @@ IDE signifie Inegrated Developpemet Environment, c'est l'outil avec lequel on va
 
 * La zone 4 est la fenêtre d’exécution de notre programme. 
 
+Processing fonctionne par défaut avec l’utilisation d’un « sketchbook ». C’est un dossier sur votre disque dur dans lequel seront stockés vos programmes et toutes les librairies, ainsi que les diférents modes que vous avez installé. Il est possible de modifier l’emplacement de ce dossier en allant dans : <i> File -> Preferences </i>
 
 <a name="Premier-Programme"/>
 #Premier Programme
 
+A tout moment il est possible d’insérer un commentaire dans son programme en utilisant ces deux caractères en début de ligne « // ». On peut aussi créer des commentaires sur plusieurs lignes en utilisant ces caractères : « /* » pour signaler le début d’un commentaire, et « */ » pour signaler la fin de ce même commentaire.
 
+```java
+// voici mon premier programme
+void setup() {
+  size(200, 200) ; // permet de spécifier la taille de la fenêtre.
+  background(0) ; // utilisons un fond noir.
+}
+void draw() {
+  background(0) ; // dessinons un fond noir.
+  stroke(180) ; // on choisit de  dessiner un contour gris.
+  strokeWeight(2) ; // ce contour aura un épaisseur de 2 pixels.
+  fill(255) ; // le remplissage de notre dessin sera blanc.
+  /* on dessine une ellipse située à 100 pixels du bord gauche, à 100 pixels du bord haut, d’une largeur de 50 pixels et d’une hauteur de 50 pixels … un cercle donc ! */
+  ellipse(100, 100, 50, 50) ;
+}
 
+```
+![exemples_pdf/Sketch_1_01.pde](assets/002_PremierProgramme.png)
+
+Ce programme se compose de deux parties principales, appelées aussi « fonctions » qui se démarquent par l’utilisation de mots clés *« void »* ainsi que la paire d’accolade *{* *}* qui délimite les instructions exécutées lors de l’appel de la fonction.
+
+* Les lignes 02 à 05 : présentent la fonction *setup()*. Cette fonction est appelée une seule fois au démarrage du programme, c’est un initialisation.
+* Les lignes 06 à 12 : présentent la fonction *draw()*, qui est le cœur du programme. La suite d’instruction enfermée entre les accolades est exécutée en boucle, le plus rapidement possible.
+
+Il existe des fonction spécifique au langage processing appelée primitives, on peut les appeler simplement en utilisant leur syntaxe spécifique. Chaque fonction indiquée en surbrillance possède une documentation en ligne, il est fortement conseillé de s’y référer pour savoir comment les utiliser.
+
+A noter que par défaut nous utilisons un systèmes de coordonnées cartésiennes centré en haut à gauche de la fenêtre de dessin. Dans notre programme, le coin en haut à gauche a donc les coordonnées(0,0), le coin en bas à droite a donc les coordonnées (199,199) 
 
 <a name="Les-variables"/>
 #Les variables
