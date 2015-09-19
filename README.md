@@ -30,7 +30,12 @@ Notes :
  * [Mode HSB](#hsb)<br>
  * [Transparence](#transparence)<br>
 * [Primitives de dessin](#Primitives-de-dessin)<br>
+ *[Les instructions de dessin](#instructions)<br>
+ *[Les primitives (formes prêtes à l'emploi)](#primitives)<br>
+ *[Les vertices (formes sur mesure)](#vertices)<br>
 * [Transformation de l’espace](#Transformation-de-l’espace)<br>
+ *[translate()](#translate)
+ *[rotate()](#rotate)
 * [Coder ses propres fonctions](#Coder-ses-propres-fonctions)<br>	
 * [Interactions Souris et clavier](#Interactions-Souris-et-clavier)<br>
 * [Dessiner du texte et utiliser des polices de caractère](#Dessiner-du-texte-et-utiliser-des-polices-de-caractère)<br>
@@ -508,10 +513,228 @@ void draw() {
 ![exemples_pdf/Sketch_1_07.pde](assets/007_couleurs.png)
 
 
+<a name="Primitives-de-dessin"/>
+#Primitives de dessin
 
+A partir de maintenant nous allons abandoner notre programme fil-rouge, qui nous a déjà appris beaucoup de choses, pour nous pencher vers d’autres rendus graphiques plus riches.
 
+<a name="instructions"/>
+##Les instructions de dessin
 
+Nous avons déjà vu la majeure partie des instructions de dessins dans les programmes précèdents, mais opérons tout de même à un petit rappel : 
 
+ * stroke() ; (color)  permet de définir la couleur du trait de dessin.	
+ * strokeWeigth() ; (float) permet de définir l’épaisseur de ce trait.
+ * noStroke() ; autorise à ne pas dessiner de contour.
+ * fill() ; (color) permet de définir la couleur de remplissage d’une forme.
+ * noFill() ; autorise à ne pas coloriser une forme.
+
+Concenant les instruction de lignes, il existe aussi les fonction strokeCap() ;(String) et strokeJoint() ; (String) dont je vous invite à consulter la documentation en ligne.
+
+Une autre instruction est importante , il s’agit de smooth() ; qui permet de modifier les paramètres de l’anti-aliasing de processing. On peut lui attribuer les valeurs de 2, 4 ou 8. Cela permet d’avoir des lignes fines plus précises à haute résolution.
+
+<a name="primitives"/>
+##Les primitves (formes)
+
+Nous avons pour l’instant principalement utilisé des ellipses pour nos code. Mais processing regorge d’une bonne quantité de primtives pour dessiner différentes formes géométriques.
+
+* ellipse(x-coord, y-coord, width,heigth) ; permet donc de dessiner une ellipse
+* line(x1-coord, y1-coord, x2-coord, y2-coord) ; permet de dessiner une ligne entre les points (x1,y1) et (x2,y2) ;
+* rect(x-coord,y-coord,width,height) ; permet de dessiner un rectangle, on peut lui adjoindre jusqu’à quatre autres paramètres pour spécifier l’arrondi de chaque angle.
+* quad(x1, y1, x2, y2, x3, y3, x4, y4) ; permet de dessiner un quadrilatère.
+* triangle(x1, y1, x2, y2, x3, y3) ; permet de spécifier un triangle.
+
+Il existe souvent différent modes pour dessiner ces formes, je vous conseille donc de regarder les documentation de rectMode() (String) et ellipseMode() (String) par exemple. On peut par exemple choisir de dessiner à partir d’un coin (CORNER - par défaut lorsque l’on dessine un rectangle), ou à partir du centre de nôtre forme (CENTER – par défaut pour l’ellipse).
+
+<a name="vertices"/>
+##Les vertices (formes sur mesure)
+
+Si cela ne vous suffisait pas il existe d’autres possibilités pour créer des formes. Les fonctions beginShape(), endShape() et vertex() vont nous y aider.
+
+Un vertex n’est en fait ni plus ni moins qu’un couple de coordonnées, conjugé à beginShape() et enShape(), il permet de créer des ensembles de points à relier entre eux qui peuvent alors créer des formes complexes. Nous allons nous intéresser à la façon dont il est possible de dessiner un cercle à l’aide de ces fonctions.
+
+Pour rappel, voici un cercle trigonométrique : 
+
+http://www.openprocessing.org/sketch/151087
+
+Alors que les coordonnées cartésiennes utilisent l’abscisse et l’ordonnée d’un point pour le placer dans le plan, les coordonnées polaires utilisent le rayon et l’angle pour définir un point de l’espace. En terme de code informatique il est donc assez facilement imaginable de tracer un cercle à l’aide d’un boucle « for » permettant de parcourir les 360° (ou 2*PI pour ceux qui préfèrent les radians), cependant il nous faut un moyen de passer des coordonnées polaires aux coordonnées cartésiennes (processing et la fonction vertex() demandent en effet un couple de coordonées).
+
+Le cercle trigo nous permet de nous souvenir simplement de ces formules : le point noir sur le cercle à pour coordonées (x,y) dans un repère cartésien et (r,theta) en coordonnées polaires. 
+
+Dans le programme interactif ci dessus, la projection bleue sur l’axe des abscisses nous donne la coordonnée x et correspond à un facteur près au cosinus de l’angle. La projection fuchsia sur l’axe des ordonnées nous fournit la coordonnée y qui est aussi proportionnelle à l’angle, mais cette fois au sinus :
+
+```java
+X = rayon * cos (angle)
+Y = rayon* sin(angle)
+```
+
+beginShape() va vous permettre de signaler à Processing que vous allez commencer à dessiner une forme, il attendra donc un instruction de fin de dessin qui sera endShape() et aussi une liste de vertex() entre les deux pour définir les différents points à relier entre eux.
+
+```java
+float xpos, ypos ;
+int radius; // le rayon de notre cercle
+float step; // l’incrément de l’angle qui va parcourir une rotation de 360°
+
+void setup() {
+  size(200, 200);
+  background(0);
+  xpos = width/2;
+  ypos = height/2;
+  radius = 75;
+  step = PI/12;
+}
+
+void draw() {
+  background(0);
+  noFill();
+  stroke(255);
+
+  beginShape();// on démarre notre forme
+  for ( float angle = 0 ; angle <TWO_PI ; angle += step) {
+    // on applique la formule vue précédement
+    float ex = xpos + radius *cos(angle);
+    float wy = ypos + radius *sin(angle);
+    // on ajoute un vertex
+    vertex(ex, wy);
+  }
+  endShape(CLOSE);// on arête notre forme et on la ferme
+}
+```
+![exemples_pdf/Sketch_1_08.pde](assets/008_vertices.png)
+
+Il est important de noter que ces objets sont très puissant et peuvent être manipulés avec différentes options pour obtenir des résultats divers.
+
+Par exemple : beginShape(), peut prendre un argument  qui affectera la façon dont la forme sera dessinée. beginsShape(POINTS) dessinera des points, beginShape(LINES) dessinera des lignes,  beginShape(TRIANGLES) constituera des triangles etc.
+
+Pour plus d’informations, il peut-êre utile de se référer à le documentation de Processing concernant beginShape().  Il peut-être intéressant aussi de regarder les fonction beginContour() et endContour().
+
+Concernant les vertices, il existe aussi plusieurs type de fonctions permettant de les utiliser : curveVertex(), bezierVertex(), quadraticVertex() sont d’autres façons de définir des vertices demandant plus ou moins d’arguments et donc plus ou moins simples à mettre en œuvre.
+
+Enfin pour ceux qui persiste dans l’utilisation de processing, il est intéressant de regarder le foncionnement de l’objet PShape, qui permet de créer des formes complexes,  de les stocker puis de les manipuler plus facilement.
+
+<a name="Transformation-de-l’espace"/>
+#Les Transformation de l’espace
+
+C’est un des points primordiaux de processing, il faut savoir se repérer dans un espace 2D et savoir utiliser différents systèmes de coordonnées, pour pouvoir se faciliter la vie.
+
+Il existe deux types de transformation de l’espace :
+
+* translate() ;
+* rotate() ;
+
+<a name="translate"/>
+##translate()
+
+Cette fonction permet d’opérer une translation, ce qu’il est primordial de comprendre c’est que l’on n’opère pas cette translation sur les formes que l’on dessine, mais plutôt sur notre espace de dessin. C’est comme si l’on gardait notre crayon au même endroit et que l’on déplaçait la feuille.
+
+Par exemple :
+
+```java
+ellipse(width/2,height/2,25,25) ;
+translate(50,0) ;
+ellipse(width/2,height/2,25,25) ;
+```
+
+dessinera deux cercles côte à côte séparé dont les centre seront séparés de 50 px. Ce programme est équivalent à : (c’est une question de style)
+
+```java
+translate(width/2,height/2) ;
+ellipse(0,0,25,25) ;
+translate(50,0) ;
+ellipse(0,0,25,25) ;
+```
+remarquez bien que les translations s’enchaînent, il est possible cependant de replacer la feuille à sa position par défaut en utilisant pushMatrix() et popMatrix(). Bien que cela puisse paraître compliqué il suffit de comprendre que si l’on dessine avec translate() il est parfois plus simple d’encadre chaque forme que l’on dessine de ces deux fonctions comme dans l’exemple ci-dessous :
+
+```java
+pushMatrix() ;
+translate(width/2,height/2) ;
+ellipse(0,0,25,25) ;
+popMatrix() ;
+pushMatrix() ;
+translate(width/2+50,height/2) ;
+ellipse(0,0,25,25) ;
+popMatrix() ;
+```java
+
+translate en réalité déplace notre repère de dessin, par défaut le centre de notre repère (le point de coordonnées (0,0) ) est situé en haut à gauchede notre fenêtre. En utilisant translate(xpos,ypos) ; nous déplaçons ce centre au point de coordonnées (xpos,ypos).
+Ré-écrivons notre programme fil-rouge avec des tranlate().
+
+```java
+/* voici mon premier programme utilisant des variables et de l’aléatoire et une boucle for et de couleurs ! et des translate(), pushMatrix(), popMatrix()*/
+int size ;
+float xpos,ypos ;
+
+void setup(){
+	size(200,200) ;
+	size = 25 ;
+	xpos = random(0,width) ;
+	ypos = random(0,height) ;
+	colorMode(HSB,360,100,100) ;
+	background(0 ) ; 
+}
+
+void draw(){
+	// blur « maison »
+	fill(0,20) ;
+	rect(0,0,width,height) ;
+	noStroke() ; 
+	for (int i = 0 ; i <10 ; i++){
+	xpos = random(0,width) ;
+	ypos = random(0,height) ;
+	fill(random(360),100,100) ;
+	pushMatrix() ; // on replace la feuille à chaque image
+	translate(xpos,ypos) ;// on se déplace
+	ellipse(0,0,size,size) ; // on dessine
+	popMatrix() ; // objet parent de pushMatrix
+	}
+}
+```
+
+popMatrix() permet en fait de replace la feuille pour dessiner éventuellement d’autres choses après. Ces deux objets doivent impérativement être utilisés conjointement, l’un sans l’autre renverra une erreur…
+
+<a name="rotate"/>
+##rotate()
+
+rotate() fonctionne de la même façon que translate(), il faut lui fournir un angle en radians, une fonction radians(angle)  permet de convertir un angle spécifié en degrés en une mesure radian facilement.
+
+Il existe des variante de rotate que sont rotateX(), rotateY(), rotateZ() sur lesquelles nous ne épancheront pas.
+
+En utilisant rotate(), il est nécessaire encore une fois de bien pense au système de coordonnées. Si par exemple je dessine un cercle au mileu tout en haut de ma zone de dessin :
+
+```java
+ellipse(width/2,0,50,50) ;
+```
+
+je peux faire en sorte que ce cercle se retrouve au centre en opérant un rotation de 45° ou PI/4 radians :
+
+```java
+rotate(radians(45)) ;
+ellipse(width/2,0,50,50) ;
+```
+Cela commence intéressant lorsque l’on combine translate() et rotate() ensemble, je peux par exemple très facilement faire tourner un carré sur lui-même. En utilisant le mode CENTER (à la fin de ce paragraphe [ici](#primitives)).
+
+```java
+float angle ;
+void setup() {
+  size(200,200);
+  angle = 0 ;
+  rectMode(CENTER) ;// rappelez vous les modes !
+}
+void draw() {
+  background(0) ;
+  stroke(255) ;
+  pushMatrix();// on s’assure d’avoir un repère bien à nous
+  translate(width/2, height/2) ;// on déplace notre repère
+  rotate(angle);// on le fait tourner
+  rect(0, 0, 25, 25);// on dessine un rectangle
+  popMatrix();
+  angle += PI/24;// on incrémente l’angle
+}
+```
+
+![exemples_pdf/Sketch_1_09.pde](assets/009__translate_rotate.png)
+
+Si vous intervertissez rotate() et translate() l’effet ne sera plus du tout le même, idem si l’on oublie d’utiliser pushMatrix() et popMatrix().
 
 
 
