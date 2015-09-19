@@ -34,12 +34,28 @@ Notes :
 <a name="Introduction"/>
 #Introduction
 
-Processing est un langage de programmation basé sur java et principalement destiné à la création graphique. Il est apparut en 2001, crée par deux artistes Ben Fry et Casey Reas, alors étudiants au MIT. Il reprend une partie des concepts de Design by Numbers l’environnement de programmation graphique developpé par John Maeda au sein du Média Lab du même MIT.
-Le langage processing est du Java fortement simplifié par l’accès direct à de nombreuses primitives de dessin. Il a été crée spécialement dans le but de faciliter l’apprentissage des bases de la programmation objet, via la création graphique permettant ainsi d’obtenir des résultats valorisants très rapidement.
-Processing seeks to ruin the careers of talented designers by tempting them away from their usual tools and into the world of programming and computation. Similarly, the project is designed to turn engineers and computer scientists to less gainful employment as artists and designers.
-Au-delà du fait d’être un formidable outil de dessin et de prototypage rapide en terme de design d’interaction. Processing est un réel langage de programmation capable de réaliser n’importe quelle fonction.
-Processing est un projet Open Source devenu collaboratif de par l’intérêt qu’il a suscité dès sa sortie. Il est ouvert au développements tiers par l’intégration d’un système de librairie ainsi qu’une documentation aidant au développement de librairies externes. Il existe aussi un système de  « modes » permettant d’ajouter des fonction à l’IDE (Itegrated Developpement Environment) de processing comme le développement pour android (smartphones et tablettes), ou en javascript (web).
-Processing existe aussi bien sous Linux, Windows que Mac OS. Le projet étant à but pédagogique et porté par une communauté très active il est excessivement bien documenté.
+Processing est un langage de programmation basé sur java et principalement destiné à la création
+graphique. Il est apparut en 2001, crée par deux artistes Ben Fry et Casey Reas, alors étudiants au
+MIT. Il reprend une partie des concepts de Design by Numbers l’environnement de programmation
+graphique developpé par John Maeda au sein du Média Lab du même MIT.
+Le langage processing est du Java fortement simplifié par l’accès direct à de nombreuses primitives
+de dessin. Il a été crée spécialement dans le but de faciliter l’apprentissage des bases de la
+programmation objet, via la création graphique permettant ainsi d’obtenir des résultats valorisants
+très rapidement.
+Processing seeks to ruin the careers of talented designers by tempting them away from their
+usual tools and into the world of programming and computation. Similarly, the project is designed
+to turn engineers and computer scientists to less gainful employment as artists and designers.
+Au-delà du fait d’être un formidable outil de dessin et de prototypage rapide en terme de design
+d’interaction. Processing est un réel langage de programmation capable de réaliser n’importe quelle
+fonction.
+Processing est un projet Open Source devenu collaboratif de par l’intérêt qu’il a suscité dès sa sortie.
+Il est ouvert au développements tiers par l’intégration d’un système de librairie ainsi qu’une
+documentation aidant au développement de librairies externes. Il existe aussi un système
+de « modes » permettant d’ajouter des fonction à l’IDE (Itegrated Developpement Environment) de
+processing comme le développement pour android (smartphones et tablettes), ou en javascript
+(web).
+Processing existe aussi bien sous Linux, Windows que Mac OS. Le projet étant à but pédagogique et
+porté par une communauté très active il est excessivement bien documenté.
 
 
 <a name="Premier-Programme"/>
