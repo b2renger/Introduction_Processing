@@ -115,3 +115,94 @@ A noter que par défaut nous utilisons un systèmes de coordonnées cartésienne
 
 <a name="Les-variables"/>
 #Les variables
+
+<a name="définition"/>
+##Définition
+Les variables correspondent à un espace utilisé dans la mémoire de l’ordinateur pour stocker une information de manière temporaire. Les variables peuvent être de différents types en fonction des données qu’elles doivent stocker.
+
+<a name="types"/>
+##Différents types de variables
+**int** : permet de stocker des nombres entiers.
+**float** : permet de stocker des nombres flottants soit des nombres à virgules.
+**string** : permet de stocker des chaines de caractères, c’est-à-dire du texte.
+**color** : permet de stocker une couleur.
+
+Si on écrit :
+
+```java
+
+int a;
+a = 5;
+int b ;
+b =3;
+int result = a + b;
+String operation = a +"+"+ b +"=";
+println(operation);
+println(result);
+
+```
+
+On crée une variable entière dont le nom est a, et on lui attribue la valeur 5. On crée une seconde variable entière dont le nom est b et on lui attribue la valeur 3. On crée ensuite un entier pour stocker le résultat que l’on obtient en additionnant les deux variables.
+
+On crée ensuite une variable de type chaine de caractère pour inscrire l’opération effectuée puis son résultat dans la console. Une chaine de caractère doit être comprise entre deux " " pour être reconnue comme telle.  Ici on compose une chaine de caractère complexe en utilisant le symbole « + », les différentes chaines de caractères (ou caractères simples) qui la compose sont accolées.
+
+Il est important de noter que si jamais notre variable appelée « result » avait été de type String, la ligne :
+
+```java
+String result = a+b ;
+```
+
+aurait renvoyé un tout autre résultat puisque les variables aurait été interprétée comme des String on aurait alors obtenu le juxtaposition des deux caractère soit « 53 ».
+
+Certain type sont compatibles avec d’autres : on peut par exemple stocker un entier dans un flottant et des entiers ou des flottants dans des String. Cependant l’utilisation d’un flottant avec un type entier reverra nécessairement une erreur dans la console.
+
+Il est aussi possible de stocker des données plus complexes comme des tableaux. Les tableaux servent à stocker des ensembles de données d’un type précis, on peut même y stocker des instances de classes… (nous verrons ceci dans la section dédiée aux classes).
+
+<a name="portée"/>
+##La portée des variables
+
+Un point essentiel réside dans la portée de ces variables (en anglais on parle de « scope »). D’une façon simplifiée : une variable sera accessible uniquement dans la fonction ou portion de code dans laquelle elle aura été définie. Une portion de code correspond à l’espace entre deux accolades « { } ».
+
+Cela signifie qui si je définie une variable dans le setup() de mon programme celle-ne sera accessible uniquement dans le setup().
+
+Il est possible de définir des variables à l’extérieur des fonctions setup() et draw() : par exemple en tout début de programme, ces variables seront alors accessibles partout dans notre programme.
+
+<a name="exemples"/>
+##Exemple d’utilisation des variables
+
+Habituellement on a tendance à créer les variables tout en haut de notre programme, on les initialise ensuite dans le setup() , puis on les utilise dans le draw().
+
+```java
+  // voici mon premier programme utilisant des variables
+  color background_color ;
+  int size ;
+  float xpos,ypos ;
+  
+  void setup(){
+  size(200,200) ;
+  background_color = color(0) ;
+  size = 50 ;
+  xpos = random(100) ;
+  ypos = random(100) ;
+  background(background_color ) ; // utilisons un fond noir.
+  }
+  
+  void draw(){
+  background(background_color ) ; 
+  stroke(180) ; 
+  strokeWeight(2) ; 
+  fill(255) ;
+/* on dessine notre ellipse en utilisant nos variables*/
+  ellipse(xpos,ypos,size,size) ; 
+  }
+```
+![exemples_pdf/Sketch_1_02.pde](assets/003_Utilisation_variables.png)
+
+<a name="globales"/>
+##Variables globales de processing
+
+Il existe dans processing des variables globales, qui sont donc accessibles partout dans processing, ces variables sont définies par défaut et gérée par processing lui-même, il faut mieux éviter d’utiliser leur nom pour définir ses propres variables.
+
+C’est le cas entre autres de :
+**width** : (float) qui est associée par défaut à largeur de la fenêtre de dessin.
+**height** : (float)qui est associée par défaut à la hauteur de la fenêtre de dessin.
