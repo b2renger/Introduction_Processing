@@ -38,6 +38,7 @@ Notes :
  *[rotate()](#rotate)
 * [Coder ses propres fonctions](#Coder-ses-propres-fonctions)<br>	
 * [Interactions Souris et clavier](#Interactions-Souris-et-clavier)<br>
+
 * [Dessiner du texte et utiliser des polices de caractère](#Dessiner-du-texte-et-utiliser-des-polices-de-caractère)<br>
 * [Les Classes Programmation Orientée Objet](#Les-Classes-Programmation-Orientée-Objet)<br>
 * [Les Tableaux](#Les-Tableaux)<br>
@@ -778,10 +779,75 @@ et consulter la vidéo d'abe pazos de funprogamming dont ce code est tirée : ht
 
 ![exemples_pdf/Sketch_1_10.pde](assets/010_grid.png)
 
+<a name="Interactions-Souris-et-clavier"/>
+#Interactions avec la souris et le clavier
 
+Processing nous donne accès à des fonctions bien pratiques pour créer de l’interaction avec nos programmes, notament à travers l’utilisation de fonction spécifiques permettant d’intercepter les événements provenant de notre souris ou de notre clavier.
 
+<a name="souris"/>
+##Souris
+Les évenements provenant de la souris peuvent être captés de diverses façon. Il est par exemple possible de connaitre la position de la souris à tout moment, de savoir quel bouton est activé etc.
 
+<a name="souris_globales"/>
+###Les variables relatives à la souris
 
+Processing met à notre disposition différentes variables globales nous permettant de connaitre l’état de notre souris, ainsi :
+**mouseX** et **mouseY** , nous permettent de connaitre les coordonnées de la position de la souris dans notre fenêtre à tout moment.
 
+**mousePressed** : nous renvoi un booléen : TRUE si la souris est cliquée, FALSE sinon.
+**mouseButton** : nous permet de connaitre l’identité du bouton qui a été cliqué
+
+Le sketch_1_11 met en oeuvre ces variables en imprimant leurs valeurs dans la console.
+
+Il existe aussi les variables pmouseX et pmouseY qui permette de connaitre la position de la souris à l’image précédente., combinées à mouseX et mouseY, il devient assez facile de calculer la vitesse de déplacement de la souris : 
+
+```java
+void setup() {
+  size(200, 200);
+  background(0);
+  strokeWeight(4);
+  frameRate(15);
+  colorMode(HSB, 360, 100, 100);
+}
+void draw() {
+  noStroke();
+  fill(0, 25);
+  rect(0, 0, width, height);
+  stroke(random(360), 100, 100);
+  line(pmouseX, pmouseY, mouseX, mouseY);
+}
+```
+
+![Sketch_1_12.pde](assets/011_mouse.png)
+
+<a name="souris_fonctions"/>
+###Les fonctions relatives à la souris
+
+Il existe aussi un certain nombre de fonctions permettant d’exectuer un bloc de code en fonction d’un événement souris :
+
+* mousePressed() : lorsque l’on appuie sur un bouton.
+* mouseReleased() : lorsque l’on relâche un bouton.
+* mouseClicked() : lorsque l’on appuie puis que l’on relâche un bouton.
+* mouseMoved() : lorsque l’on déplace la souris.
+* mouseDragged() : lorsque l’on déplace la souris alors qu’un bouton est appuyé.
+* mouseWheel() : lorsque l’on active la molette.
+
+Toutes ces fonctions s’utilisent de la même façon : elles sont déclarés comme n'importe quelle fonction, le bloc présent entre les accolades est executé quand la fonction est déclenchée.
+
+```java
+void setup() {
+  size(200, 200);
+}
+
+void draw() {
+}
+
+void mousePressed() {
+  noStroke();
+  fill(random(255), random(255), random(255), random(100, 180)); 
+  ellipse(mouseX, mouseY, 15, 15);
+}
+```
+![exemples_pdf/Sketch_1_13.pde](assets/012_mouse_pressed.png)
 
 
