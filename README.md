@@ -84,7 +84,7 @@ Processing fonctionne par défaut avec l’utilisation d’un « sketchbook »
 <a name="Premier-Programme"/>
 #Premier Programme
 
-A tout moment il est possible d’insérer un commentaire dans son programme en utilisant ces deux caractères en début de ligne « // ». On peut aussi créer des commentaires sur plusieurs lignes en utilisant ces caractères : « /* » pour signaler le début d’un commentaire, et « */ » pour signaler la fin de ce même commentaire.
+A tout moment il est possible d’insérer un commentaire dans son programme en utilisant ces deux caractères en début de ligne  « // ». On peut aussi créer des commentaires sur plusieurs lignes en utilisant ces caractères :<p> « /* » </p> pour signaler le début d’un commentaire, et « */ » pour signaler la fin de ce même commentaire.
 
 ```java
 // voici mon premier programme
