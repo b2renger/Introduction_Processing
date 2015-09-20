@@ -614,7 +614,7 @@ Concernant les vertices, il existe aussi plusieurs type de fonctions permettant 
 Enfin pour ceux qui persiste dans l’utilisation de processing, il est intéressant de regarder le foncionnement de l’objet PShape, qui permet de créer des formes complexes,  de les stocker puis de les manipuler plus facilement.
 
 <a name="Transformation-de-l’espace"/>
-#Les Transformation de l’espace
+#Les Transformations de l’espace
 
 C’est un des points primordiaux de processing, il faut savoir se repérer dans un espace 2D et savoir utiliser différents systèmes de coordonnées, pour pouvoir se faciliter la vie.
 
@@ -850,4 +850,52 @@ void mousePressed() {
 ```
 ![exemples_pdf/Sketch_1_13.pde](assets/012_mouse_pressed.png)
 
+Un petit point cependant sur la fonction mouseWheel(),avec laquelle on peut obtenir le sens de déplacement de la molette, par le biais d’un MouseEvent.
 
+```java
+float hue=180;
+
+void setup() {
+  size(200, 200);
+  colorMode(HSB,360,100,100);
+}
+
+void draw() {
+  background(hue,100,100);
+}
+
+void mouseWheel(MouseEvent event) {
+  float amt = event.getCount();
+  hue +=amt;
+}
+```
+
+![exemples_pdf/Sketch_1_14.pde](assets/013_mouse_wheel.png)
+
+<a name="map"/>
+###map()
+
+La fonction map() peut s’avérer être très utile dans le cadre de divers programmes. Elle permet d’échelonner des valeurs d’un intervalle à un autre. Imaginons par exemple qu’en fonction de la position de la souris nous voulions changer la taille d’un cercle. 
+
+Nous voulons que lorsque la souris est tout à gauche de l’écran, notre cercle soit petit (disons un diamètre de 5) et que lorsque nous sommes tout à droite notre cercle soir gros (un diamètre de 100). Nous savons déjà que lorsque notre souris est tout à gauche la variable mouseX aura pour valeur 0, lorsqu’elle est tout à droite sa valeur est de « width » (la variable globale contenant la largeur de notre fenêtre de dessin). La fonction map nous permettra alors de transformer la position de notre souris (comprise entre 0 et width) en une valeur comprise entre 5 et 100.
+
+```java
+	float diam ;
+	diam = map(mouseX,0,width,5,100) ;
+```
+
+<a name="clavier"/>
+##Clavier
+
+De la même façon, les évènements claviers peuvent être interceptés. Il existes les variables :
+ * **key**
+ * **keyCode**
+
+qui retournent les valeurs de la dernière touche de clavier enfoncée ; il existe aussi des fonctions similaires à celles de la souris :
+ * **keyPressed()**
+ * **keyReleased()**
+ * **keyTyped()**
+
+**keyTyped()**  va ignorer l’enfoncement des touches CTRL, ALT etc.
+
+En fonction des machines, des systèmes d’exploitation ces fonctions et variables ne renvoient pas systématiquement les même valeurs. Attention donc pour le développement sur plusieurs plateformes.(Pour débugger il est conseillé d’avoir recours à des println pour vérifier les valeurs dans la console). Le chapitre suivant concernant le texte et les polices de caractère vous donnera un exemple d’utilisation de ces fonction.
