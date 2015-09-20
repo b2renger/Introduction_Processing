@@ -1767,7 +1767,7 @@ Il est très simple de créer un effet de « blur » en utilisant de la transp
 fill(0,20) ;
 noStroke();
 rect(0,0,width,height) ;
-``
+```
 
 ###Color Selector
 Utilisez l’outil Color Selector pour spécifier plus facilement vos couleurs dans les different modes.
