@@ -38,6 +38,12 @@ Notes :
  *[rotate()](#rotate)
 * [Coder ses propres fonctions](#Coder-ses-propres-fonctions)<br>	
 * [Interactions Souris et clavier](#Interactions-Souris-et-clavier)<br>
+ * [Souris](#souris)<br>
+  * [Variables globales](#souris-globales)<br>
+  * [Fonctions](#souris-fonctions)<br>
+  * [map()](#map)<br>
+ * [Clavier](#clavier)<br>
+
 
 * [Dessiner du texte et utiliser des polices de caractère](#Dessiner-du-texte-et-utiliser-des-polices-de-caractère)<br>
 * [Les Classes Programmation Orientée Objet](#Les-Classes-Programmation-Orientée-Objet)<br>
@@ -899,3 +905,4 @@ qui retournent les valeurs de la dernière touche de clavier enfoncée ; il exi
 **keyTyped()**  va ignorer l’enfoncement des touches CTRL, ALT etc.
 
 En fonction des machines, des systèmes d’exploitation ces fonctions et variables ne renvoient pas systématiquement les même valeurs. Attention donc pour le développement sur plusieurs plateformes.(Pour débugger il est conseillé d’avoir recours à des println pour vérifier les valeurs dans la console). Le chapitre suivant concernant le texte et les polices de caractère vous donnera un exemple d’utilisation de ces fonction.
+
