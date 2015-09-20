@@ -43,8 +43,6 @@ Notes :
   * [Fonctions](#souris-fonctions)<br>
   * [map()](#map)<br>
  * [Clavier](#clavier)<br>
-
-
 * [Dessiner du texte et utiliser des polices de caractère](#Dessiner-du-texte-et-utiliser-des-polices-de-caractère)<br>
 * [Les Classes Programmation Orientée Objet](#Les-Classes-Programmation-Orientée-Objet)<br>
 * [Les Tableaux](#Les-Tableaux)<br>
@@ -905,4 +903,92 @@ qui retournent les valeurs de la dernière touche de clavier enfoncée ; il exi
 **keyTyped()**  va ignorer l’enfoncement des touches CTRL, ALT etc.
 
 En fonction des machines, des systèmes d’exploitation ces fonctions et variables ne renvoient pas systématiquement les même valeurs. Attention donc pour le développement sur plusieurs plateformes.(Pour débugger il est conseillé d’avoir recours à des println pour vérifier les valeurs dans la console). Le chapitre suivant concernant le texte et les polices de caractère vous donnera un exemple d’utilisation de ces fonction.
+
+<a name="Dessiner-du-texte-et-utiliser-des-polices-de-caractère"/>
+#Dessiner du texte, utiliser des polices de caractère
+
+Le programme suivant va permettre de stocker les lettres tapées sur notre clavier dans une variable de type String et va dessiner ensuite ces lettres de manière aléatoire sur l’écran. La fonction keyPressed() va gérer l’ensemble des interactions avec le clavier.
+
+Pour dessiner du texte nous utilisons à la ligne 22 la fonction :
+```java
+text (string, int, int) ;
+```
+
+permettant de dessiner une chaine de caractère en spécifiant les coordonnées auxquelles la dessiner. Le rendu du texte est affecté par la fonction fill() comme n’importe quelle forme géométrique, mais ne réponds pas à la fonction stroke().
+
+Deux autres fonctions permettent de modifier l’apparence du rendu du texte :
+```java
+textSize(float) ;
+```
+
+utilisée à la ligne 20, permet d’en changer la taille, et
+```java
+textFont(PFont) ;
+```
+permet de changer la police à la ligne21. Le type PFont est un objet permettant de charger une police externe chargée dans un fichier « *.vlw ».
+
+On utilise donc une variable « font » de type PFont pour charger nos polices à la volée en fonction des touches enfoncées.
+
+Concernant les interaction clavier, on utilise une technique de « castage » pour forcer le type de donnée que l’on va obtenir de la variable key. A la ligne 24, on s’assure que notre variable k sera bien un caractère avant de l’insérer dans notre chaine de caractères principale, à la ligne 25 on s’assure d’obtenir un entier pour avoir l’identifiant de la touche. Ensuite à l’aide de tests, nous définissons les action à effectuer.
+
+```java
+String buff = "        ";
+PFont font;
+
+void setup() {
+  size(400, 300);
+  background(255);
+  colorMode(HSB);
+  smooth();
+  font =loadFont("Mosaicleaf-48.vlw");
+}
+
+void draw() { 
+  noStroke();
+  fill (255, 35);
+  rect (0, 0, width, height);
+  char k = buff.charAt(floor(random(buff.length()-1))); 
+  fill(random(255), 255, 255);
+  textSize(random(48, 100));
+  textFont(font, 48);
+  text(k, random(0, width), random(0, height));
+}
+
+void keyPressed() {
+
+  char k = (char)key;
+  int nkey = (int) key;
+
+  if (nkey == 48) {
+    font = loadFont("Mosaicleaf-48.vlw");
+  }
+  else if (nkey == 49) {
+    font =loadFont("Bauhaus93-48.vlw");
+  }
+  else if (nkey == 50) {
+    font =loadFont("HarlowSolid-48.vlw");
+  }
+  else if (nkey==51) {
+    font =loadFont("Magneto-Bold-48.vlw");
+  }
+  else if (nkey == 51 || nkey ==52 || nkey ==53 ||nkey ==54
+    || nkey ==55 ||nkey == 56 || nkey == 57) {
+  }
+  else if (key == BACKSPACE) {
+    buff = "  ";
+  }
+  else {
+    buff=k+buff;
+  }
+}
+```
+
+![exemples_pdf/Sketch_1_15.pde](assets/014_fonts.png)
+
+Il existe un outil permettant de construire des fonts au format .vlw et donc utilizable dans processing à partir des polices installées sur le système. Il suffit de cliquer sur le menu « Tools -> Create Font ».
+
+
+
+
+
 
