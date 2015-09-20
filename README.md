@@ -1022,6 +1022,7 @@ class Mover {
 	// dessiner quelquechose
 	}
 }
+```
 
 <a name="construction-classe"/>
 ##Construction d'une classe simple
