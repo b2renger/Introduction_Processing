@@ -45,6 +45,13 @@ Notes :
  * [Clavier](#clavier)<br>
 * [Dessiner du texte et utiliser des polices de caractère](#Dessiner-du-texte-et-utiliser-des-polices-de-caractère)<br>
 * [Les Classes Programmation Orientée Objet](#Les-Classes-Programmation-Orientée-Objet)<br>
+ * [Structure d'une classe](#structure-classe)<br>
+ * [Construction d’un classe simple](#construction-classe)<br>
+  * [Déclaration de variables](#variables-classe)<br>
+  * [Constructeur : initialisation](#constructeur-classe)<br>
+  * [Méthodes complémentaires : update() et draw()](#méthodes-classe)<br>
+ * [Utilisation d’un classe simple](#utilisation-classe)<br>
+
 * [Les Tableaux](#Les-Tableaux)<br>
 * [Emergence : Un programme interactif complexe](#Emergence)<br>
 * [Les Librairies](#Les-Librairies)<br>
@@ -987,8 +994,215 @@ void keyPressed() {
 
 Il existe un outil permettant de construire des fonts au format .vlw et donc utilizable dans processing à partir des polices installées sur le système. Il suffit de cliquer sur le menu « Tools -> Create Font ».
 
+<a name="Les-Classes-Programmation-Orientée-Objet"/>
+#Les Classes : Programmation Orientée Objet
+
+Les classes sont un des concepts centraux de JAVA, elles nous permettent de créer des objets ensuite manipulables par du code. Souvent une classe permet d’encapsuler un certain nombre de concepts ensembles d’un façon générique, et permet d’améliorer la lisibilité de notre code.
+
+Cela peut paraître un peu barbare mais c’est en réalité relativement simple : un classe est la description théorique d’un objet. Par exemple dans ce chapitre nous allons créer un classe « Mover », cette classe permettra de créer un objet (représenté graphiquement par un cercle) qui se déplacera dans notre fenêtre de dessin et rebondira contre les bords.
+
+<a name="structre-classe"/>
+##Structure d’une classe
+
+Sa structure ressemble furieusement à la structure d’un programme processing. D’abord nous déclarerons des variables qui pourront être utilisées dans le code de notre classe. Ensuite il nous faudra une fonction pour initialiser ces variables , jusque là nous appelions ça la fonction « setup() », dans un classe cette fonction s’appelle un constructeur. Après cela nous aurons une ribambelle de fonctions qui seont appelées à chaque image calculée, qui nous permettra soit de dessiner quelquechose soit de modéliser un comportement physique, biologique , une interaction avec l’utilisateur etc.
+
+```java
+class Mover {
+	// déclaration de variables
+	// constructeur
+	Mover(){
+	// intialisation des variables
+	}
+
+	void update(){
+	// faire des calculs
+	}
+
+	void draw(){
+	// dessiner quelquechose
+	}
+}
+
+<a name="construction-classe"/>
+##Construction d'une classe simple
 
 
+<a name="declaration-variables-classe"/>
+###Déclaration de variables
 
+Pour construire notre classe Mover, nous allons utiliser un nouveau type de variable, le PVector. Cette variable est bien sûr l’équivalent d’un vecteur mathématique, son utilisation nous simplifiera grandement la vie pour l’implémentation du comportement physique que nous souhaitons. (rappelons tout de même qu’un vecteur n’est ni plus ni moins qu’un couple de coordonées).
 
+Mover aura donc besoin pour fonctionner de deux vecteurs : un vecteur définissant la position de notre objet, et un vecteur définissant sa vitesse. Nous n’aurons donc que deux variables à déclarer :
 
+```java
+PVector loc, vel; 
+```
+
+<a name="constructeur-classe"/>
+###Constructeur : initialisation
+
+Pour initialiser ces variales nous allons utiliser le même type de technique que lorsque nous avions écrit des fonctions. Nous allons nous attacher à pouvoir passer des arguments à notre objet. Cela signifie que lors de la création de l’objet, nous devrons nous même spécifier certaines valeurs, qui seront propre à cet objet crée. La classe elle n’a que faire de ses valeurs, elle ne les manipule que comme des valeurs symboliques. Sans surprise le constructeur resemblera donc à ça :
+
+```java
+Mover(PVector loc, PVector vel) {
+    this.loc = loc;
+    this.vel = vel;
+}
+
+```
+
+Il est important de bien comprendre ici le fonctionnement du mot clé « this » qui peut créer une confusion. 
+
+Dans notre classe nous avons déclarer deux PVector : ‘loc’ et ‘vel’. Nous avons fait de même entre les parenthèse de notre constructeur pour pouvoir passer des valeurs. Rappelez vous de la portée des variables (vue au tout début de ce document). Dans le cadre de notre constructeur nous avons donc deux fois, deux variables qui portent le même nom ; il faut donc impérativement être capable de les différencier. 
+
+Le « this » sert à cela. Lorsque vous êtes dans cette situation le fait d’utiliser « this. » permet de signifier à notre programme que l’on parle de la variable de la classe, celle qui a été déclarée avant notre fonction.  Nous allons donc toujours avoir :
+
+```java
+this.maVariable = maVariable ;
+```
+Autrement dit on attribue à la variable qui est utilisée dans notre classe, la valeur que l’on spécifie en argument de notre fonction.
+
+<a name="méthodes-classe"/>
+###Méthodes complémentaires : update() et draw()
+
+En physique, il existe un lien entre la position, la vitesse et l’acceleration. Si l’on dérive l’accéleration par rapport au temps on obtient la vitesse, si l’on dérive cette vitesse on obtient la position. Et inversement si on intégre la position par rapport au temps on obtient la vitesse et si on intègre la vitesse on obtient la position (vérifiez si vous ne me croyez pas  !). Pour nous cela signifie que pour calculer la position de notre objet à l’image suivante , il suffit d’ajouter la vitesse à notre position actuelle ! un petit tour rapide sur la page d’aide de PVector nous apprend qu’il existe une méthode « add() » pour ajouter deux objets PVector. La fonction update() de notre classe contiendra donc très certainement cette ligne de code :
+
+```java
+loc.add(vel); 
+```
+
+Il ne nous reste plus qu’à dessiner quelquechose … et ça nous savons déjà le faire.
+
+```java
+class Mover {
+
+ PVector loc, vel;
+
+ Mover(PVector loc, PVector vel) {
+   this.loc = loc;
+   this.vel = vel;
+ } 
+
+ void update() {  
+    loc.add(vel);  
+ }
+
+ void draw() {
+    pushStyle();
+    noStroke();
+    fill(255, 100);
+    ellipse(loc.x, loc.y, 25, 25);
+ } 
+}
+```
+
+Voici donc notre classe quasi-complétée.  Il nous reste à utiliser des tests pour savoir si nos objets sortent de l’écran ; si c’est le cas il faut qu’ils rebondissent ! On écrit donc une nouvelle fonction spécifique.
+
+```java
+void check_collisions(){
+	if (loc.x < 0 || loc.x> width) { // trop à gauche ou (‘||’) trop à droite
+    	vel.x = -vel.x; // on inverse sa vitesse en abscisse
+   	}
+	// meme schema pour les collision en haut et en bas avec l’ordonnée
+	if (loc.y<0 || loc.y > height) {
+    	vel.y = -vel.y;
+	}
+}
+```
+<a name="utilisation-classe"/>
+##Utilisation d'une classe simple
+
+Maintenant notre classe écrite nous allons pouvoir l’utiliser. Vous trouvez peut-être que pour l’intant c’est beaucoup de code pour pas grand-chose, mais la magie de la programmation objet va commencer à opérer.
+
+Notre classe écrite nous pouvons maintenant créer des objets que nous pourrons manipuler. Nous pouvons par exemple maintenant déclarer un nouvel objet Mover comme n’importe quel autre type de processing (int, float, string…).1. M1. Mover mov ;over mov ;
+
+```java
+Mover mov ;
+```
+
+Cette ligne déclarer un nouvel objet, pour l’instant notre objet n’existe cependant toujours pas, nous disons juste à notre ordinateur  que nous allons le créer. Nous allons le créer dans le setup() de notre programme, mais nous avons d’abord besoin de créer deux PVector que nous passerons en argument : un pour la position de notre objet, un pour sa vitesse. Ensuite nous pourrons créer un nouvel objet de type Mover en utilisant la syntaxe :
+
+mov = new Mover(monVecteur1, mon Vecteur2) ;
+
+Voici donc le code du setup complet d'un setup initialisant un objet Mover
+
+```java
+void setup() {
+
+  size (800, 600);
+
+  PVector initLoc = new PVector(width/2, height/2);
+  PVector initAcc = new PVector(1.05, -2.25);
+  mov = new Mover (initLoc, initAcc);
+}
+```
+
+Remarquez, que la façon dont nous initialisons les PVector et notre objet Mover est quasi-identique. C’est normal puisque l’objet PVector est lui-même un classe, qui est déjà codée pour nous.
+
+Notre objet est donc crée, il ne nous reste plus qu’à la manipuler et à l’afficher. Cette étape se passera donc dans le draw() :
+
+```java
+void draw() {
+  background(180); // fond noir
+  mov.update(); // calculer la position
+  mov.draw();  // afficher notre forme
+}
+```
+
+Le code assemblé est disponible dans *Sketch_2_01*. 
+
+![exemples_pdf/Sketch_2_01.pde](assets/015_oop1.png)
+
+A priori cela représente beaucoup d'efforts pour peux d'avantages, mais l'usage conjoint de classes et de tableaux, permet de simplifier la manipulation de milliers d'objets.
+
+<a name="Les-Tableaux"/>
+#Les Tableaux
+
+Les tableaux sont un type d’objets complexes, ils nous permettent de stocker un grand nombre d’éléments de n’importe quel type float, string …  ou même une classe que nous venons de créer. C’est précisément ce que nous allons faire. Cela nous permettra de traiter un maximum d’objet avec un minimum de lignes de code.
+
+Pour créer un tableau nous devons connaitre le nombre d’éléments que nous allons stocker, il nous faudra donc d’abord définir une variable pour définir la taille de notre tableau. Ensuite un tableau se crée en utilisant des crochets ‘[‘ et ‘]’. Il nous faut d’abord définir le type d’objets que va contenir le tableau, puis ouvrir et fermer des crochets pour signifier que c’est un tableau, donner un nom à cet objet puis l’initialiser à l’aide du mot clé « new ». Pour créer un tableau de 100 objets Move, il suffit donc d’écrire ceci :
+
+```java
+int num = 100 ; 
+Mover[] movs = new Mover[num];
+```
+
+Pour créer un tableau de 100 flottants :
+```java
+Float[] flottants = new float[100] ;
+```
+
+Maintenant que nous avons crée notre tableau, il nous faut initialiser les éléments qui le compose (dans le cas d’une classe) ou leur attribuer une valeur (dans le cas de flottants) pour cela nous allons utiliser une boucle for pour parcourir l’ensemble de ses  éléments.  Pour accéder à un élément précis, on utilise le nom du tableau et entre crochet l’index de l’élément auquel on veut accéder :
+
+```java
+flottants[5] = 10 ;
+```
+va attribuer la valeur 10 à l’index 5 de notre tableau de flottants.
+
+Pour initialiser notre tableau d’objets Mover , nous allons parcourir l’ensemble du tableau à l’aide d’une boucle, et à chaque index nous allons stocker un nouvel objet en appelant le constructeur de notre classe.
+
+```java
+void setup() {
+  size (800, 600);
+  for (int i = 0 ; i < num ; i++) {
+    PVector initLoc = new PVector(random(5, width-5), random(5, height-5));
+    PVector initVel = new PVector(random(-1,1), random(-1,1));
+    movs[i] = new Mover (initLoc, initVel);
+  }
+}
+```
+Enfin il ne nous reste plus qu’à utiliser nos objets dans le draw(), encore à l’aide d’un boucle for.
+
+```java
+void draw() {
+	background(180); 
+	for (int i = 0 ; i < num ; i++) {
+    	movs[i].update();
+    	movs[i].draw();
+	} 
+}
+```
+
+![exemples_pdf/Sketch_2_02.pde](assets/016_oop2.png)
+
+Nous avons donc maintenant 1000 objets Mover qui agissent indépendamment les uns des autres, et rebondissent sur les bords de notre fenêtre de dessin. 
