@@ -30,13 +30,13 @@ Notes :
  * [Mode HSB](#hsb)<br>
  * [Transparence](#transparence)<br>
 * [Primitives de dessin](#Primitives-de-dessin)<br>
- *[Les instructions de dessin](#instructions)<br>
- *[Les primitives (formes prêtes à l'emploi)](#primitives)<br>
- *[Les vertices (formes sur mesure)](#vertices)<br>
+ * [Les instructions de dessin](#instructions)<br>
+ * [Les primitives (formes prêtes à l'emploi)](#primitives)<br>
+ * [Les vertices (formes sur mesure)](#vertices)<br>
 * [Transformation de l’espace](#Transformation-de-l’espace)<br>
- *[translate()](#translate)
- *[rotate()](#rotate)
-* [Coder ses propres fonctions](#Coder-ses-propres-fonctions)<br>	
+ * [translate()](#translate)<br>
+ * [rotate()](#rotate)<br>
+* [Coder ses propres fonctions](#Coder-ses-propres-fonctions)<br>
 * [Interactions Souris et clavier](#Interactions-Souris-et-clavier)<br>
  * [Souris](#souris)<br>
   * [Variables globales](#souris-globales)<br>
@@ -53,8 +53,15 @@ Notes :
  * [Utilisation d’un classe simple](#utilisation-classe)<br>
 * [Les Tableaux](#Les-Tableaux)<br>
 * [Emergence : Un programme interactif complexe](#Emergence)<br>
-* [Les Librairies](#Les-Librairies)<br>
 * [Travailler avec les images](#Travailler-avec-les-images)<br>
+ * [Charger et afficher une image](#charger-image)<br>
+ * [Accéder aux pixels](#pixels-image)<br>
+ * [Explosion de pixels en 3D](#pixels-3d)<br>
+* [Les Librairies](#Les-Librairies)<br>
+ * [Installation d'une librairie](#installation)<br>
+ * [ControlP5 pour la création de gui](#cp5)<br>
+ * [OSCP5 pour la communication entre divers programmes](#oscp5)<br>
+* [3D et audio réactif avec Pure-Data](#audio-réactif)<br>
 * [Trucs et astuces](#Trucs-et-astuces)<br>
 * [Ressources](#Ressources)<br>
 
@@ -1281,3 +1288,557 @@ class Mover {
 ```
 ![exemples_pdf/Sketch_2_03.pde](assets/017_oop3.png)
 
+
+<a name="Travailler-avec-les-images"/>
+#Travailler avec les images
+
+Processing utilise un classe pour travailler avec les images, pour les manipuler nous avons recours à l’objet « PImage ».
+
+<a name="Charger-image"/>
+#Charger et afficher une image
+
+Pour charger et afficher une image dans Processing, il faut d’abord s’assurer qu’elle soit d’un type accepté par processing à savoir : .gif, .jpg, .tga, ou .png.
+
+Il faut ensuite s’assurer qu’elle soit visible par le programme sur lequel on travaille. Pour cela il est préférable de sauvegarder le sketch, puis de glissr l’image à ajouter au sketch sur le fenêtre de processing. 
+
+Dans le dossier du sketch en question (menu : Sketch -> Show sketch floder ) apparaitra alors un dossier nommé « data », qui contiendra votre image.
+
+Une fois ces opération effectuées vous pouvez charger votre image comme ceci : 
+
+```java
+PImage img;
+
+void setup(){
+ 
+  img = loadImage("visage.jpg");
+  size(600,400);  
+  println(img.width, img.height);
+   
+}
+ 
+void draw(){ 
+   background(0);
+   image(img,0,0); 
+}
+
+A la ligne 1 on crée un nouvel objet PImage appelé « img », on l’initialise à la ligne 5 en chargeant l’image présente dans le dossier data. En suite à la ligne 13, on affiche cette image, au point de coordonnées (0,0).
+
+Ce code correspond au *Sketch_4_01.pde*.
+
+![exemples_pdf/Sketch_4_01.pde](assets/018_images.png)
+
+<a name="pixels-image"/>
+#Acccéder aux pixels
+
+Une fois l’image chargée, il est possible de faire énormément de manipulations, il existe beaucoup d’exemples dans la documentation en ligne de processing a propos des filtres que l’on peut appliquer. Nous allons plutôt nous intéresser à la manipulation de pixels. 
+
+Il existe une fonction appelée « loadPixels() » qui permet de charger automatiquement les couleurs des pixels d’une image dans un tableau qui se nommera pixels[]. 
+
+Le code suivant permet de lire la teinte du pixel d’une image pré-chargée à l’endroit précis du curseur de la souris :
+
+```java
+PImage img ;
+
+void setup(){ 
+  background(0);
+  img = loadImage("ville.jpg");
+  size(img.width,img.height,P3D);   
+}
+  
+void draw(){
+   background(0);
+   image(img,0,0);
+   
+   img.loadPixels();  
+   int mousePos = mouseX + mouseY*width;
+   println(hue(img.pixels[mousePos]));
+   
+}
+```
+
+Jusqu’à la ligne 14, normalement tout va bien. La ligne 15 va appeler la fonction loadPixels() sur l’image que nous avons chargée, cela aura pour effet de nous permettre d’utiliser le tableau de pixels à la ligne 17 (« img.pixels[] »). Nous utilisons directement la fonction hue pour connaitre la teinte du pixel en question (se référer à l’usage de la fonction hue(myColor) dans la documentation en ligne). 
+Il faut cependant bien noter qu’à la ligne 16 nous convertissons les coordonnées de la souris en index linéaire dans un tableau.
+
+En effet, pixels[] est un tableau, à titre chaque valeur est stockée à un index précis, mais cet index est à une seule dimension, alors que les coordonnée de la souris sont en 2D.
+
+Cette pipette à couleur es disponible dans les exemples : *Sketch_4_02*.
+
+
+<a name="pixels-3d"/>
+#Faire « sortir » les pixels en 3D
+
+A partir de maintenant il devient très facilement possible d’effectuer tout un tas d’effets artistiques animés, en se basant sur les données des pixels. Dans le programme suivant nous allons nous attacher à déplacer les pixels en fonction de leur luminosité (et de la position de la souris, pour accentuer ou diminuer l’effet).
+
+Afin d’avoir un programme plus rapide, nous allons avoir un setup() un peu plus long que d’habitude. En effet pour ne pas avoir à appeler la fonction loadPixels() en permanence, nous allons le faire une seule fois dans le setup de notre programme. Cela nous permettra de remplir des tableaux pour mieux organiser nos données et pouvoir ainsi les dessiner plus simplement. Comme précédemment nous allons parcourir chaque pixel de l’image à l’aide d’une double boucle for, et nous allons stocker dans des tableaux de même dimension, les coorodonnées en x dans le tableau xC[], les coordonnées en y dans le tableau yC[] et la couleur de chaque pixel dans le tableau pColor[].
+
+```java
+PImage img ;
+
+int [] xC;
+int [] yC;
+int [] pColor;
+ 
+void setup() {
+  size(500, 400, P3D);
+  background(0);
+  img = loadImage("image_200x100.jpg");
+  img.loadPixels();
+ 
+  xC = new int[img.pixels.length];
+  yC = new int[img.pixels.length];
+  pColor = new int[img.pixels.length];
+
+  for (int i =0 ; i < img.width ; i++) {
+    for (int j = 0 ; j < img.height; j++) {
+      int loc = i + j*img.width;
+      xC[loc] =i;
+      yC[loc] =j;
+      pColor[loc] = img.pixels[loc];
+    }
+  }
+}
+```
+
+Notez bien l’apparition du mode P3D dans l’instruction de taille de la fenêtre. Maintenant que nous avons ces informations, nous allons parcourir nos tableaux à chaque image et pour chaque valeur de l’index : créer un rectangle de la même couleur que le pixel d’origine et d’un taille de 1px X 1px, bref nous allons recréer l’image avec nos propres objets. La seule différence étant que nous allons ajouter une composante de translation en z, permettant de faire ressortir les pixels.
+
+Pour obtenir l’effet souhaité, nous allons cependant le faire en deux fois. L’objectif est d’avoir l’image intacte quand la souris est à gauche de l’écran et « éclatée » quand la souris est à droite. A la ligne04 ci-dessous, nous allons donc définir une variable valant 0 quand la souris est à gauche et 60 quand la souris est à droite, ce que nous avions déjà fait précédemment.
+
+Ensuite nous créons une boucle pour parcourir nos tableaux, nous stockons la luminosité de chaque pixel dans une variable à la ligne 07, puis nous nous apprêtons à dessiner avec des translations (usage du pushMatrix() …). La ligne 11 contient le positionnement de chaque forme : on décale de 150 pixels vers la droite et de 150 pixels vers le bas pour mieux centrer, puis on utilise les coordonnées stockées, en dernier paramètre on multiplie nos deux variable (position de la souris et luminosité) pour faire en sorte que les pixels les plus lumineux ressortent le plus.
+
+```java
+void draw() {
+  background(0);
+  float push_z = map(mouseX, 0, width, 0, 60);
+  
+  for (int i = 0 ; i < xC.length ; i++) {
+    float br = brightness(pColor[i]);
+    pushMatrix();
+    noStroke();
+    fill(pColor[i]);
+    translate(150+ xC[i]+5, 150+yC[i]+5, push_z*br/20);
+    rect(0, 0, 1, 1);
+    popMatrix();
+  }
+}
+```
+
+![exemples_pdf/Sketch_4_03.pde](assets/019_pixels.png)
+
+
+<a name="Les-Librairies"/>
+#Les Librairies
+
+Un des grands avantages de Processing est sa vibrante communauté d’utilisateurs, qui écrit des tutoriels, qui documentent et partagent leurs travaux. Les développeurs de Processing ont voulu permettre aux utilisateurs développer leurs propres librairies et de les intégrer dans Processing.
+
+Il existe un grand nombre de librairies pour faire beaucoup de choses différentes : 
+http://processing.org/reference/libraries/
+
+Il en existe pour tout un tas d’applications : pour animer, pour contrôler de la vidéo, pour exporter ou importer des formats de données particuliers, pour faire de la 3d, de la typographie ou encore pour faire parler son ordinateur…
+
+Nous allons nous intéresser principalement à deux librairies, une permettant de créer des boutons et des sliders pour contrôler nos sketch processing : controlP5. L’autre permettant de faire communiquer deux programmes entre eux. Ces deux librairies ont été codées par Andreas Schlegel (http://www.sojamo.de/code/), un grand merci à lui !
+
+
+<a name="installation"/>
+##Installation d'une librairie
+
+Depuis la version 2.0 de processing, il existe un outil permettant d’installer facilement des librairies, c’est le « library manager » accessible depuis le menu « sketch -> Import library -> Add library ». 
+
+Cet utilitaire permet de naviguer parmi les librairie disponibles de les installer ou de les supprimer. 
+
+Si toute fois l’utilitaire ne fonctionnait pas bien, il existe un dossier spécifique dans notre sketchbook appelé « libraries » qui stocke toutes nos librairies installées. Pour rappel l’emplacement du sketchbook est modifiable dans « file -> Preferences ». Pour installer une librairie, il suffit de télécharger la librairie, de dézipper l’archive et de placer le dossier dans votre dossier « libraries »
+
+Généralement une librairie est composée d’un dossier principal contenant quatre sous-dossier :
+* /examples/
+* /library/
+* /reference/
+* /src/
+
+Dans le dossier /library/ vous devez normalement trouver un fichier *.jar portant le même nom que votre dossier racine. Si c’est bien le cas votre librairie sera alors reconnue et utilisable.
+
+Généralement lorsque vous installez une librairie elle est fournie avec un certains nombres d’exemples censé expliquer son fonctionnement. On y accède via le menu File->Examples, il faut ensuite naviguer jusqu’au menu déroulant intitulé « Contributed Libraries », puis trouver le dossier correspondant à la librairie installée.
+
+<a name="cp5"/>
+##ControlP5 pour la création de GUI (exemples de niveau intermédiaire)
+
+ControlP5 est une librairie permettant des créer des GUI (« General User Interface »), c’est-à-dire des boutons et des glissières permettant de contrôler certains paramètres de notre programme.
+
+En naviguant jusqu’à l’aide fournie avec la librairie, vous constaterez qu’elle est bien réelle et extensive (peut-être même un peu trop). 
+
+Le dossier /controllers/, présente l’ensemble des éléments de GUI implémentés : allant du bouton, à la liste en accordéon, en passant par les doubles sliders (ControlP5range) et autres surface de type pad XY (ControlP5slider2D).
+
+Les dossiers /extra/ et/use/, introduisent  quelques notions plus avancées, et notamment l’utilisation d’une fenêtre externe pour y placer les éléments de GUI. C’est l’exemple auquel nous allons nous intéresser.
+
+```java
+/**
+ * ControlP5 Controlframe
+ * by Andreas Schlegel, 2012
+ * www.sojamo.de/libraries/controlp5
+ *
+*/
+import java.awt.Frame;
+import java.awt.BorderLayout;
+import controlP5.*;
+ 
+private ControlP5 cp5;
+ 
+ControlFrame cf;
+
+int def;
+
+void setup() {
+  size(400, 400);
+  cp5 = new ControlP5(this);
+
+  cf = addControlFrame("extra", 200, 200);
+}
+ 
+void draw() {
+ background(def);
+}
+ 
+ControlFrame addControlFrame(String theName, int theWidth, int theHeight) {
+ Frame f = new Frame(theName);
+ ControlFrame p = new ControlFrame(this, theWidth, theHeight);
+ f.add(p);
+ p.init();
+ f.setTitle(theName);
+ f.setSize(p.w, p.h);
+ f.setLocation(100, 100);
+ f.setResizable(false);
+ f.setVisible(true);
+ return p;
+}
+
+```
+
+Dans cette première partie, on commence par importer les librairies nécessaires. On utilise ControlP5, déclarée en ligne 9, mais aussi deux classes provenant directement de Java.awt (AWT = Abstract Window Toolkit), ce qui nous permettra de créer une seconde fenêtre pour notre programme. Nous auront aussi besoin d’une classe que nous adapterons suivant nos besoins, elle est donnée ci-dessous.
+Après avoir appelé nos librairies, nous créons une instance de ControlP5 qui s’appelera « cp5 » à la ligne 11, qui sera initialisée à la ligne 19 dans le setup().
+
+Ensuite nous créons un nouveau ControlFrame appelé « cf » à la ligne 13. ControlFrame signifie fenêtre de contrôle et sera donc notre seconde fenêtre dans laquelle nous placerons notre interface. Notez bien que lors de son initialisation à la ligne 21, nous appelons une fonction spécifique qui commence à la ligne 28 et s’achève à la ligne 39. Cette fonction va appeler les fonctions java que l’on a importé pour créer une fenêtre portant le nom que l’on aura spécifié en premier argument, et les dimensions en deuxième et troisième arguments. Cette fonction n’a pas besoin d’être modifiée et peut rester la même à chaque utilisation.
+
+Dans cette fonction à la ligne 30, on appelle le constructeur de la classe ControlFrame décrite ci-dessous. Cela permet créer  la fenêtre de manière et de créer un lien entre les deux fenêtre, cela sort du cadre de cette introduction (« this » et « Object parent » y sont pour beaucoup). Il faut s’attarder sur la méthode setup() de cette nouvelle classe(lignes 47 à 53), pour comprendre comment ajouter des contrôleurs dans notre nouvelle fenêtre.
+
+```java
+public class ControlFrame extends PApplet {
+
+  int w, h;
+  int abc = 100;
+  ControlP5 cp5;
+  Object parent;
+
+  public void setup() {
+    size(w, h);
+    frameRate(25);
+    cp5 = new ControlP5(this);
+    cp5.addSlider("abc").setRange(0, 255).setPosition(10, 10);
+    cp5.addSlider("def").plugTo(parent, "def").setRange(0, 255).setPosition(10, 30);
+  }
+
+  public void draw() {
+    background(abc);
+  }
+
+  private ControlFrame() {
+  }
+
+  public ControlFrame(Object theParent, int theWidth, int theHeight) {
+    parent = theParent;
+    w = theWidth;
+    h = theHeight;
+  }
+
+  public ControlP5 control() {
+    return cp5;
+  }
+}
+```
+
+En premier lieu notre classe fait appel à une nouvelle instance de controlP5 rattachée à cette nouvelle fenêtre (ligne 50). A la ligne 51, on crée un slider appelé « abc », qui va sortir des valeurs comprises entre 0 et 255, et qui sera situé à la position (10,10) dans la nouvelle fenêtre. De part son nom, les valeurs du slider « abc », seront directement stockées dans la variable du même nom.
+
+A la ligne 52 on crée un second slider, cette fois appelé « def », qui va sortir le même type de valeurs, à la différence que ces données seront envoyées à notre fenêtre parente, et stockées dans notre variable de type entier « def ».
+
+D’un façon générale, il est plus clair d’utiliser systématiquement fonction « .plugTo(this,myVar) » pour associer la valeur d’un gui à une variable. Dans notre exemple, on utilise « parent », pour spécifier qu’il s’agit d’une autre fenêtre que l’on a préalablement définit, mais l’utilisation de « this » permet de le faire aussi lorsque contrôles et dessins se passent dans la même fenêtre.
+
+![cp5 exemple](assets/018_cp5.png)
+
+Une fois la librairie installée vous pourrez trouver un exemple ici :
+File->Examples->ContributerLibrairies-> ControlP5->Extra->ControlP5frame.pde
+
+ControlP5 est une librairie très aboutie avec beaucoup de fonctionnalités, mais sa mise en œuvre peut-être parfois un peu lourde. S’il s’agit de faire des tests, le mode « Tweak » peut  s’avérer être une bonne alternative.
+
+<a name="oscp5"/>
+##OSCP5 pour la communication avec d’autres programmes
+
+OSCP5 est un support pour processing de la fameuse librairie de communication entre différents paradigmes de programmation. OSC est présent dans quasiment tous les langages c’est donc un classique à connaitre et à utiliser sans modération.
+
+Les exemples sketch_3_01_OSC_Receive.pde et sketch_3_01_OSC_Send.pde sont donc à utiliser conjointement. Le premier programme recevra des informations du second, et changera sa couleur de fond en fonction de la valeur reçue. Le second programme, enverra une valeur aléatoire lorsque l’on clique sur sa fenêtre.
+
+Pour effectuer cela, il important de pouvoir spécifier une adresse ip pour pouvoir envoyer un message a un endroit précis et un numéro de port.
+
+```java
+//Receiver
+import oscP5.*;
+import netP5.*;
+
+OscP5 oscP5;
+
+float receivedValue;
+ 
+void setup() {
+  size(400, 400);
+  frameRate(25);
+
+  receivedValue =0;
+
+  oscP5 = new OscP5(this, 1234);
+}
+ 
+void draw() {
+  background(receivedValue);
+}
+ 
+void oscEvent(OscMessage theOscMessage) {
+   if (theOscMessage.checkAddrPattern("/test")==true) {
+     float firstValue = theOscMessage.get(0).floatValue();  
+     String secondValue = theOscMessage.get(1).stringValue();
+     receivedValue = firstValue;
+   }
+  }
+}
+```
+
+Les lignes 2 et 3 permettent d’importer les objets nécessaires. La ligne 5 crée une instance d’OSCP5 La ligne 15, située dans le setup est primordiale pour le bon fonctionnement de notre programme, le second argument fourni (ici « 1234 » )  est nôtre numéro de port, cette ligne signifie donc que nous écouterons toutes les informations entrantes sur cette machine (« this ») transitant par le port « 1234 ».  Lorsqu’une telle information sera reçue, elle activera la fonction présente de la ligne 22 à la ligne 28.
+
+Un message OSC est avant tout un préfixe « /test » ici, permettant de trier les messages arrivant puis un tableau remplit de variable de différents types, il est alors toujours plus pratique de savoir exactement ce que l’on va recevoir. Ici, comme vous pourrez le voire ci-après notre message est , d’un préfixe « /test » puis est composé : d’un float aléatoire, et d’un string constant. Pour accéder à l’élément « n » du message on utilise « theOscMessage.get(n) », puis on utilise l’accesseur approprié au type de valeur que l’on reçoit (« .floatValue() »  pour un float).
+
+La ligne 23 reçoit donc une valeur flottante, la ligne 25 stocke cette valeur dans une variable qui va servir à spécifier la couleur de fond de notre fenêtre.
+
+```java
+// Sender
+import oscP5.*;
+import netP5.*;
+
+OscP5 oscP5;
+NetAddress myRemoteLocation;
+
+void setup() {
+  size(400, 400);
+  frameRate(25);
+
+  oscP5 = new OscP5(this, 12000);
+  myRemoteLocation = new NetAddress("127.0.0.1", 1234);
+}
+ 
+void draw() {
+   background(0);
+}
+ 
+void mousePressed() {
+
+  OscMessage myMessage = new OscMessage("/test");
+  myMessage.add(random(255));
+  myMessage.add("hello!");
+ 
+  oscP5.send(myMessage, myRemoteLocation);
+}
+```
+
+Jusqu’à la ligne 6, rien de nouveau sous le soleil.
+
+A la ligne 6, apparait cependant un nouvel objet propre à OSCP5 : un objet de type NetAdress, c’est en fait un couple composé d’une adresse ip et d’un numéro de port, comme vous pouvez le constater à la ligne 13.
+
+Le reste du programme tient dans la fonction mousePressed() (lignes 21 à 29).  A la ligne 23 on crée un nouveau message avec un préfixe spécifique. A la ligne 25 on lui ajoute une première donnée (un nombre aléatoire), puis une seconde à la ligne 26. La ligne 28, envoit notre message à l’adresse que nous avons spécifié dans le setup.
+
+N’oubliez pas de faire attention aux adresses ip et au numéros de ports lorsque vus utilisez OSCP5, n’hésitez pas non plus à faire des print pour être bien sûrs de recevoir vos messages !
+
+Le Chapitre suivant vous donnera un exemple permettant de de commander Processing à l’aide d’une analyse audio faite dans Pure Data.
+
+<a name="audio-réactif"/>
+#3D et audio-réactif avec Pure-Data
+
+Pour compléter le petit projet initié dans le chapitre sur les images, nous allons ajouter une partie audio-réactive, le temps pour Pure-Data et OSC de se rappeler à nos bons souvenirs…
+
+Pour faire simple nous n’allons plus utiliser la souris pour contrôler la quantité de déplacement de nos pixels, mais plutôt le niveau sonore ambiant dans la pièce dans laquelle nous travaillons. Nous allons faire l’analyse audio dans Pure-Data puis envoyer les données via OSC à Processing.
+
+En ce qui concerne le code Processing, nous prenons le programme précédent, auquel nous apportons quelques modifications, notamment pour ajouter la librairie OSCP5 et ajuster la réception des messages (un seul float avec le préfixe « /env »). Il faut aussi pense à la ligne 40 à changer la valeur de push_z en fonction des données que l’on reçoit.
+
+```java
+import oscP5.*;
+import netP5.*;
+
+OscP5 oscP5;
+
+float r_env = 0 ;
+
+PImage img ;
+
+int [] xC;
+int [] yC;
+int [] pColor;
+ 
+void setup() {
+   size(500, 400, P3D);
+   background(0);
+   img = loadImage("image_200x100.jpg");
+   img.loadPixels();
+ 
+    oscP5 = new OscP5(this, 8600);
+   
+   xC = new int[img.pixels.length];
+   yC = new int[img.pixels.length];
+   pColor = new int[img.pixels.length];
+ 
+   for (int i =0 ; i < img.width ; i++) {
+     for (int j = 0 ; j < img.height; j++) {
+       int loc = i + j*img.width;
+       xC[loc] =i;
+       yC[loc] =j;
+       pColor[loc] = img.pixels[loc];
+     }
+   }
+} 
+ 
+void draw() {
+  background(0);
+
+  float push_z = map(r_env, 45, 90, 0, 60);
+  
+  for (int i = 0 ; i < xC.length ; i++) {
+    float br = brightness(pColor[i]);
+     pushMatrix();
+     noStroke();
+     fill(pColor[i]);
+     translate(150+ xC[i]+5, 150+yC[i]+5, push_z*br/20);
+     rect(0, 0, 1, 1);
+     popMatrix();
+  }
+}
+ 
+ 
+void oscEvent(OscMessage theOscMessage) {
+   if (theOscMessage.checkAddrPattern("/env")==true) {
+     float firstValue = theOscMessage.get(0).floatValue();  
+     
+     r_env = firstValue;
+   }
+}
+```
+
+Se référer au *Sketch_4_04*.
+![exemples_pdf/Sketch_4_04.pde](assets/021_audio-réactif.png)
+
+
+Le patch Pure-Data est quand à lui très simple : il utilise la librairie « mrpeach » qui permet l’utilisation de boites spécifiques à l’envoi de messages OSC.
+
+![exemples_pdf/pd-analysis](assets/022_audio-réactif-pd.png)
+
+et voilà !
+
+<a name="Trucs-et-astuces"/>
+#Trucs et astuces
+
+Inspiré de la rubrique de Amnon sur son wordpress :
+http://amnonp5.wordpress.com/2012/01/28/25-life-saving-tips-for-processing/
+
+##IDE
+
+* Ctrl + T : permet de formater le texte de notre code en le ré-indentant en fonction des accolades.
+* File -> Preferences : emplacement du sketchbook
+* File -> Examples : exemples de programmes classés selon différentes catégories, la documentation des librairies est aussi disponible sous cet onglet.	
+
+##Programmation abréviation des opérations
+```java
+i = i+1 ;
+```
+ est équivalent à
+```java
+i+=1 ;
+```
+
+##Graphisme
+
+###Un blur très simple
+Au lieu d’effacer le fond à chaque image en utilisant 
+```java
+background (maCouleur) ;
+```
+Il est très simple de créer un effet de « blur » en utilisant de la transparence.
+```java
+fill(0,20) ;
+noStroke();
+rect(0,0,width,height) ;
+``
+
+###Color Selector
+Utilisez l’outil Color Selector pour spécifier plus facilement vos couleurs dans les different modes.
+Tools -> Color Selector.
+
+###In/Out
+####Sauvegarder une image
+
+Pour sauvegarder un image on peut utiliser la fonction saveFrame(), on peut la coupler avec une interaction clavier, ainsi qu’une condition pour que la sauvegarde s’effectue lorsqu’on appuie sur la touche S. Le must est de composer une chaîne de caractère pour que chaque fichier ait un nom unique.
+```java
+// function d’interception des évenements clavier
+void keyPressed() {
+ // condition pour identifier si la touche est un “s”
+ if (key == 's' || key == 'S') {
+  /* composition d’une string comportant le nom du sketch puis des informations de temps à l’aide de functions de processing pour récupérer des événements temporels*/
+  String name = "monSketch-"+year()+"-"+month()+"-"+day()+"-"+hour()+"h"+minute()+"m"+second()+"s.png"
+  saveFrame(name);
+ }
+}
+```
+####Redimensionner une image
+
+Il suffit de changer la taille de la fenêtre du programme pour sauvegarder une image au nouvelles dimensions.
+```java
+PImage img ;
+
+void setup(){
+  size(200,100,P3D);
+  background(0);
+  img = loadImage("ville.jpg");
+  img.resize(width,height);  
+}
+
+ 
+void draw(){  
+  background(0);
+  image(img,0,0);
+  saveFrame("image_"+width+"x"+height+".jpg");
+  noLoop();
+}
+```
+
+<a name="Ressources"/>
+#Ressoures
+
+Site officiel : http://processing.org/
+
+La référence de l’API processing : http://processing.org/reference/
+
+Le Wiki( parfois la référence n’est pas complète) : http://wiki.processing.org/w/Main_Page
+
+Les tutoriaux officiels : http://processing.org/tutorials/
+
+Plus à propos de processing :  http://en.wikipedia.org/wiki/Processing_(programming_language)
+
+Initiation (français) : http://fr.flossmanuals.net/processing/
+
+Ressources diverses : http://codelab.fr/39
+
+Forum dédié à Processing (français) : http://codelab.fr/processing
+
+Forum officiel de Processing (anglais) : http://forum.processing.org/
+
+Tutoriel (français) : http://www.ecole-art-aix.fr/rubrique81.html
+
+D’autres tutoriels en français : http://tutoprocessing.com/tutos/
+
+Vidéos de fun programming : http://funprogramming.org/
+
+Vidéos de Daniel Shiffmann : 
+
+Computer programming for total beginner : https://vimeo.com/channels/introcompmedia
+
+Nature of Code : https://vimeo.com/channels/natureofcode
