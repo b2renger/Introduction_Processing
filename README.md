@@ -51,7 +51,6 @@ Notes :
   * [Constructeur : initialisation](#constructeur-classe)<br>
   * [Méthodes complémentaires : update() et draw()](#méthodes-classe)<br>
  * [Utilisation d’un classe simple](#utilisation-classe)<br>
-
 * [Les Tableaux](#Les-Tableaux)<br>
 * [Emergence : Un programme interactif complexe](#Emergence)<br>
 * [Les Librairies](#Les-Librairies)<br>
@@ -1207,3 +1206,78 @@ void draw() {
 ![exemples_pdf/Sketch_2_02.pde](assets/016_oop2.png)
 
 Nous avons donc maintenant 1000 objets Mover qui agissent indépendamment les uns des autres, et rebondissent sur les bords de notre fenêtre de dessin. 
+
+<a name="Emergence"/>
+#Emergence : Un programme interactif complexe
+
+En repartant du programme précédent, nous allons nous attacher à représenter les choses d’un manière différente. Nous verrons qu’en changeant un peu de perspective nous arriverons à des résultats différents et graphiquement plus intéressants.
+
+L’émergence en terme graphique peut être définie comme l’apparition de structures graphiques complexes et ordonnées à partir d’action simples.
+
+Nous avons donc toujours un programme dessinant un certain nombre de particules qui se déplacent et rebondissent contre les bords de notre fenêtre de dessin. Au lieu de dessiner chaque particule individuellement, nous allons plutôt dessiner un lien entre deux de ces particules uniquement si la distance qui les sépare est inférieure à une certaine valeur.
+
+Cette valeur sera un variable nommée « treshold », elle sera ajusté en fonction de la position de la souris à l’aide de la fonction map() à la ligne 21.Nous n’utilisons plus la fonction draw() de notre classe Mover, elle a donc disparu.
+
+Pour dessiner ce lien nous allons devoir utiliser une double boucle pour parcourir deux fois notre tableau de movers, en faisant attention à gérer le cas où l’on fait référence au même objet :  à la ligne 27, nous vérifions que i est bien différent (« != ») de j.
+
+Nous utilisons la fonction dist() pour calculer la distance entre les coordonnées des deux objets, puis si cette valeur est inférieur à notre treshold, nous dessinons une ligne utilisant ces mêmes coordonées aux lignes 28,29 et 30. Et voilà !
+
+```java
+int num = 1000;
+Mover[] movs = new Mover[num];
+
+void setup() {
+  background(0);
+  size (800, 600, P2D);
+  for (int i = 0 ; i < num ; i++) {
+    PVector initLoc = new PVector(random(5, width-5), random(5, height-5));
+    PVector initVel = new PVector(random(-1, 1), random(-1, 1));
+    movs[i] = new Mover (initLoc, initVel);
+  }
+}
+
+
+void draw() {
+  noStroke();
+  fill(0, 50);
+  rect(0, 0, width, height);
+
+  stroke(255);
+  float treshold = map(mouseX, 0, width, 0, 50);
+
+  for (int i = 0 ; i < num ; i++) {
+    movs[i].update();
+
+    for (int j = 0 ; j < num ; j++) {
+      if (i!=j) {
+        float dist = dist(movs[i].loc.x, movs[i].loc.y, movs[j].loc.x, movs[j].loc.y);
+        if (dist < treshold) {
+          line(movs[i].loc.x, movs[i].loc.y, movs[j].loc.x, movs[j].loc.y);
+        }
+      }
+    }
+  }
+}
+ 
+class Mover {
+
+  PVector loc, vel;
+
+  Mover(PVector loc, PVector vel) {
+    this.loc = loc;
+    this.vel = vel;
+  } 
+
+  void update() {  
+    loc.add(vel);  
+    if (loc.x < 0 || loc.x> width) {
+      vel.x = -vel.x;
+    }
+    if (loc.y<0 || loc.y > height) {
+      vel.y = -vel.y;
+    }
+  }
+}
+```
+![exemples_pdf/Sketch_2_03.pde](assets/017_oop3.png)
+
