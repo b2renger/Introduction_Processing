@@ -2,8 +2,10 @@
 This respository is a french introduction to the Processing programming language
 
 Notes : 
+* Le dossier "bonus" propose des outils à usage spécifique. Les explications sont disponnibles dans le code sous forme de commentaires.
 * Ce document ne se veut pas exhaustif, il présente les fonctions principales dont nous aurons l’utilité dans le cadre de ce cours. Processing étant très bien documenté il est très facile de trouver de nombreux tutoriels en ligne sur les différents aspects du programme. Se référer à la section « Ressources » pour plus d’informations.
 * Ce document a pour but de rappeler les informations vues en cours sous une autre forme et d'en apporter de nouvelles, sa lecture doit donc s’accompagner des exemples de code construits pendant le module.
+
 
 
 # Contenu
