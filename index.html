@@ -1,0 +1,2095 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Introduction processing : This respository is a french introduction to the Processing programming language">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Introduction processing</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/b2renger/Introduction_Processing">View on GitHub</a>
+
+          <h1 id="project_title">Introduction processing</h1>
+          <h2 id="project_tagline">This respository is a french introduction to the Processing programming language</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/b2renger/Introduction_Processing/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/b2renger/Introduction_Processing/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="introduction_processing" class="anchor" href="#introduction_processing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction_Processing</h1>
+
+<p>This respository is a french introduction to the Processing programming language</p>
+
+<p>Notes : </p>
+
+<ul>
+<li>Le dossier "bonus" propose des outils à usage spécifique. Les explications sont disponnibles dans le code sous forme de commentaires.</li>
+<li>Ce document ne se veut pas exhaustif, il présente les fonctions principales dont nous aurons l’utilité dans le cadre de ce cours. Processing étant très bien documenté il est très facile de trouver de nombreux tutoriels en ligne sur les différents aspects du programme. Se référer à la section « Ressources » pour plus d’informations.</li>
+<li>Ce document a pour but de rappeler les informations vues en cours sous une autre forme et d'en apporter de nouvelles, sa lecture doit donc s’accompagner des exemples de code construits pendant le module.</li>
+</ul>
+
+<h1>
+<a id="contenu" class="anchor" href="#contenu" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contenu</h1>
+
+<ul>
+<li>
+<a href="#Introduction">Introduction</a><br>
+</li>
+<li>
+<a href="#ide">L'IDE</a><br>
+</li>
+<li>
+<a href="#Premier-Programme">Premier Programme</a><br>
+</li>
+<li>
+<a href="#Les-variables">Les variables</a><br>
+
+<ul>
+<li>
+<a href="#d%C3%A9finition">Définition</a><br>
+</li>
+<li>
+<a href="#types">Différents types de variables</a><br>
+</li>
+<li>
+<a href="#port%C3%A9e">La portée des variables</a><br>
+</li>
+<li>
+<a href="#exemples">Exemple d’utilisation des variables</a><br>
+</li>
+<li>
+<a href="#globales">Variables globales de processing</a><br>
+</li>
+</ul>
+</li>
+<li>
+<a href="#L%E2%80%99al%C3%A9atoire">L’aléatoire</a><br>
+
+<ul>
+<li>
+<a href="#random">random()</a><br>
+</li>
+<li>
+<a href="#noise">noise()</a><br>
+</li>
+<li>
+<a href="#randomSeed">randomSeed() et noiseSeed()</a><br>
+</li>
+</ul>
+</li>
+<li>
+<a href="#Les-boucles">Les boucles</a><br>
+
+<ul>
+<li>
+<a href="#for">for()</a><br>
+</li>
+<li>
+<a href="#while">while()</a><br>
+</li>
+<li>
+<a href="#exemple">Exemple</a><br>
+</li>
+</ul>
+</li>
+<li>
+<a href="#Couleurs">Couleurs</a><br>
+
+<ul>
+<li>
+<a href="#gris">Niveaux de gris</a><br>
+</li>
+<li>
+<a href="#rgb">Mode RGB</a><br>
+</li>
+<li>
+<a href="#hsb">Mode HSB</a><br>
+</li>
+<li>
+<a href="#transparence">Transparence</a><br>
+</li>
+</ul>
+</li>
+<li>
+<a href="#Primitives-de-dessin">Primitives de dessin</a><br>
+
+<ul>
+<li>
+<a href="#instructions">Les instructions de dessin</a><br>
+</li>
+<li>
+<a href="#primitives">Les primitives (formes prêtes à l'emploi)</a><br>
+</li>
+<li>
+<a href="#vertices">Les vertices (formes sur mesure)</a><br>
+</li>
+</ul>
+</li>
+<li>
+<a href="#Transformation-de-l%E2%80%99espace">Transformation de l’espace</a><br>
+
+<ul>
+<li>
+<a href="#translate">translate()</a><br>
+</li>
+<li>
+<a href="#rotate">rotate()</a><br>
+</li>
+</ul>
+</li>
+<li>
+<a href="#Coder-ses-propres-fonctions">Coder ses propres fonctions</a><br>
+</li>
+<li>
+<a href="#Interactions-Souris-et-clavier">Interactions Souris et clavier</a><br>
+
+<ul>
+<li>
+<a href="#souris">Souris</a><br>
+</li>
+<li>
+<a href="#souris-globales">Variables globales</a><br>
+</li>
+<li>
+<a href="#souris-fonctions">Fonctions</a><br>
+</li>
+<li>
+<a href="#map">map()</a><br>
+</li>
+<li>
+<a href="#clavier">Clavier</a><br>
+</li>
+</ul>
+</li>
+<li>
+<a href="#Dessiner-du-texte-et-utiliser-des-polices-de-caract%C3%A8re">Dessiner du texte et utiliser des polices de caractère</a><br>
+</li>
+<li>
+<a href="#Les-Classes-Programmation-Orient%C3%A9e-Objet">Les Classes Programmation Orientée Objet</a><br>
+
+<ul>
+<li>
+<a href="#structure-classe">Structure d'une classe</a><br>
+</li>
+<li>
+<a href="#construction-classe">Construction d’un classe simple</a><br>
+</li>
+<li>
+<a href="#variables-classe">Déclaration de variables</a><br>
+</li>
+<li>
+<a href="#constructeur-classe">Constructeur : initialisation</a><br>
+</li>
+<li>
+<a href="#m%C3%A9thodes-classe">Méthodes complémentaires : update() et draw()</a><br>
+</li>
+<li>
+<a href="#utilisation-classe">Utilisation d’un classe simple</a><br>
+</li>
+</ul>
+</li>
+<li>
+<a href="#Les-Tableaux">Les Tableaux</a><br>
+</li>
+<li>
+<a href="#Emergence">Emergence : Un programme interactif complexe</a><br>
+</li>
+<li>
+<a href="#Travailler-avec-les-images">Travailler avec les images</a><br>
+
+<ul>
+<li>
+<a href="#charger-image">Charger et afficher une image</a><br>
+</li>
+<li>
+<a href="#pixels-image">Accéder aux pixels</a><br>
+</li>
+<li>
+<a href="#pixels-3d">Explosion de pixels en 3D</a><br>
+</li>
+</ul>
+</li>
+<li>
+<a href="#Les-Librairies">Les Librairies</a><br>
+
+<ul>
+<li>
+<a href="#installation">Installation d'une librairie</a><br>
+</li>
+<li>
+<a href="#cp5">ControlP5 pour la création de gui</a><br>
+</li>
+<li>
+<a href="#oscp5">OSCP5 pour la communication entre divers programmes</a><br>
+</li>
+</ul>
+</li>
+<li>
+<a href="#audio-r%C3%A9actif">3D et audio réactif avec Pure-Data</a><br>
+</li>
+<li>
+<a href="#Trucs-et-astuces">Trucs et astuces</a><br>
+</li>
+<li>
+<a href="#Ressources">Ressources</a><br>
+</li>
+</ul>
+
+<p><a name="Introduction"></a></p>
+
+<h1>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h1>
+
+<p>Processing est un langage de programmation basé sur java et principalement destiné à la création
+graphique. Il est apparut en 2001, crée par deux artistes Ben Fry et Casey Reas, alors étudiants au
+MIT. Il reprend une partie des concepts de Design by Numbers l’environnement de programmation
+graphique developpé par John Maeda au sein du Média Lab du même MIT.</p>
+
+<p>Le langage processing est du Java fortement simplifié par l’accès direct à de nombreuses primitives
+de dessin. Il a été crée spécialement dans le but de faciliter l’apprentissage des bases de la
+programmation objet, via la création graphique permettant ainsi d’obtenir des résultats valorisants
+très rapidement.</p>
+
+<p><i>
+Processing seeks to ruin the careers of talented designers by tempting them away from their
+usual tools and into the world of programming and computation. Similarly, the project is designed
+to turn engineers and computer scientists to less gainful employment as artists and designers.
+</i></p>
+
+<p>Au-delà du fait d’être un formidable outil de dessin et de prototypage rapide en terme de design
+d’interaction. Processing est un réel langage de programmation capable de réaliser n’importe quelle
+fonction.</p>
+
+<p>Processing est un projet Open Source devenu collaboratif de par l’intérêt qu’il a suscité dès sa sortie.
+Il est ouvert au développements tiers par l’intégration d’un système de librairie ainsi qu’une
+documentation aidant au développement de librairies externes. Il existe aussi un système
+de « modes » permettant d’ajouter des fonction à l’IDE (Itegrated Developpement Environment) de
+processing comme le développement pour android (smartphones et tablettes), ou en javascript
+(web).</p>
+
+<p>Processing existe aussi bien sous Linux, Windows que Mac OS. Le projet étant à but pédagogique et
+porté par une communauté très active il est excessivement bien documenté.</p>
+
+<p><a name="ide"></a></p>
+
+<h1>
+<a id="lide" class="anchor" href="#lide" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>L'IDE</h1>
+
+<p>IDE signifie Inegrated Developpemet Environment, c'est l'outil avec lequel on va travailler, c'est la fenêtre qu'ouvre notre système d'exploitation lorsque l'on lance processing. Cela ressemble à un éditeur de texte, mais nous avons des boutons pour compiler nos programmes et une seconde fenêtre de rendu qui s'ouvre à la compilation.</p>
+
+<p><img src="assets/001_IDE.png" alt="L'IDE de Processing"></p>
+
+<ul>
+<li><p>La zone 1 correspond à la barre d’action, en haut à gauche se situe différents boutons : le premier « run » permet de lancer son programme, le second « stop » permet de le stopper. En dessous se trouve un système d’onglet, cela permet de mieux organiser son code quand les programmes deviennent plus complexes. Tout à droite se trouve un menu déroulant permettant de passer d’un mode à un autre (c’est-à-dire d’un developpement android à un developpement java classique par exemple).</p></li>
+<li><p>La zone 2 est un éditeur de texte classique permettant d’écrire son programme. Les mots clés du langage processing y apparaitront en surbrillance. Il est important de noter qu’à tout moment il est possible de consulter la documentation en ligne en effectuant un clic droit sur un mot clé et en sélectionnant « find in reference ».</p></li>
+<li><p>La zone 3 est la console qui renvoi les erreurs rencontrées par l’ordinateur lorsqu’il tente d’exécuter un programme. C’est aussi une zone d’information dans laquelle on peut choisir d’afficher des messages (à l’aide de la fonction println()).</p></li>
+<li><p>La zone 4 est la fenêtre d’exécution de notre programme. </p></li>
+</ul>
+
+<p>Processing fonctionne par défaut avec l’utilisation d’un « sketchbook ». C’est un dossier sur votre disque dur dans lequel seront stockés vos programmes et toutes les librairies, ainsi que les diférents modes que vous avez installé. Il est possible de modifier l’emplacement de ce dossier en allant dans : <i> File -&gt; Preferences </i></p>
+
+<p><a name="Premier-Programme"></a></p>
+
+<h1>
+<a id="premier-programme" class="anchor" href="#premier-programme" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Premier Programme</h1>
+
+<p>A tout moment il est possible d’insérer un commentaire dans son programme en utilisant ces deux caractères en début de ligne  « // ». On peut aussi créer des commentaires sur plusieurs lignes en utilisant ces caractères :« / »  suivi de « * » pour signaler le début d’un commentaire, et de « * » suivi de « / » pour signaler la fin de ce même commentaire.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">// voici mon premier programme</span>
+<span class="pl-k">void</span> setup() {
+  size(<span class="pl-c1">200</span>, <span class="pl-c1">200</span>) ; <span class="pl-c">// permet de spécifier la taille de la fenêtre.</span>
+  background(<span class="pl-c1">0</span>) ; <span class="pl-c">// utilisons un fond noir.</span>
+}
+<span class="pl-k">void</span> draw() {
+  background(<span class="pl-c1">0</span>) ; <span class="pl-c">// dessinons un fond noir.</span>
+  stroke(<span class="pl-c1">180</span>) ; <span class="pl-c">// on choisit de  dessiner un contour gris.</span>
+  strokeWeight(<span class="pl-c1">2</span>) ; <span class="pl-c">// ce contour aura un épaisseur de 2 pixels.</span>
+  fill(<span class="pl-c1">255</span>) ; <span class="pl-c">// le remplissage de notre dessin sera blanc.</span>
+  <span class="pl-c">/* on dessine une ellipse située à 100 pixels du bord gauche, à 100 pixels du bord haut, d’une largeur de 50 pixels et d’une hauteur de 50 pixels … un cercle donc ! */</span>
+  ellipse(<span class="pl-c1">100</span>, <span class="pl-c1">100</span>, <span class="pl-c1">50</span>, <span class="pl-c1">50</span>) ;
+}
+</pre></div>
+
+<p><img src="assets/002_PremierProgramme.png" alt="exemples_pdf/Sketch_1_01.pde"></p>
+
+<p>Ce programme se compose de deux parties principales, appelées aussi « fonctions » qui se démarquent par l’utilisation de mots clés <strong>« void »</strong> ainsi que la paire d’accolade <strong>{</strong> <strong>}</strong> qui délimite les instructions exécutées lors de l’appel de la fonction.</p>
+
+<ul>
+<li>Les lignes 02 à 05 : présentent la fonction <strong>setup()</strong>. Cette fonction est appelée une seule fois au démarrage du programme, c’est un initialisation.</li>
+<li>Les lignes 06 à 12 : présentent la fonction <strong>draw()</strong>, qui est le cœur du programme. La suite d’instruction enfermée entre les accolades est exécutée en boucle, le plus rapidement possible.</li>
+</ul>
+
+<p>Il existe des fonction spécifique au langage processing appelée primitives, on peut les appeler simplement en utilisant leur syntaxe spécifique. Chaque fonction indiquée en surbrillance possède une documentation en ligne, il est fortement conseillé de s’y référer pour savoir comment les utiliser.</p>
+
+<p>A noter que par défaut nous utilisons un systèmes de coordonnées cartésiennes centré en haut à gauche de la fenêtre de dessin. Dans notre programme, le coin en haut à gauche a donc les coordonnées(0,0), le coin en bas à droite a donc les coordonnées (199,199) </p>
+
+<p><a name="Les-variables"></a></p>
+
+<h1>
+<a id="les-variables" class="anchor" href="#les-variables" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Les variables</h1>
+
+<p><a name="d%C3%A9finition"></a></p>
+
+<h2>
+<a id="définition" class="anchor" href="#d%C3%A9finition" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Définition</h2>
+
+<p>Les variables correspondent à un espace utilisé dans la mémoire de l’ordinateur pour stocker une information de manière temporaire. Les variables peuvent être de différents types en fonction des données qu’elles doivent stocker.</p>
+
+<p><a name="types"></a></p>
+
+<h2>
+<a id="différents-types-de-variables" class="anchor" href="#diff%C3%A9rents-types-de-variables" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Différents types de variables</h2>
+
+<p><strong>int</strong> : permet de stocker des nombres entiers.
+<strong>float</strong> : permet de stocker des nombres flottants soit des nombres à virgules.
+<strong>string</strong> : permet de stocker des chaines de caractères, c’est-à-dire du texte.
+<strong>color</strong> : permet de stocker une couleur.</p>
+
+<p>Si on écrit :</p>
+
+<div class="highlight highlight-source-java"><pre>
+<span class="pl-k">int</span> a;
+a <span class="pl-k">=</span> <span class="pl-c1">5</span>;
+<span class="pl-k">int</span> b ;
+b <span class="pl-k">=</span><span class="pl-c1">3</span>;
+<span class="pl-k">int</span> result <span class="pl-k">=</span> a <span class="pl-k">+</span> b;
+<span class="pl-smi">String</span> operation <span class="pl-k">=</span> a <span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span>+<span class="pl-pds">"</span></span><span class="pl-k">+</span> b <span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span>=<span class="pl-pds">"</span></span>;
+println(operation);
+println(result);
+</pre></div>
+
+<p>On crée une variable entière dont le nom est a, et on lui attribue la valeur 5. On crée une seconde variable entière dont le nom est b et on lui attribue la valeur 3. On crée ensuite un entier pour stocker le résultat que l’on obtient en additionnant les deux variables.</p>
+
+<p>On crée ensuite une variable de type chaine de caractère pour inscrire l’opération effectuée puis son résultat dans la console. Une chaine de caractère doit être comprise entre deux " " pour être reconnue comme telle.  Ici on compose une chaine de caractère complexe en utilisant le symbole « + », les différentes chaines de caractères (ou caractères simples) qui la compose sont accolées.</p>
+
+<p>Il est important de noter que si jamais notre variable appelée « result » avait été de type String, la ligne :</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> result <span class="pl-k">=</span> a<span class="pl-k">+</span>b ;</pre></div>
+
+<p>aurait renvoyé un tout autre résultat puisque les variables aurait été interprétée comme des String on aurait alors obtenu le juxtaposition des deux caractère soit « 53 ».</p>
+
+<p>Certain type sont compatibles avec d’autres : on peut par exemple stocker un entier dans un flottant et des entiers ou des flottants dans des String. Cependant l’utilisation d’un flottant avec un type entier reverra nécessairement une erreur dans la console.</p>
+
+<p>Il est aussi possible de stocker des données plus complexes comme des tableaux. Les tableaux servent à stocker des ensembles de données d’un type précis, on peut même y stocker des instances de classes… (nous verrons ceci dans la section dédiée aux classes).</p>
+
+<p><a name="port%C3%A9e"></a></p>
+
+<h2>
+<a id="la-portée-des-variables" class="anchor" href="#la-port%C3%A9e-des-variables" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>La portée des variables</h2>
+
+<p>Un point essentiel réside dans la portée de ces variables (en anglais on parle de « scope »). D’une façon simplifiée : une variable sera accessible uniquement dans la fonction ou portion de code dans laquelle elle aura été définie. Une portion de code correspond à l’espace entre deux accolades « { } ».</p>
+
+<p>Cela signifie qui si je définie une variable dans le setup() de mon programme celle-ne sera accessible uniquement dans le setup().</p>
+
+<p>Il est possible de définir des variables à l’extérieur des fonctions setup() et draw() : par exemple en tout début de programme, ces variables seront alors accessibles partout dans notre programme.</p>
+
+<p><a name="exemples"></a></p>
+
+<h2>
+<a id="exemple-dutilisation-des-variables" class="anchor" href="#exemple-dutilisation-des-variables" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Exemple d’utilisation des variables</h2>
+
+<p>Habituellement on a tendance à créer les variables tout en haut de notre programme, on les initialise ensuite dans le setup() , puis on les utilise dans le draw().</p>
+
+<div class="highlight highlight-source-java"><pre>  <span class="pl-c">// voici mon premier programme utilisant des variables</span>
+  color background_color ;
+  <span class="pl-k">int</span> size ;
+  <span class="pl-k">float</span> xpos,ypos ;
+
+  <span class="pl-k">void</span> setup(){
+  size(<span class="pl-c1">200</span>,<span class="pl-c1">200</span>) ;
+  background_color <span class="pl-k">=</span> color(<span class="pl-c1">0</span>) ;
+  size <span class="pl-k">=</span> <span class="pl-c1">50</span> ;
+  xpos <span class="pl-k">=</span> random(<span class="pl-c1">100</span>) ;
+  ypos <span class="pl-k">=</span> random(<span class="pl-c1">100</span>) ;
+  background(background_color ) ; <span class="pl-c">// utilisons un fond noir.</span>
+  }
+
+  <span class="pl-k">void</span> draw(){
+  background(background_color ) ; 
+  stroke(<span class="pl-c1">180</span>) ; 
+  strokeWeight(<span class="pl-c1">2</span>) ; 
+  fill(<span class="pl-c1">255</span>) ;
+<span class="pl-c">/* on dessine notre ellipse en utilisant nos variables*/</span>
+  ellipse(xpos,ypos,size,size) ; 
+  }</pre></div>
+
+<p><img src="assets/003_Utilisation_variables.png" alt="exemples_pdf/Sketch_1_02.pde"></p>
+
+<p><a name="globales"></a></p>
+
+<h2>
+<a id="variables-globales-de-processing" class="anchor" href="#variables-globales-de-processing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Variables globales de processing</h2>
+
+<p>Il existe dans processing des variables globales, qui sont donc accessibles partout dans processing, ces variables sont définies par défaut et gérée par processing lui-même, il faut mieux éviter d’utiliser leur nom pour définir ses propres variables.</p>
+
+<p>C’est le cas entre autres de :</p>
+
+<p><strong>width</strong> : (float) qui est associée par défaut à largeur de la fenêtre de dessin.
+<strong>height</strong> : (float) qui est associée par défaut à la hauteur de la fenêtre de dessin.</p>
+
+<p><a name="L'al%C3%A9atoire"></a></p>
+
+<h1>
+<a id="laléatoire" class="anchor" href="#lal%C3%A9atoire" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>L'aléatoire</h1>
+
+<p>En informatique et en design génératif , l’aléatoire est très souvent utilisé pour obtenir des résultats présentant des variantes contraintes, c’est-à-dire pour obtenir plusieurs variations d’un même algorithme.</p>
+
+<p>Il existe deux principales façon d’obtenir des nombres aléatoires ou plutôt pseudo-aléatoire, car il n’existe pas en informatique de méthode permettant d’obtenir un résultat réellement et statistiquement complètement aléatoire.</p>
+
+<p><a name="random"></a></p>
+
+<h2>
+<a id="random" class="anchor" href="#random" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>random()</h2>
+
+<p>La fonction random() renvoit donc des résultats aléatoires en fonction d’un argument qui sera spécifié entre les parenthèses. Ce nombre aléatoire sera de type float.
+Par exemple :</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">float</span> nb_aleatoire <span class="pl-k">=</span> random(<span class="pl-c1">100</span>) ;
+println(nb_aleatoire) ;</pre></div>
+
+<p>nous obtiendrons avec ce code un nombre aléatoire compris entre 0 et 100.</p>
+
+<p>Il est aussi possible de spécifier un borne supérieur, ainsi qu’un borne inférieure, ainsi :</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">float</span> nb_aleatoire <span class="pl-k">=</span> random(<span class="pl-c1">20</span>,<span class="pl-c1">50</span>) ;
+println(nb_aleatoire) ;</pre></div>
+
+<p>renverra une valeur aléatoire comprise entre 20 et 50 ;</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">/* voici mon premier programme utilisant des variables et de l’aléatoire */</span>
+<span class="pl-k">int</span> size ;
+<span class="pl-k">float</span> xpos, ypos ;
+
+<span class="pl-k">void</span> setup() {
+  size(<span class="pl-c1">200</span>, <span class="pl-c1">200</span>) ;
+  size <span class="pl-k">=</span> <span class="pl-c1">25</span> ;
+  xpos <span class="pl-k">=</span> random(<span class="pl-c1">0</span>, width) ;
+  ypos <span class="pl-k">=</span> random(<span class="pl-c1">0</span>, height) ;
+  background(<span class="pl-c1">0</span> ) ; <span class="pl-c">// utilisons un fond noir.</span>
+}
+
+<span class="pl-k">void</span> draw() {
+  background(<span class="pl-c1">0</span>) ; 
+  stroke(<span class="pl-c1">180</span>) ; 
+  strokeWeight(<span class="pl-c1">2</span>) ; 
+  fill(<span class="pl-c1">255</span>) ;
+  <span class="pl-c">// à chaque image calculée on définit une nouvelle position</span>
+  xpos <span class="pl-k">=</span> random(<span class="pl-c1">0</span>, width) ;
+  ypos <span class="pl-k">=</span> random(<span class="pl-c1">0</span>, height) ;
+  <span class="pl-c">/* on dessine notre ellipse en utilisant nos variables*/</span>
+  ellipse(xpos, ypos, size, size) ;
+}</pre></div>
+
+<p>Ce programme va dessiner, à chaque image, un cercle positionné aléatoirement dans la fenêtre de dessin.</p>
+
+<p><img src="assets/004_Al%C3%A9atoire.png" alt="exemples_pdf/Sketch_1_03.pde"></p>
+
+<p><a name="noise"></a></p>
+
+<h2>
+<a id="noise" class="anchor" href="#noise" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>noise()</h2>
+
+<p>La fonction noise() est un peu particulière puisque elle permet de générer des suites de nombres très proches les uns des autres. Cela permet notament de créer des mouvement et des contours qui paraissent plus naturels.</p>
+
+<p>Son usage est un peu plus compliqué car il faut lui fournir un argument  « évolutif », celle-ci renvoi des valeurs comprises entre 0 et 1. Il faut donc souvent adapter le résultat obtenu en fonction de nos besoins.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">float</span> noiseF; <span class="pl-c">// facteur évolutif de notre fonction noise</span>
+<span class="pl-k">float</span> xpos, ypos; <span class="pl-c">// coordonnées de notre forme</span>
+
+<span class="pl-k">void</span> setup() {
+  size(<span class="pl-c1">200</span>, <span class="pl-c1">200</span>);
+  background(<span class="pl-c1">0</span>);
+  noStroke();
+  fill(<span class="pl-c1">255</span>);
+  <span class="pl-c">// on initialise notre facteur à une valeur aléatoire</span>
+  noiseF <span class="pl-k">=</span> random(<span class="pl-c1">500</span>) ;
+  <span class="pl-c">// on place notre forme au centre de la fenetre.</span>
+  xpos <span class="pl-k">=</span> width<span class="pl-k">/</span><span class="pl-c1">2</span>;
+  ypos <span class="pl-k">=</span> height<span class="pl-k">/</span><span class="pl-c1">2</span>;
+}
+
+<span class="pl-k">void</span> draw() {
+  background(<span class="pl-c1">0</span>);
+  <span class="pl-c">/* on ajoute à notre position une valeur comprise entre      -1 et 1, résultante de notre fonction noise. */</span>
+  xpos <span class="pl-k">+=</span> noise(noiseF, <span class="pl-c1">10</span>, <span class="pl-c1">20</span>)<span class="pl-k">*</span><span class="pl-c1">2</span><span class="pl-k">-</span><span class="pl-c1">1</span>;
+  ypos <span class="pl-k">+=</span> noise(noiseF, <span class="pl-c1">85</span>, <span class="pl-c1">140</span>)<span class="pl-k">*</span><span class="pl-c1">2</span> <span class="pl-k">-</span><span class="pl-c1">1</span>;
+  ellipse(xpos, ypos, <span class="pl-c1">5</span>, <span class="pl-c1">5</span>);  
+  <span class="pl-c">// on incrémente notre facteur noise d’une petite valeur</span>
+  noiseF <span class="pl-k">+=</span> <span class="pl-c1">0.005</span>;
+}</pre></div>
+
+<p><img src="assets/005_Noise.png" alt="exemples_pdf/Sketch_1_04.pde"></p>
+
+<p>Ce programme dessine un cercle qui va se déplacer aléatoirement dans l’espace de dessin. Il est d’ailleurs fort probable qu’il en sorte, mais nous y reviendrons plus tard.</p>
+
+<p><a name="randomSeed"></a></p>
+
+<h2>
+<a id="randomseed-et-noiseseed" class="anchor" href="#randomseed-et-noiseseed" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>randomSeed() et noiseSeed()</h2>
+
+<p>Ces deux fonctions permettent de pouvoir retrouver un résultat qui a été obtenu avec des nombres aléatoires. Comme mentionné ci-dessus, les ordinateurs ne permettent pas d’avoir des générateurs de nombres complétement aléatoires, dans certain cas cela peut-être un avantage, notament quand il s’agit de pouvoir régénérer exactement la même image avec un algorithme qui utilise pourtant des nombres aléatoires.</p>
+
+<p>Ces fonctions s’utilisent de la même façon ( exemples_pdf/Sketch_1_05.pde ) :</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">int</span> seed ;
+seed <span class="pl-k">=</span> <span class="pl-c1">123</span>;
+
+randomSeed(seed);
+<span class="pl-k">float</span> a <span class="pl-k">=</span> random(<span class="pl-c1">500</span>);
+println(<span class="pl-s"><span class="pl-pds">"</span>seed<span class="pl-pds">"</span></span> <span class="pl-k">+</span> seed <span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span> : <span class="pl-pds">"</span></span> <span class="pl-k">+</span> a); 
+
+seed <span class="pl-k">=</span> <span class="pl-c1">52</span>;
+randomSeed(seed);
+a <span class="pl-k">=</span> random(<span class="pl-c1">500</span>);
+println(<span class="pl-s"><span class="pl-pds">"</span>seed<span class="pl-pds">"</span></span> <span class="pl-k">+</span> seed <span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span> : <span class="pl-pds">"</span></span> <span class="pl-k">+</span> a); 
+
+seed <span class="pl-k">=</span> <span class="pl-c1">123</span>;
+randomSeed(seed);
+a <span class="pl-k">=</span> random(<span class="pl-c1">500</span>);
+println(<span class="pl-s"><span class="pl-pds">"</span>seed<span class="pl-pds">"</span></span> <span class="pl-k">+</span> seed <span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span> : <span class="pl-pds">"</span></span> <span class="pl-k">+</span> a); </pre></div>
+
+<p><a name="Les-boucles"></a></p>
+
+<h1>
+<a id="les-boucles" class="anchor" href="#les-boucles" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Les Boucles</h1>
+
+<p>C’est un des point primordiaux de la programmation objet, le boucles permette de répéter une action ou une suite d’instruction un nombre limité de fois. Il existe les boucles dites « for », et les boucles dites « while ». </p>
+
+<p>Dans le cadre de ce document nous n’allons traiter que les boucles «for », les boucles « while » étant relativement rarement usitées.</p>
+
+<p><a name="for"></a></p>
+
+<h2>
+<a id="for" class="anchor" href="#for" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>for()</h2>
+
+<p>voici un exemple de boucle « for » :</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">for</span> (<span class="pl-k">int</span> i  <span class="pl-k">=</span> <span class="pl-c1">0</span> ; i <span class="pl-k">&lt;</span> <span class="pl-c1">10</span> ; i<span class="pl-k">=</span>i<span class="pl-k">+</span><span class="pl-c1">1</span>){
+    noStroke() ;
+    fill(<span class="pl-c1">255</span>) ;
+    ellipse (<span class="pl-c1">10</span><span class="pl-k">+</span>i<span class="pl-k">*</span><span class="pl-c1">10</span>, <span class="pl-c1">10</span><span class="pl-k">+</span>i<span class="pl-k">*</span><span class="pl-c1">10</span>, <span class="pl-c1">5</span>,<span class="pl-c1">5</span>) ;
+}</pre></div>
+
+<p>Un boucle for se compose, de deux parties :</p>
+
+<ul>
+<li><p>Un bloc d’instructions à exécuter,  situé entre les deux accolades.</p></li>
+<li>
+<p>Entre les parenthèses  ce sont les conditions d’exécution de la boucle qui sont séparées par des points virgules. </p>
+
+<ul>
+<li>D’abord, on définit un nombre entier appelé « i » que l’on initialise à  0, </li>
+<li>ensuite on précise que l’on exécutera le bloc d’instruction uniquement si  « i » reste strictement inférieur à 10, </li>
+<li>puis on incrémente « i » de 1 en lui ajoutant la valeur 1.</li>
+</ul>
+</li>
+</ul>
+
+<p>Le code présenté ci-dessus permet donc de dessiner 10 cercles blancs de 5 pixels de diamètre, le premier étant situé en haut à gauche aux coordonnées (10,10), le dernier au coordonnées (100,100).(100 = 10 + 9*10).</p>
+
+<p>Comme nous le verrons ces boucles sont très utilisées en programmation objet car elles permettent d’itérer une série d’instructions sur les éléments d’un tableau.</p>
+
+<p><a name="while"></a></p>
+
+<h2>
+<a id="while" class="anchor" href="#while" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>While()</h2>
+
+<p>La boucle while() est moins usitée en programmation objet, mais très commune en électronique, elle permet de réaliser un bloc d’instruction tant qu’une condition est vérifiée.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">int</span> i <span class="pl-k">=</span><span class="pl-c1">0</span> ;
+<span class="pl-k">while</span> (i <span class="pl-k">&lt;</span> width){  
+noStroke();
+fill(<span class="pl-c1">255</span>);
+      ellipse(i,height<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class="pl-c1">5</span>,<span class="pl-c1">5</span>);
+i<span class="pl-k">+=</span><span class="pl-c1">5</span>;
+}</pre></div>
+
+<p>Ici, nous avons un variable initialisée à zéro, tant que cette variable est inférieure à la largeur de notre fenêtre de dessin, nous dessinons une ellipse blanche, de 5 pixels de diamètre placée en abscisses à la valeur de « i » et en ordonnées au milieu de notre fenêtre de dessin.</p>
+
+<p><a name="exemple"></a></p>
+
+<h2>
+<a id="exemple" class="anchor" href="#exemple" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Exemple</h2>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">/* voici mon premier programme utilisant des variables et de l’aléatoire et une boucle for*/</span>
+<span class="pl-k">int</span> size ;
+<span class="pl-k">float</span> xpos,ypos ;
+
+<span class="pl-k">void</span> setup(){
+  size(<span class="pl-c1">200</span>,<span class="pl-c1">200</span>) ;
+  size <span class="pl-k">=</span> <span class="pl-c1">25</span> ;
+  xpos <span class="pl-k">=</span> random(<span class="pl-c1">0</span>,width) ;
+  ypos <span class="pl-k">=</span> random(<span class="pl-c1">0</span>,height) ;
+  background(<span class="pl-c1">0</span> ) ; <span class="pl-c">// utilisons un fond noir.</span>
+}
+
+<span class="pl-k">void</span> draw(){
+  background(<span class="pl-c1">0</span>) ; 
+  stroke(<span class="pl-c1">180</span>) ; 
+  strokeWeight(<span class="pl-c1">2</span>) ; 
+  fill(<span class="pl-c1">255</span>) ;
+  <span class="pl-k">for</span> (<span class="pl-k">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span> ; i <span class="pl-k">&lt;</span><span class="pl-c1">10</span> ; i<span class="pl-k">++</span>){
+  <span class="pl-c">// à chaque image calculée on définit une nouvelle position</span>
+  xpos <span class="pl-k">=</span> random(<span class="pl-c1">0</span>,width) ;
+  ypos <span class="pl-k">=</span> random(<span class="pl-c1">0</span>,height) ;
+  ellipse(xpos,ypos,size,size) ; 
+  }
+}</pre></div>
+
+<p><img src="assets/006_boucles.png" alt="exemples_pdf/Sketch_1_06.pde"></p>
+
+<p><a name="couleur"></a></p>
+
+<h1>
+<a id="couleur" class="anchor" href="#couleur" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Couleur</h1>
+
+<p><a name="gris"></a></p>
+
+<h2>
+<a id="niveaux-de-gris" class="anchor" href="#niveaux-de-gris" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Niveaux de gris</h2>
+
+<p>Dans processing il existe trois mode principaux de couleurs. Le premier mode est celui que nous avons déjà utilisé dans les exemples précédents : le mode grayscale ou niveau de gris. Dans ce mode il s’agit de signifier un nombre entre 0 et 255 ; 0 étant le noir et 255 le blanc.</p>
+
+<div class="highlight highlight-source-java"><pre>stroke(<span class="pl-c1">0</span>) ;
+fill(<span class="pl-c1">180</span>) ;
+ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,height<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class="pl-c1">50</span>,<span class="pl-c1">50</span>) ;</pre></div>
+
+<p>Le code va donc dessiner un cercle gris souris avec un contour noir.</p>
+
+<p><a name="rgb"></a></p>
+
+<h2>
+<a id="le-mode-rgb" class="anchor" href="#le-mode-rgb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Le mode RGB</h2>
+
+<p>Le mode de couleur par défaut de processing est le mode RGB (« Red Green Blue »), pour créer des couleurs il s’agit alors de spécifier les niveau de rouge, vert et de bleu que l’on souhaite entre 0 et 255 ;</p>
+
+<div class="highlight highlight-source-java"><pre>noStroke() ;
+fill(<span class="pl-c1">255</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>) ; <span class="pl-c">// Rouge</span>
+ellipse(width<span class="pl-k">/</span><span class="pl-c1">5</span>,height<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>) ;
+fill(<span class="pl-c1">0</span>,<span class="pl-c1">255</span>,<span class="pl-c1">0</span>);<span class="pl-c">// Vert</span>
+ellipse(width<span class="pl-k">*</span><span class="pl-c1">2</span><span class="pl-k">/</span><span class="pl-c1">5</span>,height<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);
+fill(<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">255</span>);<span class="pl-c">// Bleu</span>
+ellipse(width<span class="pl-k">*</span><span class="pl-c1">3</span><span class="pl-k">/</span><span class="pl-c1">5</span>,height<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);
+fill(<span class="pl-c1">255</span>,<span class="pl-c1">100</span>,<span class="pl-c1">100</span>);<span class="pl-c">// Rose</span>
+ellipse(width<span class="pl-k">*</span><span class="pl-c1">4</span><span class="pl-k">/</span><span class="pl-c1">5</span>,height<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</pre></div>
+
+<p><a name="hsb"></a></p>
+
+<h2>
+<a id="le-mode-hsb" class="anchor" href="#le-mode-hsb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Le mode HSB</h2>
+
+<p>Le mode HSB correspond à la specification de niveau de Hue (teinte), Saturation (contraste), Brightness (luminosité). Lorsque l’on définie le mode HSB on spécifie généralement l’étendue de la plage que doivent occuper ces valeurs.</p>
+
+<div class="highlight highlight-source-java"><pre>colorMode(<span class="pl-c1">HSB</span>,<span class="pl-c1">360</span>,<span class="pl-c1">100</span>,<span class="pl-c1">100</span>) ; </pre></div>
+
+<p>Cette ligne précise que l’on va spécifier les valeurs de teinte entre 0 et 360, les autres valeurs seron spécifiées entre 0 et 100.
+Ce mode rend très facile la création de dégradés.</p>
+
+<div class="highlight highlight-source-java"><pre>size(<span class="pl-c1">360</span>,<span class="pl-c1">100</span>) ;
+colorMode(<span class="pl-c1">HSB</span>,<span class="pl-c1">360</span>,<span class="pl-c1">100</span>,<span class="pl-c1">100</span>) ;
+<span class="pl-k">for</span> (<span class="pl-k">int</span> i <span class="pl-k">=</span><span class="pl-c1">0</span> ; i <span class="pl-k">&lt;</span> width ; i<span class="pl-k">++</span>){
+   stroke(i,<span class="pl-c1">100</span>,<span class="pl-c1">100</span>);
+   line(i,<span class="pl-c1">0</span>,i,height);
+}</pre></div>
+
+<p><a name="transparence"></a></p>
+
+<h2>
+<a id="la-transparence" class="anchor" href="#la-transparence" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>La transparence</h2>
+
+<p>Il suffit d’ajouter un paramètre final à nos couleurs quelque soit le mode choisit. Ce dernier paramètre réglera le niveau de transparence à spécifier entre 0 et 255 ; 0 étant complétement transparent (soit invisible) et 255 étant entièrement opaque.</p>
+
+<p>Dans la création graphique la superposition de plusieurs couches transparentes donne des effets de textures souvent intéressants. L’utilisation de la transparence dans certain cas facilite l’émergence de motifs complexes.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">/* voici mon premier programme utilisant des variables et de l’aléatoire et une boucle for et de couleurs !*/</span>
+<span class="pl-k">int</span> size ;
+<span class="pl-k">float</span> xpos, ypos ;
+
+<span class="pl-k">void</span> setup() {
+  size(<span class="pl-c1">200</span>, <span class="pl-c1">200</span>) ;
+  size <span class="pl-k">=</span> <span class="pl-c1">25</span> ;
+  xpos <span class="pl-k">=</span> random(<span class="pl-c1">0</span>, width) ;
+  ypos <span class="pl-k">=</span> random(<span class="pl-c1">0</span>, height) ;
+  colorMode(<span class="pl-c1">HSB</span>, <span class="pl-c1">360</span>, <span class="pl-c1">100</span>, <span class="pl-c1">100</span>) ;
+  background(<span class="pl-c1">0</span> ) ;
+}
+
+<span class="pl-k">void</span> draw() {
+  <span class="pl-c">// blur « maison »</span>
+  fill(<span class="pl-c1">0</span>, <span class="pl-c1">20</span>) ;
+  rect(<span class="pl-c1">0</span>, <span class="pl-c1">0</span>, width, height) ;
+  noStroke() ; 
+  <span class="pl-k">for</span> (<span class="pl-k">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span> ; i <span class="pl-k">&lt;</span><span class="pl-c1">10</span> ; i<span class="pl-k">++</span>) {
+    xpos <span class="pl-k">=</span> random(<span class="pl-c1">0</span>, width) ;
+    ypos <span class="pl-k">=</span> random(<span class="pl-c1">0</span>, height) ;
+    fill(random(<span class="pl-c1">360</span>), <span class="pl-c1">100</span>, <span class="pl-c1">100</span>) ;
+    ellipse(xpos, ypos, size, size) ;
+  }
+}</pre></div>
+
+<p><img src="assets/007_couleurs.png" alt="exemples_pdf/Sketch_1_07.pde"></p>
+
+<p><a name="Primitives-de-dessin"></a></p>
+
+<h1>
+<a id="primitives-de-dessin" class="anchor" href="#primitives-de-dessin" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Primitives de dessin</h1>
+
+<p>A partir de maintenant nous allons abandoner notre programme fil-rouge, qui nous a déjà appris beaucoup de choses, pour nous pencher vers d’autres rendus graphiques plus riches.</p>
+
+<p><a name="instructions"></a></p>
+
+<h2>
+<a id="les-instructions-de-dessin" class="anchor" href="#les-instructions-de-dessin" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Les instructions de dessin</h2>
+
+<p>Nous avons déjà vu la majeure partie des instructions de dessins dans les programmes précèdents, mais opérons tout de même à un petit rappel : </p>
+
+<ul>
+<li>stroke() ; (color)  permet de définir la couleur du trait de dessin.<br>
+</li>
+<li>strokeWeigth() ; (float) permet de définir l’épaisseur de ce trait.</li>
+<li>noStroke() ; autorise à ne pas dessiner de contour.</li>
+<li>fill() ; (color) permet de définir la couleur de remplissage d’une forme.</li>
+<li>noFill() ; autorise à ne pas coloriser une forme.</li>
+</ul>
+
+<p>Concenant les instruction de lignes, il existe aussi les fonction strokeCap() ;(String) et strokeJoint() ; (String) dont je vous invite à consulter la documentation en ligne.</p>
+
+<p>Une autre instruction est importante , il s’agit de smooth() ; qui permet de modifier les paramètres de l’anti-aliasing de processing. On peut lui attribuer les valeurs de 2, 4 ou 8. Cela permet d’avoir des lignes fines plus précises à haute résolution.</p>
+
+<p><a name="primitives"></a></p>
+
+<h2>
+<a id="les-primitves-formes" class="anchor" href="#les-primitves-formes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Les primitves (formes)</h2>
+
+<p>Nous avons pour l’instant principalement utilisé des ellipses pour nos code. Mais processing regorge d’une bonne quantité de primtives pour dessiner différentes formes géométriques.</p>
+
+<ul>
+<li>ellipse(x-coord, y-coord, width,heigth) ; permet donc de dessiner une ellipse</li>
+<li>line(x1-coord, y1-coord, x2-coord, y2-coord) ; permet de dessiner une ligne entre les points (x1,y1) et (x2,y2) ;</li>
+<li>rect(x-coord,y-coord,width,height) ; permet de dessiner un rectangle, on peut lui adjoindre jusqu’à quatre autres paramètres pour spécifier l’arrondi de chaque angle.</li>
+<li>quad(x1, y1, x2, y2, x3, y3, x4, y4) ; permet de dessiner un quadrilatère.</li>
+<li>triangle(x1, y1, x2, y2, x3, y3) ; permet de spécifier un triangle.</li>
+</ul>
+
+<p>Il existe souvent différent modes pour dessiner ces formes, je vous conseille donc de regarder les documentation de rectMode() (String) et ellipseMode() (String) par exemple. On peut par exemple choisir de dessiner à partir d’un coin (CORNER - par défaut lorsque l’on dessine un rectangle), ou à partir du centre de nôtre forme (CENTER – par défaut pour l’ellipse).</p>
+
+<p><a name="vertices"></a></p>
+
+<h2>
+<a id="les-vertices-formes-sur-mesure" class="anchor" href="#les-vertices-formes-sur-mesure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Les vertices (formes sur mesure)</h2>
+
+<p>Si cela ne vous suffisait pas il existe d’autres possibilités pour créer des formes. Les fonctions beginShape(), endShape() et vertex() vont nous y aider.</p>
+
+<p>Un vertex n’est en fait ni plus ni moins qu’un couple de coordonnées, conjugé à beginShape() et enShape(), il permet de créer des ensembles de points à relier entre eux qui peuvent alors créer des formes complexes. Nous allons nous intéresser à la façon dont il est possible de dessiner un cercle à l’aide de ces fonctions.</p>
+
+<p>Pour rappel, voici un cercle trigonométrique : </p>
+
+<p><a href="http://www.openprocessing.org/sketch/151087">http://www.openprocessing.org/sketch/151087</a></p>
+
+<p>Alors que les coordonnées cartésiennes utilisent l’abscisse et l’ordonnée d’un point pour le placer dans le plan, les coordonnées polaires utilisent le rayon et l’angle pour définir un point de l’espace. En terme de code informatique il est donc assez facilement imaginable de tracer un cercle à l’aide d’un boucle « for » permettant de parcourir les 360° (ou 2*PI pour ceux qui préfèrent les radians), cependant il nous faut un moyen de passer des coordonnées polaires aux coordonnées cartésiennes (processing et la fonction vertex() demandent en effet un couple de coordonées).</p>
+
+<p>Le cercle trigo nous permet de nous souvenir simplement de ces formules : le point noir sur le cercle à pour coordonées (x,y) dans un repère cartésien et (r,theta) en coordonnées polaires. </p>
+
+<p>Dans le programme interactif ci dessus, la projection bleue sur l’axe des abscisses nous donne la coordonnée x et correspond à un facteur près au cosinus de l’angle. La projection fuchsia sur l’axe des ordonnées nous fournit la coordonnée y qui est aussi proportionnelle à l’angle, mais cette fois au sinus :</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">X</span> <span class="pl-k">=</span> rayon <span class="pl-k">*</span> cos (angle)
+<span class="pl-smi">Y</span> <span class="pl-k">=</span> rayon<span class="pl-k">*</span> sin(angle)</pre></div>
+
+<p>beginShape() va vous permettre de signaler à Processing que vous allez commencer à dessiner une forme, il attendra donc un instruction de fin de dessin qui sera endShape() et aussi une liste de vertex() entre les deux pour définir les différents points à relier entre eux.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">float</span> xpos, ypos ;
+<span class="pl-k">int</span> radius; <span class="pl-c">// le rayon de notre cercle</span>
+<span class="pl-k">float</span> step; <span class="pl-c">// l’incrément de l’angle qui va parcourir une rotation de 360°</span>
+
+<span class="pl-k">void</span> setup() {
+  size(<span class="pl-c1">200</span>, <span class="pl-c1">200</span>);
+  background(<span class="pl-c1">0</span>);
+  xpos <span class="pl-k">=</span> width<span class="pl-k">/</span><span class="pl-c1">2</span>;
+  ypos <span class="pl-k">=</span> height<span class="pl-k">/</span><span class="pl-c1">2</span>;
+  radius <span class="pl-k">=</span> <span class="pl-c1">75</span>;
+  step <span class="pl-k">=</span> <span class="pl-c1">PI</span><span class="pl-k">/</span><span class="pl-c1">12</span>;
+}
+
+<span class="pl-k">void</span> draw() {
+  background(<span class="pl-c1">0</span>);
+  noFill();
+  stroke(<span class="pl-c1">255</span>);
+
+  beginShape();<span class="pl-c">// on démarre notre forme</span>
+  <span class="pl-k">for</span> ( <span class="pl-k">float</span> angle <span class="pl-k">=</span> <span class="pl-c1">0</span> ; angle <span class="pl-k">&lt;</span><span class="pl-c1">TWO_PI</span> ; angle <span class="pl-k">+=</span> step) {
+    <span class="pl-c">// on applique la formule vue précédement</span>
+    <span class="pl-k">float</span> ex <span class="pl-k">=</span> xpos <span class="pl-k">+</span> radius <span class="pl-k">*</span>cos(angle);
+    <span class="pl-k">float</span> wy <span class="pl-k">=</span> ypos <span class="pl-k">+</span> radius <span class="pl-k">*</span>sin(angle);
+    <span class="pl-c">// on ajoute un vertex</span>
+    vertex(ex, wy);
+  }
+  endShape(<span class="pl-c1">CLOSE</span>);<span class="pl-c">// on arête notre forme et on la ferme</span>
+}</pre></div>
+
+<p><img src="assets/008_vertices.png" alt="exemples_pdf/Sketch_1_08.pde"></p>
+
+<p>Il est important de noter que ces objets sont très puissant et peuvent être manipulés avec différentes options pour obtenir des résultats divers.</p>
+
+<p>Par exemple : beginShape(), peut prendre un argument  qui affectera la façon dont la forme sera dessinée. beginsShape(POINTS) dessinera des points, beginShape(LINES) dessinera des lignes,  beginShape(TRIANGLES) constituera des triangles etc.</p>
+
+<p>Pour plus d’informations, il peut-êre utile de se référer à le documentation de Processing concernant beginShape().  Il peut-être intéressant aussi de regarder les fonction beginContour() et endContour().</p>
+
+<p>Concernant les vertices, il existe aussi plusieurs type de fonctions permettant de les utiliser : curveVertex(), bezierVertex(), quadraticVertex() sont d’autres façons de définir des vertices demandant plus ou moins d’arguments et donc plus ou moins simples à mettre en œuvre.</p>
+
+<p>Enfin pour ceux qui persiste dans l’utilisation de processing, il est intéressant de regarder le foncionnement de l’objet PShape, qui permet de créer des formes complexes,  de les stocker puis de les manipuler plus facilement.</p>
+
+<p><a name="Transformation-de-l%E2%80%99espace"></a></p>
+
+<h1>
+<a id="les-transformations-de-lespace" class="anchor" href="#les-transformations-de-lespace" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Les Transformations de l’espace</h1>
+
+<p>C’est un des points primordiaux de processing, il faut savoir se repérer dans un espace 2D et savoir utiliser différents systèmes de coordonnées, pour pouvoir se faciliter la vie.</p>
+
+<p>Il existe deux types de transformation de l’espace :</p>
+
+<ul>
+<li>translate() ;</li>
+<li>rotate() ;</li>
+</ul>
+
+<p><a name="translate"></a></p>
+
+<h2>
+<a id="translate" class="anchor" href="#translate" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>translate()</h2>
+
+<p>Cette fonction permet d’opérer une translation, ce qu’il est primordial de comprendre c’est que l’on n’opère pas cette translation sur les formes que l’on dessine, mais plutôt sur notre espace de dessin. C’est comme si l’on gardait notre crayon au même endroit et que l’on déplaçait la feuille.</p>
+
+<p>Par exemple :</p>
+
+<div class="highlight highlight-source-java"><pre>ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,height<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class="pl-c1">25</span>,<span class="pl-c1">25</span>) ;
+translate(<span class="pl-c1">50</span>,<span class="pl-c1">0</span>) ;
+ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,height<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class="pl-c1">25</span>,<span class="pl-c1">25</span>) ;</pre></div>
+
+<p>dessinera deux cercles côte à côte séparé dont les centre seront séparés de 50 px. Ce programme est équivalent à : (c’est une question de style)</p>
+
+<div class="highlight highlight-source-java"><pre>translate(width<span class="pl-k">/</span><span class="pl-c1">2</span>,height<span class="pl-k">/</span><span class="pl-c1">2</span>) ;
+ellipse(<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">25</span>,<span class="pl-c1">25</span>) ;
+translate(<span class="pl-c1">50</span>,<span class="pl-c1">0</span>) ;
+ellipse(<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">25</span>,<span class="pl-c1">25</span>) ;</pre></div>
+
+<p>remarquez bien que les translations s’enchaînent, il est possible cependant de replacer la feuille à sa position par défaut en utilisant pushMatrix() et popMatrix(). Bien que cela puisse paraître compliqué il suffit de comprendre que si l’on dessine avec translate() il est parfois plus simple d’encadre chaque forme que l’on dessine de ces deux fonctions comme dans l’exemple ci-dessous :</p>
+
+<div class="highlight highlight-source-java"><pre>pushMatrix() ;
+translate(width<span class="pl-k">/</span><span class="pl-c1">2</span>,height<span class="pl-k">/</span><span class="pl-c1">2</span>) ;
+ellipse(<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">25</span>,<span class="pl-c1">25</span>) ;
+popMatrix() ;
+pushMatrix() ;
+translate(width<span class="pl-k">/</span><span class="pl-c1">2</span><span class="pl-k">+</span><span class="pl-c1">50</span>,height<span class="pl-k">/</span><span class="pl-c1">2</span>) ;
+ellipse(<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">25</span>,<span class="pl-c1">25</span>) ;
+popMatrix() ;
+```java
+
+translate en réalité déplace notre repère de dessin, par défaut le centre de notre repère (le point de coordonnées (<span class="pl-c1">0</span>,<span class="pl-c1">0</span>) ) est situé en haut à gauchede notre fenêtre. <span class="pl-smi">En</span> utilisant translate(xpos,ypos) ; nous déplaçons ce centre au point de coordonnées (xpos,ypos)<span class="pl-c1">.</span>
+<span class="pl-smi">R</span>é<span class="pl-k">-</span>écrivons notre programme fil<span class="pl-k">-</span>rouge avec des tranlate()<span class="pl-c1">.</span>
+
+```java
+<span class="pl-c">/* voici mon premier programme utilisant des variables et de l’aléatoire et une boucle for et de couleurs ! et des translate(), pushMatrix(), popMatrix()*/</span>
+<span class="pl-k">int</span> size ;
+<span class="pl-k">float</span> xpos,ypos ;
+
+<span class="pl-k">void</span> setup(){
+    size(<span class="pl-c1">200</span>,<span class="pl-c1">200</span>) ;
+    size <span class="pl-k">=</span> <span class="pl-c1">25</span> ;
+    xpos <span class="pl-k">=</span> random(<span class="pl-c1">0</span>,width) ;
+    ypos <span class="pl-k">=</span> random(<span class="pl-c1">0</span>,height) ;
+    colorMode(<span class="pl-c1">HSB</span>,<span class="pl-c1">360</span>,<span class="pl-c1">100</span>,<span class="pl-c1">100</span>) ;
+    background(<span class="pl-c1">0</span> ) ; 
+}
+
+<span class="pl-k">void</span> draw(){
+    <span class="pl-c">// blur « maison »</span>
+    fill(<span class="pl-c1">0</span>,<span class="pl-c1">20</span>) ;
+    rect(<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,width,height) ;
+    noStroke() ; 
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span> ; i <span class="pl-k">&lt;</span><span class="pl-c1">10</span> ; i<span class="pl-k">++</span>){
+    xpos <span class="pl-k">=</span> random(<span class="pl-c1">0</span>,width) ;
+    ypos <span class="pl-k">=</span> random(<span class="pl-c1">0</span>,height) ;
+    fill(random(<span class="pl-c1">360</span>),<span class="pl-c1">100</span>,<span class="pl-c1">100</span>) ;
+    pushMatrix() ; <span class="pl-c">// on replace la feuille à chaque image</span>
+    translate(xpos,ypos) ;<span class="pl-c">// on se déplace</span>
+    ellipse(<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,size,size) ; <span class="pl-c">// on dessine</span>
+    popMatrix() ; <span class="pl-c">// objet parent de pushMatrix</span>
+    }
+}</pre></div>
+
+<p>popMatrix() permet en fait de replace la feuille pour dessiner éventuellement d’autres choses après. Ces deux objets doivent impérativement être utilisés conjointement, l’un sans l’autre renverra une erreur…</p>
+
+<p><a name="rotate"></a></p>
+
+<h2>
+<a id="rotate" class="anchor" href="#rotate" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>rotate()</h2>
+
+<p>rotate() fonctionne de la même façon que translate(), il faut lui fournir un angle en radians, une fonction radians(angle)  permet de convertir un angle spécifié en degrés en une mesure radian facilement.</p>
+
+<p>Il existe des variante de rotate que sont rotateX(), rotateY(), rotateZ() sur lesquelles nous ne épancheront pas.</p>
+
+<p>En utilisant rotate(), il est nécessaire encore une fois de bien pense au système de coordonnées. Si par exemple je dessine un cercle au mileu tout en haut de ma zone de dessin :</p>
+
+<div class="highlight highlight-source-java"><pre>ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class="pl-c1">0</span>,<span class="pl-c1">50</span>,<span class="pl-c1">50</span>) ;</pre></div>
+
+<p>je peux faire en sorte que ce cercle se retrouve au centre en opérant un rotation de 45° ou PI/4 radians :</p>
+
+<div class="highlight highlight-source-java"><pre>rotate(radians(<span class="pl-c1">45</span>)) ;
+ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class="pl-c1">0</span>,<span class="pl-c1">50</span>,<span class="pl-c1">50</span>) ;</pre></div>
+
+<p>Cela commence intéressant lorsque l’on combine translate() et rotate() ensemble, je peux par exemple très facilement faire tourner un carré sur lui-même. En utilisant le mode CENTER (à la fin de ce paragraphe <a href="#primitives">ici</a>).</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">float</span> angle ;
+<span class="pl-k">void</span> setup() {
+  size(<span class="pl-c1">200</span>,<span class="pl-c1">200</span>);
+  angle <span class="pl-k">=</span> <span class="pl-c1">0</span> ;
+  rectMode(<span class="pl-c1">CENTER</span>) ;<span class="pl-c">// rappelez vous les modes !</span>
+}
+<span class="pl-k">void</span> draw() {
+  background(<span class="pl-c1">0</span>) ;
+  stroke(<span class="pl-c1">255</span>) ;
+  pushMatrix();<span class="pl-c">// on s’assure d’avoir un repère bien à nous</span>
+  translate(width<span class="pl-k">/</span><span class="pl-c1">2</span>, height<span class="pl-k">/</span><span class="pl-c1">2</span>) ;<span class="pl-c">// on déplace notre repère</span>
+  rotate(angle);<span class="pl-c">// on le fait tourner</span>
+  rect(<span class="pl-c1">0</span>, <span class="pl-c1">0</span>, <span class="pl-c1">25</span>, <span class="pl-c1">25</span>);<span class="pl-c">// on dessine un rectangle</span>
+  popMatrix();
+  angle <span class="pl-k">+=</span> <span class="pl-c1">PI</span><span class="pl-k">/</span><span class="pl-c1">24</span>;<span class="pl-c">// on incrémente l’angle</span>
+}</pre></div>
+
+<p><img src="assets/009_translate_rotate.png" alt="exemples_pdf/Sketch_1_09.pde"></p>
+
+<p>Si vous intervertissez rotate() et translate() l’effet ne sera plus du tout le même, idem si l’on oublie d’utiliser pushMatrix() et popMatrix().</p>
+
+<p><a name="Coder-ses-propres-fonctions"></a></p>
+
+<h1>
+<a id="coder-ses-propres-fonctions" class="anchor" href="#coder-ses-propres-fonctions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Coder ses propres fonctions</h1>
+
+<p>A partir de ces transformations simples nous allons créer une texture mouvante en quelques lignes de code. Le principe est simple  nous allons utiliser le principe du carré tournant autour de son point supérieur gauche, mais nous allons créer une grille de carrés sur toute la surface de l’écran. </p>
+
+<p>Pour simplifier le code nous allons écrire une fonction.  Cette fonction aura pour objectif de dessiner un carré situé à des coordonnées spécifiques avec un angle de rotation propre. Cette fonction étant une fonction de dessin, elle sera de type « void », et elle acceptera les 3 paramètres sus-cités , on la déclarera de cette façon :</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">void</span> draw_rect(<span class="pl-k">float</span> xpos, <span class="pl-k">float</span> ypos, <span class="pl-k">float</span> rotation) {
+    <span class="pl-c">// suite d’instructions à écrire</span>
+}</pre></div>
+
+<p>Pour utiliser cette fonction il suffit alors de l’  « appeler » :</p>
+
+<div class="highlight highlight-source-java"><pre>draw_rect(<span class="pl-c1">50</span>,<span class="pl-c1">50</span>,<span class="pl-c1">PI</span><span class="pl-k">/</span><span class="pl-c1">2</span>) ;</pre></div>
+
+<p>On dessinera ainsi un rectangle au point de coordonnées (50,50), tourné d’un angle  de PI/2 radians, si le code écrit à l’intérieur de notre fonction est le bon. Heureusement nous avons appris à précédemment à faire exactement cela :</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">void</span> draw_rect(<span class="pl-k">float</span> xpos, <span class="pl-k">float</span> ypos, <span class="pl-k">float</span> rotation) {
+    pushMatrix(); 
+    fill(<span class="pl-c1">100</span>,<span class="pl-c1">100</span>,<span class="pl-c1">255</span>,<span class="pl-c1">2</span>);
+    stroke(<span class="pl-c1">255</span>,<span class="pl-c1">100</span>,<span class="pl-c1">100</span>,<span class="pl-c1">5</span>);
+    strokeWeight(<span class="pl-c1">2</span>);
+    translate(xpos, ypos); 
+    rotate(rotation);
+    rect(<span class="pl-c1">0</span>, <span class="pl-c1">0</span>, <span class="pl-c1">35</span>, <span class="pl-c1">35</span>);  
+    popMatrix();
+}</pre></div>
+
+<p>Nous avons maintenant ce qu’il nous faut, il ne nous reste maintenant plus qu’à écrire notre code autour…  Pour animer notre image, nous allons utiliser une variable pour stocker l’angle auquel seront dessinés nos carrés, à chaque image (donc à chaque répétition de la boucle draw) nous allons augmenter la valeur de cet angle. Une petite astuce pour obtenir un rendu plus « ondulant » sera d’attribuer des valeurs d’angles différentes en fonction de la position du carré dans la grille !</p>
+
+<p>Vous pouvez aussi le voire ici :
+<a href="http://www.openprocessing.org/sketch/60014">http://www.openprocessing.org/sketch/60014</a></p>
+
+<p>et consulter la vidéo d'abe pazos de funprogamming dont ce code est tirée : <a href="http://funprogramming.org/35-A-grid-of-rotating-objects-creates-a-wave-of-rectangles.html">http://funprogramming.org/35-A-grid-of-rotating-objects-creates-a-wave-of-rectangles.html</a></p>
+
+<p><img src="assets/010_grid.png" alt="exemples_pdf/Sketch_1_10.pde"></p>
+
+<p><a name="Interactions-Souris-et-clavier"></a></p>
+
+<h1>
+<a id="interactions-avec-la-souris-et-le-clavier" class="anchor" href="#interactions-avec-la-souris-et-le-clavier" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Interactions avec la souris et le clavier</h1>
+
+<p>Processing nous donne accès à des fonctions bien pratiques pour créer de l’interaction avec nos programmes, notament à travers l’utilisation de fonction spécifiques permettant d’intercepter les événements provenant de notre souris ou de notre clavier.</p>
+
+<p><a name="souris"></a></p>
+
+<h2>
+<a id="souris" class="anchor" href="#souris" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Souris</h2>
+
+<p>Les évenements provenant de la souris peuvent être captés de diverses façon. Il est par exemple possible de connaitre la position de la souris à tout moment, de savoir quel bouton est activé etc.</p>
+
+<p><a name="souris_globales"></a></p>
+
+<h3>
+<a id="les-variables-relatives-à-la-souris" class="anchor" href="#les-variables-relatives-%C3%A0-la-souris" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Les variables relatives à la souris</h3>
+
+<p>Processing met à notre disposition différentes variables globales nous permettant de connaitre l’état de notre souris, ainsi :
+<strong>mouseX</strong> et <strong>mouseY</strong> , nous permettent de connaitre les coordonnées de la position de la souris dans notre fenêtre à tout moment.</p>
+
+<p><strong>mousePressed</strong> : nous renvoi un booléen : TRUE si la souris est cliquée, FALSE sinon.
+<strong>mouseButton</strong> : nous permet de connaitre l’identité du bouton qui a été cliqué</p>
+
+<p>Le sketch_1_11 met en oeuvre ces variables en imprimant leurs valeurs dans la console.</p>
+
+<p>Il existe aussi les variables pmouseX et pmouseY qui permette de connaitre la position de la souris à l’image précédente., combinées à mouseX et mouseY, il devient assez facile de calculer la vitesse de déplacement de la souris : </p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">void</span> setup() {
+  size(<span class="pl-c1">200</span>, <span class="pl-c1">200</span>);
+  background(<span class="pl-c1">0</span>);
+  strokeWeight(<span class="pl-c1">4</span>);
+  frameRate(<span class="pl-c1">15</span>);
+  colorMode(<span class="pl-c1">HSB</span>, <span class="pl-c1">360</span>, <span class="pl-c1">100</span>, <span class="pl-c1">100</span>);
+}
+<span class="pl-k">void</span> draw() {
+  noStroke();
+  fill(<span class="pl-c1">0</span>, <span class="pl-c1">25</span>);
+  rect(<span class="pl-c1">0</span>, <span class="pl-c1">0</span>, width, height);
+  stroke(random(<span class="pl-c1">360</span>), <span class="pl-c1">100</span>, <span class="pl-c1">100</span>);
+  line(pmouseX, pmouseY, mouseX, mouseY);
+}</pre></div>
+
+<p><img src="assets/011_mouse.png" alt="Sketch_1_12.pde"></p>
+
+<p><a name="souris_fonctions"></a></p>
+
+<h3>
+<a id="les-fonctions-relatives-à-la-souris" class="anchor" href="#les-fonctions-relatives-%C3%A0-la-souris" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Les fonctions relatives à la souris</h3>
+
+<p>Il existe aussi un certain nombre de fonctions permettant d’exectuer un bloc de code en fonction d’un événement souris :</p>
+
+<ul>
+<li>mousePressed() : lorsque l’on appuie sur un bouton.</li>
+<li>mouseReleased() : lorsque l’on relâche un bouton.</li>
+<li>mouseClicked() : lorsque l’on appuie puis que l’on relâche un bouton.</li>
+<li>mouseMoved() : lorsque l’on déplace la souris.</li>
+<li>mouseDragged() : lorsque l’on déplace la souris alors qu’un bouton est appuyé.</li>
+<li>mouseWheel() : lorsque l’on active la molette.</li>
+</ul>
+
+<p>Toutes ces fonctions s’utilisent de la même façon : elles sont déclarés comme n'importe quelle fonction, le bloc présent entre les accolades est executé quand la fonction est déclenchée.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">void</span> setup() {
+  size(<span class="pl-c1">200</span>, <span class="pl-c1">200</span>);
+}
+
+<span class="pl-k">void</span> draw() {
+}
+
+<span class="pl-k">void</span> mousePressed() {
+  noStroke();
+  fill(random(<span class="pl-c1">255</span>), random(<span class="pl-c1">255</span>), random(<span class="pl-c1">255</span>), random(<span class="pl-c1">100</span>, <span class="pl-c1">180</span>)); 
+  ellipse(mouseX, mouseY, <span class="pl-c1">15</span>, <span class="pl-c1">15</span>);
+}</pre></div>
+
+<p><img src="assets/012_mouse_pressed.png" alt="exemples_pdf/Sketch_1_13.pde"></p>
+
+<p>Un petit point cependant sur la fonction mouseWheel(),avec laquelle on peut obtenir le sens de déplacement de la molette, par le biais d’un MouseEvent.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">float</span> hue<span class="pl-k">=</span><span class="pl-c1">180</span>;
+
+<span class="pl-k">void</span> setup() {
+  size(<span class="pl-c1">200</span>, <span class="pl-c1">200</span>);
+  colorMode(<span class="pl-c1">HSB</span>,<span class="pl-c1">360</span>,<span class="pl-c1">100</span>,<span class="pl-c1">100</span>);
+}
+
+<span class="pl-k">void</span> draw() {
+  background(hue,<span class="pl-c1">100</span>,<span class="pl-c1">100</span>);
+}
+
+<span class="pl-k">void</span> mouseWheel(<span class="pl-smi">MouseEvent</span> event) {
+  <span class="pl-k">float</span> amt <span class="pl-k">=</span> event<span class="pl-k">.</span>getCount();
+  hue <span class="pl-k">+=</span>amt;
+}</pre></div>
+
+<p><img src="assets/013_mouse_wheel.png" alt="exemples_pdf/Sketch_1_14.pde"></p>
+
+<p><a name="map"></a></p>
+
+<h3>
+<a id="map" class="anchor" href="#map" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>map()</h3>
+
+<p>La fonction map() peut s’avérer être très utile dans le cadre de divers programmes. Elle permet d’échelonner des valeurs d’un intervalle à un autre. Imaginons par exemple qu’en fonction de la position de la souris nous voulions changer la taille d’un cercle. </p>
+
+<p>Nous voulons que lorsque la souris est tout à gauche de l’écran, notre cercle soit petit (disons un diamètre de 5) et que lorsque nous sommes tout à droite notre cercle soir gros (un diamètre de 100). Nous savons déjà que lorsque notre souris est tout à gauche la variable mouseX aura pour valeur 0, lorsqu’elle est tout à droite sa valeur est de « width » (la variable globale contenant la largeur de notre fenêtre de dessin). La fonction map nous permettra alors de transformer la position de notre souris (comprise entre 0 et width) en une valeur comprise entre 5 et 100.</p>
+
+<div class="highlight highlight-source-java"><pre>    <span class="pl-k">float</span> diam ;
+    diam <span class="pl-k">=</span> map(mouseX,<span class="pl-c1">0</span>,width,<span class="pl-c1">5</span>,<span class="pl-c1">100</span>) ;</pre></div>
+
+<p><a name="clavier"></a></p>
+
+<h2>
+<a id="clavier" class="anchor" href="#clavier" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Clavier</h2>
+
+<p>De la même façon, les évènements claviers peuvent être interceptés. Il existes les variables :</p>
+
+<ul>
+<li><strong>key</strong></li>
+<li><strong>keyCode</strong></li>
+</ul>
+
+<p>qui retournent les valeurs de la dernière touche de clavier enfoncée ; il existe aussi des fonctions similaires à celles de la souris :</p>
+
+<ul>
+<li><strong>keyPressed()</strong></li>
+<li><strong>keyReleased()</strong></li>
+<li><strong>keyTyped()</strong></li>
+</ul>
+
+<p><strong>keyTyped()</strong>  va ignorer l’enfoncement des touches CTRL, ALT etc.</p>
+
+<p>En fonction des machines, des systèmes d’exploitation ces fonctions et variables ne renvoient pas systématiquement les même valeurs. Attention donc pour le développement sur plusieurs plateformes.(Pour débugger il est conseillé d’avoir recours à des println pour vérifier les valeurs dans la console). Le chapitre suivant concernant le texte et les polices de caractère vous donnera un exemple d’utilisation de ces fonction.</p>
+
+<p><a name="Dessiner-du-texte-et-utiliser-des-polices-de-caract%C3%A8re"></a></p>
+
+<h1>
+<a id="dessiner-du-texte-utiliser-des-polices-de-caractère" class="anchor" href="#dessiner-du-texte-utiliser-des-polices-de-caract%C3%A8re" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dessiner du texte, utiliser des polices de caractère</h1>
+
+<p>Le programme suivant va permettre de stocker les lettres tapées sur notre clavier dans une variable de type String et va dessiner ensuite ces lettres de manière aléatoire sur l’écran. La fonction keyPressed() va gérer l’ensemble des interactions avec le clavier.</p>
+
+<p>Pour dessiner du texte nous utilisons à la ligne 22 la fonction :</p>
+
+<div class="highlight highlight-source-java"><pre>text (string, <span class="pl-k">int</span>, <span class="pl-k">int</span>) ;</pre></div>
+
+<p>permettant de dessiner une chaine de caractère en spécifiant les coordonnées auxquelles la dessiner. Le rendu du texte est affecté par la fonction fill() comme n’importe quelle forme géométrique, mais ne réponds pas à la fonction stroke().</p>
+
+<p>Deux autres fonctions permettent de modifier l’apparence du rendu du texte :</p>
+
+<div class="highlight highlight-source-java"><pre>textSize(<span class="pl-k">float</span>) ;</pre></div>
+
+<p>utilisée à la ligne 20, permet d’en changer la taille, et</p>
+
+<div class="highlight highlight-source-java"><pre>textFont(<span class="pl-smi">PFont</span>) ;</pre></div>
+
+<p>permet de changer la police à la ligne21. Le type PFont est un objet permettant de charger une police externe chargée dans un fichier « *.vlw ».</p>
+
+<p>On utilise donc une variable « font » de type PFont pour charger nos polices à la volée en fonction des touches enfoncées.</p>
+
+<p>Concernant les interaction clavier, on utilise une technique de « castage » pour forcer le type de donnée que l’on va obtenir de la variable key. A la ligne 24, on s’assure que notre variable k sera bien un caractère avant de l’insérer dans notre chaine de caractères principale, à la ligne 25 on s’assure d’obtenir un entier pour avoir l’identifiant de la touche. Ensuite à l’aide de tests, nous définissons les action à effectuer.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> buff <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>        <span class="pl-pds">"</span></span>;
+<span class="pl-smi">PFont</span> font;
+
+<span class="pl-k">void</span> setup() {
+  size(<span class="pl-c1">400</span>, <span class="pl-c1">300</span>);
+  background(<span class="pl-c1">255</span>);
+  colorMode(<span class="pl-c1">HSB</span>);
+  smooth();
+  font <span class="pl-k">=</span>loadFont(<span class="pl-s"><span class="pl-pds">"</span>Mosaicleaf-48.vlw<span class="pl-pds">"</span></span>);
+}
+
+<span class="pl-k">void</span> draw() { 
+  noStroke();
+  fill (<span class="pl-c1">255</span>, <span class="pl-c1">35</span>);
+  rect (<span class="pl-c1">0</span>, <span class="pl-c1">0</span>, width, height);
+  <span class="pl-k">char</span> k <span class="pl-k">=</span> buff<span class="pl-k">.</span>charAt(floor(random(buff<span class="pl-k">.</span>length()<span class="pl-k">-</span><span class="pl-c1">1</span>))); 
+  fill(random(<span class="pl-c1">255</span>), <span class="pl-c1">255</span>, <span class="pl-c1">255</span>);
+  textSize(random(<span class="pl-c1">48</span>, <span class="pl-c1">100</span>));
+  textFont(font, <span class="pl-c1">48</span>);
+  text(k, random(<span class="pl-c1">0</span>, width), random(<span class="pl-c1">0</span>, height));
+}
+
+<span class="pl-k">void</span> keyPressed() {
+
+  <span class="pl-k">char</span> k <span class="pl-k">=</span> (<span class="pl-k">char</span>)key;
+  <span class="pl-k">int</span> nkey <span class="pl-k">=</span> (<span class="pl-k">int</span>) key;
+
+  <span class="pl-k">if</span> (nkey <span class="pl-k">==</span> <span class="pl-c1">48</span>) {
+    font <span class="pl-k">=</span> loadFont(<span class="pl-s"><span class="pl-pds">"</span>Mosaicleaf-48.vlw<span class="pl-pds">"</span></span>);
+  }
+  <span class="pl-k">else</span> <span class="pl-k">if</span> (nkey <span class="pl-k">==</span> <span class="pl-c1">49</span>) {
+    font <span class="pl-k">=</span>loadFont(<span class="pl-s"><span class="pl-pds">"</span>Bauhaus93-48.vlw<span class="pl-pds">"</span></span>);
+  }
+  <span class="pl-k">else</span> <span class="pl-k">if</span> (nkey <span class="pl-k">==</span> <span class="pl-c1">50</span>) {
+    font <span class="pl-k">=</span>loadFont(<span class="pl-s"><span class="pl-pds">"</span>HarlowSolid-48.vlw<span class="pl-pds">"</span></span>);
+  }
+  <span class="pl-k">else</span> <span class="pl-k">if</span> (nkey<span class="pl-k">==</span><span class="pl-c1">51</span>) {
+    font <span class="pl-k">=</span>loadFont(<span class="pl-s"><span class="pl-pds">"</span>Magneto-Bold-48.vlw<span class="pl-pds">"</span></span>);
+  }
+  <span class="pl-k">else</span> <span class="pl-k">if</span> (nkey <span class="pl-k">==</span> <span class="pl-c1">51</span> <span class="pl-k">||</span> nkey <span class="pl-k">==</span><span class="pl-c1">52</span> <span class="pl-k">||</span> nkey <span class="pl-k">==</span><span class="pl-c1">53</span> <span class="pl-k">||</span>nkey <span class="pl-k">==</span><span class="pl-c1">54</span>
+    <span class="pl-k">||</span> nkey <span class="pl-k">==</span><span class="pl-c1">55</span> <span class="pl-k">||</span>nkey <span class="pl-k">==</span> <span class="pl-c1">56</span> <span class="pl-k">||</span> nkey <span class="pl-k">==</span> <span class="pl-c1">57</span>) {
+  }
+  <span class="pl-k">else</span> <span class="pl-k">if</span> (key <span class="pl-k">==</span> <span class="pl-c1">BACKSPACE</span>) {
+    buff <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>  <span class="pl-pds">"</span></span>;
+  }
+  <span class="pl-k">else</span> {
+    buff<span class="pl-k">=</span>k<span class="pl-k">+</span>buff;
+  }
+}</pre></div>
+
+<p><img src="assets/014_fonts.png" alt="exemples_pdf/Sketch_1_15.pde"></p>
+
+<p>Il existe un outil permettant de construire des fonts au format .vlw et donc utilizable dans processing à partir des polices installées sur le système. Il suffit de cliquer sur le menu « Tools -&gt; Create Font ».</p>
+
+<p><a name="Les-Classes-Programmation-Orient%C3%A9e-Objet"></a></p>
+
+<h1>
+<a id="les-classes-programmation-orientée-objet" class="anchor" href="#les-classes-programmation-orient%C3%A9e-objet" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Les Classes : Programmation Orientée Objet</h1>
+
+<p>Les classes sont un des concepts centraux de JAVA, elles nous permettent de créer des objets ensuite manipulables par du code. Souvent une classe permet d’encapsuler un certain nombre de concepts ensembles d’un façon générique, et permet d’améliorer la lisibilité de notre code.</p>
+
+<p>Cela peut paraître un peu barbare mais c’est en réalité relativement simple : un classe est la description théorique d’un objet. Par exemple dans ce chapitre nous allons créer un classe « Mover », cette classe permettra de créer un objet (représenté graphiquement par un cercle) qui se déplacera dans notre fenêtre de dessin et rebondira contre les bords.</p>
+
+<p><a name="structre-classe"></a></p>
+
+<h2>
+<a id="structure-dune-classe" class="anchor" href="#structure-dune-classe" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Structure d’une classe</h2>
+
+<p>Sa structure ressemble furieusement à la structure d’un programme processing. D’abord nous déclarerons des variables qui pourront être utilisées dans le code de notre classe. Ensuite il nous faudra une fonction pour initialiser ces variables , jusque là nous appelions ça la fonction « setup() », dans un classe cette fonction s’appelle un constructeur. Après cela nous aurons une ribambelle de fonctions qui seont appelées à chaque image calculée, qui nous permettra soit de dessiner quelquechose soit de modéliser un comportement physique, biologique , une interaction avec l’utilisateur etc.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">class</span> <span class="pl-en">Mover</span> {
+    <span class="pl-c">// déclaration de variables</span>
+    <span class="pl-c">// constructeur</span>
+    <span class="pl-en">Mover</span>(){
+    <span class="pl-c">// intialisation des variables</span>
+    }
+
+    <span class="pl-k">void</span> <span class="pl-en">update</span>(){
+    <span class="pl-c">// faire des calculs</span>
+    }
+
+    <span class="pl-k">void</span> <span class="pl-en">draw</span>(){
+    <span class="pl-c">// dessiner quelquechose</span>
+    }
+}</pre></div>
+
+<p><a name="construction-classe"></a></p>
+
+<h2>
+<a id="construction-dune-classe-simple" class="anchor" href="#construction-dune-classe-simple" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Construction d'une classe simple</h2>
+
+<p><a name="declaration-variables-classe"></a></p>
+
+<h3>
+<a id="déclaration-de-variables" class="anchor" href="#d%C3%A9claration-de-variables" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Déclaration de variables</h3>
+
+<p>Pour construire notre classe Mover, nous allons utiliser un nouveau type de variable, le PVector. Cette variable est bien sûr l’équivalent d’un vecteur mathématique, son utilisation nous simplifiera grandement la vie pour l’implémentation du comportement physique que nous souhaitons. (rappelons tout de même qu’un vecteur n’est ni plus ni moins qu’un couple de coordonées).</p>
+
+<p>Mover aura donc besoin pour fonctionner de deux vecteurs : un vecteur définissant la position de notre objet, et un vecteur définissant sa vitesse. Nous n’aurons donc que deux variables à déclarer :</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">PVector</span> loc, vel; </pre></div>
+
+<p><a name="constructeur-classe"></a></p>
+
+<h3>
+<a id="constructeur-initialisation" class="anchor" href="#constructeur-initialisation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Constructeur : initialisation</h3>
+
+<p>Pour initialiser ces variales nous allons utiliser le même type de technique que lorsque nous avions écrit des fonctions. Nous allons nous attacher à pouvoir passer des arguments à notre objet. Cela signifie que lors de la création de l’objet, nous devrons nous même spécifier certaines valeurs, qui seront propre à cet objet crée. La classe elle n’a que faire de ses valeurs, elle ne les manipule que comme des valeurs symboliques. Sans surprise le constructeur resemblera donc à ça :</p>
+
+<div class="highlight highlight-source-java"><pre>Mover(<span class="pl-smi">PVector</span> loc, <span class="pl-smi">PVector</span> vel) {
+    <span class="pl-v">this</span><span class="pl-k">.</span>loc <span class="pl-k">=</span> loc;
+    <span class="pl-v">this</span><span class="pl-k">.</span>vel <span class="pl-k">=</span> vel;
+}
+</pre></div>
+
+<p>Il est important de bien comprendre ici le fonctionnement du mot clé « this » qui peut créer une confusion. </p>
+
+<p>Dans notre classe nous avons déclarer deux PVector : ‘loc’ et ‘vel’. Nous avons fait de même entre les parenthèse de notre constructeur pour pouvoir passer des valeurs. Rappelez vous de la portée des variables (vue au tout début de ce document). Dans le cadre de notre constructeur nous avons donc deux fois, deux variables qui portent le même nom ; il faut donc impérativement être capable de les différencier. </p>
+
+<p>Le « this » sert à cela. Lorsque vous êtes dans cette situation le fait d’utiliser « this. » permet de signifier à notre programme que l’on parle de la variable de la classe, celle qui a été déclarée avant notre fonction.  Nous allons donc toujours avoir :</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-v">this</span><span class="pl-k">.</span>maVariable <span class="pl-k">=</span> maVariable ;</pre></div>
+
+<p>Autrement dit on attribue à la variable qui est utilisée dans notre classe, la valeur que l’on spécifie en argument de notre fonction.</p>
+
+<p><a name="m%C3%A9thodes-classe"></a></p>
+
+<h3>
+<a id="méthodes-complémentaires-update-et-draw" class="anchor" href="#m%C3%A9thodes-compl%C3%A9mentaires-update-et-draw" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Méthodes complémentaires : update() et draw()</h3>
+
+<p>En physique, il existe un lien entre la position, la vitesse et l’acceleration. Si l’on dérive l’accéleration par rapport au temps on obtient la vitesse, si l’on dérive cette vitesse on obtient la position. Et inversement si on intégre la position par rapport au temps on obtient la vitesse et si on intègre la vitesse on obtient la position (vérifiez si vous ne me croyez pas  !). Pour nous cela signifie que pour calculer la position de notre objet à l’image suivante , il suffit d’ajouter la vitesse à notre position actuelle ! un petit tour rapide sur la page d’aide de PVector nous apprend qu’il existe une méthode « add() » pour ajouter deux objets PVector. La fonction update() de notre classe contiendra donc très certainement cette ligne de code :</p>
+
+<div class="highlight highlight-source-java"><pre>loc<span class="pl-k">.</span>add(vel); </pre></div>
+
+<p>Il ne nous reste plus qu’à dessiner quelquechose … et ça nous savons déjà le faire.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">class</span> <span class="pl-en">Mover</span> {
+
+ <span class="pl-smi">PVector</span> loc, vel;
+
+ <span class="pl-en">Mover</span>(<span class="pl-smi">PVector</span> <span class="pl-v">loc</span>, <span class="pl-smi">PVector</span> <span class="pl-v">vel</span>) {
+   <span class="pl-v">this</span><span class="pl-k">.</span>loc <span class="pl-k">=</span> loc;
+   <span class="pl-v">this</span><span class="pl-k">.</span>vel <span class="pl-k">=</span> vel;
+ } 
+
+ <span class="pl-k">void</span> <span class="pl-en">update</span>() {  
+    loc<span class="pl-k">.</span>add(vel);  
+ }
+
+ <span class="pl-k">void</span> <span class="pl-en">draw</span>() {
+    pushStyle();
+    noStroke();
+    fill(<span class="pl-c1">255</span>, <span class="pl-c1">100</span>);
+    ellipse(loc<span class="pl-k">.</span>x, loc<span class="pl-k">.</span>y, <span class="pl-c1">25</span>, <span class="pl-c1">25</span>);
+ } 
+}</pre></div>
+
+<p>Voici donc notre classe quasi-complétée.  Il nous reste à utiliser des tests pour savoir si nos objets sortent de l’écran ; si c’est le cas il faut qu’ils rebondissent ! On écrit donc une nouvelle fonction spécifique.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">void</span> check_collisions(){
+    <span class="pl-k">if</span> (loc<span class="pl-k">.</span>x <span class="pl-k">&lt;</span> <span class="pl-c1">0</span> <span class="pl-k">||</span> loc<span class="pl-k">.</span>x<span class="pl-k">&gt;</span> width) { <span class="pl-c">// trop à gauche ou (‘||’) trop à droite</span>
+        vel<span class="pl-k">.</span>x <span class="pl-k">=</span> <span class="pl-k">-</span>vel<span class="pl-k">.</span>x; <span class="pl-c">// on inverse sa vitesse en abscisse</span>
+    }
+    <span class="pl-c">// meme schema pour les collision en haut et en bas avec l’ordonnée</span>
+    <span class="pl-k">if</span> (loc<span class="pl-k">.</span>y<span class="pl-k">&lt;</span><span class="pl-c1">0</span> <span class="pl-k">||</span> loc<span class="pl-k">.</span>y <span class="pl-k">&gt;</span> height) {
+        vel<span class="pl-k">.</span>y <span class="pl-k">=</span> <span class="pl-k">-</span>vel<span class="pl-k">.</span>y;
+    }
+}</pre></div>
+
+<p><a name="utilisation-classe"></a></p>
+
+<h2>
+<a id="utilisation-dune-classe-simple" class="anchor" href="#utilisation-dune-classe-simple" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Utilisation d'une classe simple</h2>
+
+<p>Maintenant notre classe écrite nous allons pouvoir l’utiliser. Vous trouvez peut-être que pour l’intant c’est beaucoup de code pour pas grand-chose, mais la magie de la programmation objet va commencer à opérer.</p>
+
+<p>Notre classe écrite nous pouvons maintenant créer des objets que nous pourrons manipuler. Nous pouvons par exemple maintenant déclarer un nouvel objet Mover comme n’importe quel autre type de processing (int, float, string…).1. M1. Mover mov ;over mov ;</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">Mover</span> mov ;</pre></div>
+
+<p>Cette ligne déclarer un nouvel objet, pour l’instant notre objet n’existe cependant toujours pas, nous disons juste à notre ordinateur  que nous allons le créer. Nous allons le créer dans le setup() de notre programme, mais nous avons d’abord besoin de créer deux PVector que nous passerons en argument : un pour la position de notre objet, un pour sa vitesse. Ensuite nous pourrons créer un nouvel objet de type Mover en utilisant la syntaxe :</p>
+
+<p>mov = new Mover(monVecteur1, mon Vecteur2) ;</p>
+
+<p>Voici donc le code du setup complet d'un setup initialisant un objet Mover</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">void</span> setup() {
+
+  size (<span class="pl-c1">800</span>, <span class="pl-c1">600</span>);
+
+  <span class="pl-smi">PVector</span> initLoc <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">PVector</span>(width<span class="pl-k">/</span><span class="pl-c1">2</span>, height<span class="pl-k">/</span><span class="pl-c1">2</span>);
+  <span class="pl-smi">PVector</span> initAcc <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">PVector</span>(<span class="pl-c1">1.05</span>, <span class="pl-k">-</span><span class="pl-c1">2.25</span>);
+  mov <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">Mover</span> (initLoc, initAcc);
+}</pre></div>
+
+<p>Remarquez, que la façon dont nous initialisons les PVector et notre objet Mover est quasi-identique. C’est normal puisque l’objet PVector est lui-même un classe, qui est déjà codée pour nous.</p>
+
+<p>Notre objet est donc crée, il ne nous reste plus qu’à la manipuler et à l’afficher. Cette étape se passera donc dans le draw() :</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">void</span> draw() {
+  background(<span class="pl-c1">180</span>); <span class="pl-c">// fond noir</span>
+  mov<span class="pl-k">.</span>update(); <span class="pl-c">// calculer la position</span>
+  mov<span class="pl-k">.</span>draw();  <span class="pl-c">// afficher notre forme</span>
+}</pre></div>
+
+<p>Le code assemblé est disponible dans <em>Sketch_2_01</em>. </p>
+
+<p><img src="assets/015_oop1.png" alt="exemples_pdf/Sketch_2_01.pde"></p>
+
+<p>A priori cela représente beaucoup d'efforts pour peux d'avantages, mais l'usage conjoint de classes et de tableaux, permet de simplifier la manipulation de milliers d'objets.</p>
+
+<p><a name="Les-Tableaux"></a></p>
+
+<h1>
+<a id="les-tableaux" class="anchor" href="#les-tableaux" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Les Tableaux</h1>
+
+<p>Les tableaux sont un type d’objets complexes, ils nous permettent de stocker un grand nombre d’éléments de n’importe quel type float, string …  ou même une classe que nous venons de créer. C’est précisément ce que nous allons faire. Cela nous permettra de traiter un maximum d’objet avec un minimum de lignes de code.</p>
+
+<p>Pour créer un tableau nous devons connaitre le nombre d’éléments que nous allons stocker, il nous faudra donc d’abord définir une variable pour définir la taille de notre tableau. Ensuite un tableau se crée en utilisant des crochets ‘[‘ et ‘]’. Il nous faut d’abord définir le type d’objets que va contenir le tableau, puis ouvrir et fermer des crochets pour signifier que c’est un tableau, donner un nom à cet objet puis l’initialiser à l’aide du mot clé « new ». Pour créer un tableau de 100 objets Move, il suffit donc d’écrire ceci :</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">int</span> num <span class="pl-k">=</span> <span class="pl-c1">100</span> ; 
+<span class="pl-k">Mover</span>[] movs <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">Mover</span>[num];</pre></div>
+
+<p>Pour créer un tableau de 100 flottants :</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">Float</span>[] flottants <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">float</span>[<span class="pl-c1">100</span>] ;</pre></div>
+
+<p>Maintenant que nous avons crée notre tableau, il nous faut initialiser les éléments qui le compose (dans le cas d’une classe) ou leur attribuer une valeur (dans le cas de flottants) pour cela nous allons utiliser une boucle for pour parcourir l’ensemble de ses  éléments.  Pour accéder à un élément précis, on utilise le nom du tableau et entre crochet l’index de l’élément auquel on veut accéder :</p>
+
+<div class="highlight highlight-source-java"><pre>flottants[<span class="pl-c1">5</span>] <span class="pl-k">=</span> <span class="pl-c1">10</span> ;</pre></div>
+
+<p>va attribuer la valeur 10 à l’index 5 de notre tableau de flottants.</p>
+
+<p>Pour initialiser notre tableau d’objets Mover , nous allons parcourir l’ensemble du tableau à l’aide d’une boucle, et à chaque index nous allons stocker un nouvel objet en appelant le constructeur de notre classe.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">void</span> setup() {
+  size (<span class="pl-c1">800</span>, <span class="pl-c1">600</span>);
+  <span class="pl-k">for</span> (<span class="pl-k">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span> ; i <span class="pl-k">&lt;</span> num ; i<span class="pl-k">++</span>) {
+    <span class="pl-smi">PVector</span> initLoc <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">PVector</span>(random(<span class="pl-c1">5</span>, width<span class="pl-k">-</span><span class="pl-c1">5</span>), random(<span class="pl-c1">5</span>, height<span class="pl-k">-</span><span class="pl-c1">5</span>));
+    <span class="pl-smi">PVector</span> initVel <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">PVector</span>(random(<span class="pl-k">-</span><span class="pl-c1">1</span>,<span class="pl-c1">1</span>), random(<span class="pl-k">-</span><span class="pl-c1">1</span>,<span class="pl-c1">1</span>));
+    movs[i] <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">Mover</span> (initLoc, initVel);
+  }
+}</pre></div>
+
+<p>Enfin il ne nous reste plus qu’à utiliser nos objets dans le draw(), encore à l’aide d’un boucle for.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">void</span> draw() {
+    background(<span class="pl-c1">180</span>); 
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span> ; i <span class="pl-k">&lt;</span> num ; i<span class="pl-k">++</span>) {
+        movs[i]<span class="pl-k">.</span>update();
+        movs[i]<span class="pl-k">.</span>draw();
+    } 
+}</pre></div>
+
+<p><img src="assets/016_oop2.png" alt="exemples_pdf/Sketch_2_02.pde"></p>
+
+<p>Nous avons donc maintenant 1000 objets Mover qui agissent indépendamment les uns des autres, et rebondissent sur les bords de notre fenêtre de dessin. </p>
+
+<p><a name="Emergence"></a></p>
+
+<h1>
+<a id="emergence--un-programme-interactif-complexe" class="anchor" href="#emergence--un-programme-interactif-complexe" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Emergence : Un programme interactif complexe</h1>
+
+<p>En repartant du programme précédent, nous allons nous attacher à représenter les choses d’un manière différente. Nous verrons qu’en changeant un peu de perspective nous arriverons à des résultats différents et graphiquement plus intéressants.</p>
+
+<p>L’émergence en terme graphique peut être définie comme l’apparition de structures graphiques complexes et ordonnées à partir d’action simples.</p>
+
+<p>Nous avons donc toujours un programme dessinant un certain nombre de particules qui se déplacent et rebondissent contre les bords de notre fenêtre de dessin. Au lieu de dessiner chaque particule individuellement, nous allons plutôt dessiner un lien entre deux de ces particules uniquement si la distance qui les sépare est inférieure à une certaine valeur.</p>
+
+<p>Cette valeur sera un variable nommée « treshold », elle sera ajusté en fonction de la position de la souris à l’aide de la fonction map() à la ligne 21.Nous n’utilisons plus la fonction draw() de notre classe Mover, elle a donc disparu.</p>
+
+<p>Pour dessiner ce lien nous allons devoir utiliser une double boucle pour parcourir deux fois notre tableau de movers, en faisant attention à gérer le cas où l’on fait référence au même objet :  à la ligne 27, nous vérifions que i est bien différent (« != ») de j.</p>
+
+<p>Nous utilisons la fonction dist() pour calculer la distance entre les coordonnées des deux objets, puis si cette valeur est inférieur à notre treshold, nous dessinons une ligne utilisant ces mêmes coordonées aux lignes 28,29 et 30. Et voilà !</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">int</span> num <span class="pl-k">=</span> <span class="pl-c1">1000</span>;
+<span class="pl-k">Mover</span>[] movs <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">Mover</span>[num];
+
+<span class="pl-k">void</span> setup() {
+  background(<span class="pl-c1">0</span>);
+  size (<span class="pl-c1">800</span>, <span class="pl-c1">600</span>, <span class="pl-c1">P2D</span>);
+  <span class="pl-k">for</span> (<span class="pl-k">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span> ; i <span class="pl-k">&lt;</span> num ; i<span class="pl-k">++</span>) {
+    <span class="pl-smi">PVector</span> initLoc <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">PVector</span>(random(<span class="pl-c1">5</span>, width<span class="pl-k">-</span><span class="pl-c1">5</span>), random(<span class="pl-c1">5</span>, height<span class="pl-k">-</span><span class="pl-c1">5</span>));
+    <span class="pl-smi">PVector</span> initVel <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">PVector</span>(random(<span class="pl-k">-</span><span class="pl-c1">1</span>, <span class="pl-c1">1</span>), random(<span class="pl-k">-</span><span class="pl-c1">1</span>, <span class="pl-c1">1</span>));
+    movs[i] <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">Mover</span> (initLoc, initVel);
+  }
+}
+
+
+<span class="pl-k">void</span> draw() {
+  noStroke();
+  fill(<span class="pl-c1">0</span>, <span class="pl-c1">50</span>);
+  rect(<span class="pl-c1">0</span>, <span class="pl-c1">0</span>, width, height);
+
+  stroke(<span class="pl-c1">255</span>);
+  <span class="pl-k">float</span> treshold <span class="pl-k">=</span> map(mouseX, <span class="pl-c1">0</span>, width, <span class="pl-c1">0</span>, <span class="pl-c1">50</span>);
+
+  <span class="pl-k">for</span> (<span class="pl-k">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span> ; i <span class="pl-k">&lt;</span> num ; i<span class="pl-k">++</span>) {
+    movs[i]<span class="pl-k">.</span>update();
+
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> j <span class="pl-k">=</span> <span class="pl-c1">0</span> ; j <span class="pl-k">&lt;</span> num ; j<span class="pl-k">++</span>) {
+      <span class="pl-k">if</span> (i<span class="pl-k">!=</span>j) {
+        <span class="pl-k">float</span> dist <span class="pl-k">=</span> dist(movs[i]<span class="pl-k">.</span>loc<span class="pl-k">.</span>x, movs[i]<span class="pl-k">.</span>loc<span class="pl-k">.</span>y, movs[j]<span class="pl-k">.</span>loc<span class="pl-k">.</span>x, movs[j]<span class="pl-k">.</span>loc<span class="pl-k">.</span>y);
+        <span class="pl-k">if</span> (dist <span class="pl-k">&lt;</span> treshold) {
+          line(movs[i]<span class="pl-k">.</span>loc<span class="pl-k">.</span>x, movs[i]<span class="pl-k">.</span>loc<span class="pl-k">.</span>y, movs[j]<span class="pl-k">.</span>loc<span class="pl-k">.</span>x, movs[j]<span class="pl-k">.</span>loc<span class="pl-k">.</span>y);
+        }
+      }
+    }
+  }
+}
+
+<span class="pl-k">class</span> <span class="pl-en">Mover</span> {
+
+  <span class="pl-smi">PVector</span> loc, vel;
+
+  <span class="pl-en">Mover</span>(<span class="pl-smi">PVector</span> <span class="pl-v">loc</span>, <span class="pl-smi">PVector</span> <span class="pl-v">vel</span>) {
+    <span class="pl-v">this</span><span class="pl-k">.</span>loc <span class="pl-k">=</span> loc;
+    <span class="pl-v">this</span><span class="pl-k">.</span>vel <span class="pl-k">=</span> vel;
+  } 
+
+  <span class="pl-k">void</span> <span class="pl-en">update</span>() {  
+    loc<span class="pl-k">.</span>add(vel);  
+    <span class="pl-k">if</span> (loc<span class="pl-k">.</span>x <span class="pl-k">&lt;</span> <span class="pl-c1">0</span> <span class="pl-k">||</span> loc<span class="pl-k">.</span>x<span class="pl-k">&gt;</span> width) {
+      vel<span class="pl-k">.</span>x <span class="pl-k">=</span> <span class="pl-k">-</span>vel<span class="pl-k">.</span>x;
+    }
+    <span class="pl-k">if</span> (loc<span class="pl-k">.</span>y<span class="pl-k">&lt;</span><span class="pl-c1">0</span> <span class="pl-k">||</span> loc<span class="pl-k">.</span>y <span class="pl-k">&gt;</span> height) {
+      vel<span class="pl-k">.</span>y <span class="pl-k">=</span> <span class="pl-k">-</span>vel<span class="pl-k">.</span>y;
+    }
+  }
+}</pre></div>
+
+<p><img src="assets/017_oop3.png" alt="exemples_pdf/Sketch_2_03.pde"></p>
+
+<p><a name="Travailler-avec-les-images"></a></p>
+
+<h1>
+<a id="travailler-avec-les-images" class="anchor" href="#travailler-avec-les-images" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Travailler avec les images</h1>
+
+<p>Processing utilise un classe pour travailler avec les images, pour les manipuler nous avons recours à l’objet « PImage ».</p>
+
+<p><a name="Charger-image"></a></p>
+
+<h1>
+<a id="charger-et-afficher-une-image" class="anchor" href="#charger-et-afficher-une-image" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Charger et afficher une image</h1>
+
+<p>Pour charger et afficher une image dans Processing, il faut d’abord s’assurer qu’elle soit d’un type accepté par processing à savoir : .gif, .jpg, .tga, ou .png.</p>
+
+<p>Il faut ensuite s’assurer qu’elle soit visible par le programme sur lequel on travaille. Pour cela il est préférable de sauvegarder le sketch, puis de glissr l’image à ajouter au sketch sur le fenêtre de processing. </p>
+
+<p>Dans le dossier du sketch en question (menu : Sketch -&gt; Show sketch floder ) apparaitra alors un dossier nommé « data », qui contiendra votre image.</p>
+
+<p>Une fois ces opération effectuées vous pouvez charger votre image comme ceci : </p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">PImage</span> img;
+
+<span class="pl-k">void</span> setup(){
+
+  img <span class="pl-k">=</span> loadImage(<span class="pl-s"><span class="pl-pds">"</span>visage.jpg<span class="pl-pds">"</span></span>);
+  size(<span class="pl-c1">600</span>,<span class="pl-c1">400</span>);  
+  println(img<span class="pl-k">.</span>width, img<span class="pl-k">.</span>height);
+
+}
+
+<span class="pl-k">void</span> draw(){ 
+   background(<span class="pl-c1">0</span>);
+   image(img,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>); 
+}
+
+<span class="pl-smi">A</span> la ligne <span class="pl-c1">1</span> on crée un nouvel objet <span class="pl-smi">PImage</span> appelé « img », on l’initialise à la ligne <span class="pl-c1">5</span> en chargeant l’image présente dans le dossier data. <span class="pl-smi">En</span> suite à la ligne <span class="pl-c1">13</span>, on affiche cette image, au point de coordonnées (<span class="pl-c1">0</span>,<span class="pl-c1">0</span>)<span class="pl-c1">.</span>
+
+<span class="pl-smi">Ce</span> code correspond au <span class="pl-k">*</span><span class="pl-smi">Sketch_4_01</span><span class="pl-k">.</span>pde<span class="pl-k">*</span><span class="pl-c1">.</span>
+
+<span class="pl-k">!</span>[exemples_pdf<span class="pl-k">/</span><span class="pl-smi">Sketch_4_01</span><span class="pl-k">.</span>pde](assets<span class="pl-k">/</span>018_images<span class="pl-k">.</span>png)
+
+<span class="pl-k">&lt;</span>a name<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>pixels-image<span class="pl-pds">"</span></span><span class="pl-k">/</span><span class="pl-k">&gt;</span>
+#<span class="pl-smi">Accc</span>éder aux pixels
+
+<span class="pl-smi">Une</span> fois l’image chargée, il est possible de faire énormément de manipulations, il existe beaucoup d’exemples dans la documentation en ligne de processing a propos des filtres que l’on peut appliquer. <span class="pl-smi">Nous</span> allons plutôt nous <span class="pl-k">int</span>éresser à la manipulation de pixels. 
+
+<span class="pl-smi">Il</span> existe une fonction appelée « loadPixels() » qui permet de charger automatiquement les couleurs des pixels d’une image dans un tableau qui se nommera pixels[]<span class="pl-c1">.</span> 
+
+<span class="pl-smi">Le</span> code suivant permet de lire la teinte du pixel d’une image pré<span class="pl-k">-</span>chargée à l’endroit précis du curseur de la souris <span class="pl-k">:</span>
+
+```java
+<span class="pl-smi">PImage</span> img ;
+
+<span class="pl-k">void</span> setup(){ 
+  background(<span class="pl-c1">0</span>);
+  img <span class="pl-k">=</span> loadImage(<span class="pl-s"><span class="pl-pds">"</span>ville.jpg<span class="pl-pds">"</span></span>);
+  size(img<span class="pl-k">.</span>width,img<span class="pl-k">.</span>height,<span class="pl-c1">P3D</span>);   
+}
+
+<span class="pl-k">void</span> draw(){
+   background(<span class="pl-c1">0</span>);
+   image(img,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>);
+
+   img<span class="pl-k">.</span>loadPixels();  
+   <span class="pl-k">int</span> mousePos <span class="pl-k">=</span> mouseX <span class="pl-k">+</span> mouseY<span class="pl-k">*</span>width;
+   println(hue(img<span class="pl-k">.</span>pixels[mousePos]));
+
+}</pre></div>
+
+<p>Jusqu’à la ligne 14, normalement tout va bien. La ligne 15 va appeler la fonction loadPixels() sur l’image que nous avons chargée, cela aura pour effet de nous permettre d’utiliser le tableau de pixels à la ligne 17 (« img.pixels[] »). Nous utilisons directement la fonction hue pour connaitre la teinte du pixel en question (se référer à l’usage de la fonction hue(myColor) dans la documentation en ligne). 
+Il faut cependant bien noter qu’à la ligne 16 nous convertissons les coordonnées de la souris en index linéaire dans un tableau.</p>
+
+<p>En effet, pixels[] est un tableau, à titre chaque valeur est stockée à un index précis, mais cet index est à une seule dimension, alors que les coordonnée de la souris sont en 2D.</p>
+
+<p>Cette pipette à couleur es disponible dans les exemples : <em>Sketch_4_02</em>.</p>
+
+<p><a name="pixels-3d"></a></p>
+
+<h1>
+<a id="faire-sortir-les-pixels-en-3d" class="anchor" href="#faire-sortir-les-pixels-en-3d" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Faire « sortir » les pixels en 3D</h1>
+
+<p>A partir de maintenant il devient très facilement possible d’effectuer tout un tas d’effets artistiques animés, en se basant sur les données des pixels. Dans le programme suivant nous allons nous attacher à déplacer les pixels en fonction de leur luminosité (et de la position de la souris, pour accentuer ou diminuer l’effet).</p>
+
+<p>Afin d’avoir un programme plus rapide, nous allons avoir un setup() un peu plus long que d’habitude. En effet pour ne pas avoir à appeler la fonction loadPixels() en permanence, nous allons le faire une seule fois dans le setup de notre programme. Cela nous permettra de remplir des tableaux pour mieux organiser nos données et pouvoir ainsi les dessiner plus simplement. Comme précédemment nous allons parcourir chaque pixel de l’image à l’aide d’une double boucle for, et nous allons stocker dans des tableaux de même dimension, les coorodonnées en x dans le tableau xC[], les coordonnées en y dans le tableau yC[] et la couleur de chaque pixel dans le tableau pColor[].</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">PImage</span> img ;
+
+<span class="pl-k">int</span> [] xC;
+<span class="pl-k">int</span> [] yC;
+<span class="pl-k">int</span> [] pColor;
+
+<span class="pl-k">void</span> setup() {
+  size(<span class="pl-c1">500</span>, <span class="pl-c1">400</span>, <span class="pl-c1">P3D</span>);
+  background(<span class="pl-c1">0</span>);
+  img <span class="pl-k">=</span> loadImage(<span class="pl-s"><span class="pl-pds">"</span>image_200x100.jpg<span class="pl-pds">"</span></span>);
+  img<span class="pl-k">.</span>loadPixels();
+
+  xC <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">int</span>[img<span class="pl-k">.</span>pixels<span class="pl-k">.</span>length];
+  yC <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">int</span>[img<span class="pl-k">.</span>pixels<span class="pl-k">.</span>length];
+  pColor <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">int</span>[img<span class="pl-k">.</span>pixels<span class="pl-k">.</span>length];
+
+  <span class="pl-k">for</span> (<span class="pl-k">int</span> i <span class="pl-k">=</span><span class="pl-c1">0</span> ; i <span class="pl-k">&lt;</span> img<span class="pl-k">.</span>width ; i<span class="pl-k">++</span>) {
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> j <span class="pl-k">=</span> <span class="pl-c1">0</span> ; j <span class="pl-k">&lt;</span> img<span class="pl-k">.</span>height; j<span class="pl-k">++</span>) {
+      <span class="pl-k">int</span> loc <span class="pl-k">=</span> i <span class="pl-k">+</span> j<span class="pl-k">*</span>img<span class="pl-k">.</span>width;
+      xC[loc] <span class="pl-k">=</span>i;
+      yC[loc] <span class="pl-k">=</span>j;
+      pColor[loc] <span class="pl-k">=</span> img<span class="pl-k">.</span>pixels[loc];
+    }
+  }
+}</pre></div>
+
+<p>Notez bien l’apparition du mode P3D dans l’instruction de taille de la fenêtre. Maintenant que nous avons ces informations, nous allons parcourir nos tableaux à chaque image et pour chaque valeur de l’index : créer un rectangle de la même couleur que le pixel d’origine et d’un taille de 1px X 1px, bref nous allons recréer l’image avec nos propres objets. La seule différence étant que nous allons ajouter une composante de translation en z, permettant de faire ressortir les pixels.</p>
+
+<p>Pour obtenir l’effet souhaité, nous allons cependant le faire en deux fois. L’objectif est d’avoir l’image intacte quand la souris est à gauche de l’écran et « éclatée » quand la souris est à droite. A la ligne04 ci-dessous, nous allons donc définir une variable valant 0 quand la souris est à gauche et 60 quand la souris est à droite, ce que nous avions déjà fait précédemment.</p>
+
+<p>Ensuite nous créons une boucle pour parcourir nos tableaux, nous stockons la luminosité de chaque pixel dans une variable à la ligne 07, puis nous nous apprêtons à dessiner avec des translations (usage du pushMatrix() …). La ligne 11 contient le positionnement de chaque forme : on décale de 150 pixels vers la droite et de 150 pixels vers le bas pour mieux centrer, puis on utilise les coordonnées stockées, en dernier paramètre on multiplie nos deux variable (position de la souris et luminosité) pour faire en sorte que les pixels les plus lumineux ressortent le plus.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">void</span> draw() {
+  background(<span class="pl-c1">0</span>);
+  <span class="pl-k">float</span> push_z <span class="pl-k">=</span> map(mouseX, <span class="pl-c1">0</span>, width, <span class="pl-c1">0</span>, <span class="pl-c1">60</span>);
+
+  <span class="pl-k">for</span> (<span class="pl-k">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span> ; i <span class="pl-k">&lt;</span> xC<span class="pl-k">.</span>length ; i<span class="pl-k">++</span>) {
+    <span class="pl-k">float</span> br <span class="pl-k">=</span> brightness(pColor[i]);
+    pushMatrix();
+    noStroke();
+    fill(pColor[i]);
+    translate(<span class="pl-c1">150</span><span class="pl-k">+</span> xC[i]<span class="pl-k">+</span><span class="pl-c1">5</span>, <span class="pl-c1">150</span><span class="pl-k">+</span>yC[i]<span class="pl-k">+</span><span class="pl-c1">5</span>, push_z<span class="pl-k">*</span>br<span class="pl-k">/</span><span class="pl-c1">20</span>);
+    rect(<span class="pl-c1">0</span>, <span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">1</span>);
+    popMatrix();
+  }
+}</pre></div>
+
+<p><img src="assets/019_pixels.png" alt="exemples_pdf/Sketch_4_03.pde"></p>
+
+<p><a name="Les-Librairies"></a></p>
+
+<h1>
+<a id="les-librairies" class="anchor" href="#les-librairies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Les Librairies</h1>
+
+<p>Un des grands avantages de Processing est sa vibrante communauté d’utilisateurs, qui écrit des tutoriels, qui documentent et partagent leurs travaux. Les développeurs de Processing ont voulu permettre aux utilisateurs développer leurs propres librairies et de les intégrer dans Processing.</p>
+
+<p>Il existe un grand nombre de librairies pour faire beaucoup de choses différentes : 
+<a href="http://processing.org/reference/libraries/">http://processing.org/reference/libraries/</a></p>
+
+<p>Il en existe pour tout un tas d’applications : pour animer, pour contrôler de la vidéo, pour exporter ou importer des formats de données particuliers, pour faire de la 3d, de la typographie ou encore pour faire parler son ordinateur…</p>
+
+<p>Nous allons nous intéresser principalement à deux librairies, une permettant de créer des boutons et des sliders pour contrôler nos sketch processing : controlP5. L’autre permettant de faire communiquer deux programmes entre eux. Ces deux librairies ont été codées par Andreas Schlegel (<a href="http://www.sojamo.de/code/">http://www.sojamo.de/code/</a>), un grand merci à lui !</p>
+
+<p><a name="installation"></a></p>
+
+<h2>
+<a id="installation-dune-librairie" class="anchor" href="#installation-dune-librairie" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation d'une librairie</h2>
+
+<p>Depuis la version 2.0 de processing, il existe un outil permettant d’installer facilement des librairies, c’est le « library manager » accessible depuis le menu « sketch -&gt; Import library -&gt; Add library ». </p>
+
+<p>Cet utilitaire permet de naviguer parmi les librairie disponibles de les installer ou de les supprimer. </p>
+
+<p>Si toute fois l’utilitaire ne fonctionnait pas bien, il existe un dossier spécifique dans notre sketchbook appelé « libraries » qui stocke toutes nos librairies installées. Pour rappel l’emplacement du sketchbook est modifiable dans « file -&gt; Preferences ». Pour installer une librairie, il suffit de télécharger la librairie, de dézipper l’archive et de placer le dossier dans votre dossier « libraries »</p>
+
+<p>Généralement une librairie est composée d’un dossier principal contenant quatre sous-dossier :</p>
+
+<ul>
+<li>/examples/</li>
+<li>/library/</li>
+<li>/reference/</li>
+<li>/src/</li>
+</ul>
+
+<p>Dans le dossier /library/ vous devez normalement trouver un fichier *.jar portant le même nom que votre dossier racine. Si c’est bien le cas votre librairie sera alors reconnue et utilisable.</p>
+
+<p>Généralement lorsque vous installez une librairie elle est fournie avec un certains nombres d’exemples censé expliquer son fonctionnement. On y accède via le menu File-&gt;Examples, il faut ensuite naviguer jusqu’au menu déroulant intitulé « Contributed Libraries », puis trouver le dossier correspondant à la librairie installée.</p>
+
+<p><a name="cp5"></a></p>
+
+<h2>
+<a id="controlp5-pour-la-création-de-gui-exemples-de-niveau-intermédiaire" class="anchor" href="#controlp5-pour-la-cr%C3%A9ation-de-gui-exemples-de-niveau-interm%C3%A9diaire" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ControlP5 pour la création de GUI (exemples de niveau intermédiaire)</h2>
+
+<p>ControlP5 est une librairie permettant des créer des GUI (« General User Interface »), c’est-à-dire des boutons et des glissières permettant de contrôler certains paramètres de notre programme.</p>
+
+<p>En naviguant jusqu’à l’aide fournie avec la librairie, vous constaterez qu’elle est bien réelle et extensive (peut-être même un peu trop). </p>
+
+<p>Le dossier /controllers/, présente l’ensemble des éléments de GUI implémentés : allant du bouton, à la liste en accordéon, en passant par les doubles sliders (ControlP5range) et autres surface de type pad XY (ControlP5slider2D).</p>
+
+<p>Les dossiers /extra/ et/use/, introduisent  quelques notions plus avancées, et notamment l’utilisation d’une fenêtre externe pour y placer les éléments de GUI. C’est l’exemple auquel nous allons nous intéresser.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">/**</span>
+<span class="pl-c"> * ControlP5 Controlframe</span>
+<span class="pl-c"> * by Andreas Schlegel, 2012</span>
+<span class="pl-c"> * www.sojamo.de/libraries/controlp5</span>
+<span class="pl-c"> *</span>
+<span class="pl-c">*/</span>
+<span class="pl-k">import</span> <span class="pl-smi">java.awt.Frame</span>;
+<span class="pl-k">import</span> <span class="pl-smi">java.awt.BorderLayout</span>;
+<span class="pl-k">import</span> <span class="pl-smi">controlP5.*</span>;
+
+<span class="pl-k">private</span> <span class="pl-smi">ControlP5</span> cp5;
+
+<span class="pl-smi">ControlFrame</span> cf;
+
+<span class="pl-k">int</span> def;
+
+<span class="pl-k">void</span> setup() {
+  size(<span class="pl-c1">400</span>, <span class="pl-c1">400</span>);
+  cp5 <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">ControlP5</span>(<span class="pl-v">this</span>);
+
+  cf <span class="pl-k">=</span> addControlFrame(<span class="pl-s"><span class="pl-pds">"</span>extra<span class="pl-pds">"</span></span>, <span class="pl-c1">200</span>, <span class="pl-c1">200</span>);
+}
+
+<span class="pl-k">void</span> draw() {
+ background(def);
+}
+
+<span class="pl-smi">ControlFrame</span> addControlFrame(<span class="pl-smi">String</span> theName, <span class="pl-k">int</span> theWidth, <span class="pl-k">int</span> theHeight) {
+ <span class="pl-smi">Frame</span> f <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">Frame</span>(theName);
+ <span class="pl-smi">ControlFrame</span> p <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">ControlFrame</span>(<span class="pl-v">this</span>, theWidth, theHeight);
+ f<span class="pl-k">.</span>add(p);
+ p<span class="pl-k">.</span>init();
+ f<span class="pl-k">.</span>setTitle(theName);
+ f<span class="pl-k">.</span>setSize(p<span class="pl-k">.</span>w, p<span class="pl-k">.</span>h);
+ f<span class="pl-k">.</span>setLocation(<span class="pl-c1">100</span>, <span class="pl-c1">100</span>);
+ f<span class="pl-k">.</span>setResizable(<span class="pl-c1">false</span>);
+ f<span class="pl-k">.</span>setVisible(<span class="pl-c1">true</span>);
+ <span class="pl-k">return</span> p;
+}
+</pre></div>
+
+<p>Dans cette première partie, on commence par importer les librairies nécessaires. On utilise ControlP5, déclarée en ligne 9, mais aussi deux classes provenant directement de Java.awt (AWT = Abstract Window Toolkit), ce qui nous permettra de créer une seconde fenêtre pour notre programme. Nous auront aussi besoin d’une classe que nous adapterons suivant nos besoins, elle est donnée ci-dessous.
+Après avoir appelé nos librairies, nous créons une instance de ControlP5 qui s’appelera « cp5 » à la ligne 11, qui sera initialisée à la ligne 19 dans le setup().</p>
+
+<p>Ensuite nous créons un nouveau ControlFrame appelé « cf » à la ligne 13. ControlFrame signifie fenêtre de contrôle et sera donc notre seconde fenêtre dans laquelle nous placerons notre interface. Notez bien que lors de son initialisation à la ligne 21, nous appelons une fonction spécifique qui commence à la ligne 28 et s’achève à la ligne 39. Cette fonction va appeler les fonctions java que l’on a importé pour créer une fenêtre portant le nom que l’on aura spécifié en premier argument, et les dimensions en deuxième et troisième arguments. Cette fonction n’a pas besoin d’être modifiée et peut rester la même à chaque utilisation.</p>
+
+<p>Dans cette fonction à la ligne 30, on appelle le constructeur de la classe ControlFrame décrite ci-dessous. Cela permet créer  la fenêtre de manière et de créer un lien entre les deux fenêtre, cela sort du cadre de cette introduction (« this » et « Object parent » y sont pour beaucoup). Il faut s’attarder sur la méthode setup() de cette nouvelle classe(lignes 47 à 53), pour comprendre comment ajouter des contrôleurs dans notre nouvelle fenêtre.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">ControlFrame</span> <span class="pl-k">extends</span> <span class="pl-e">PApplet</span> {
+
+  <span class="pl-k">int</span> w, h;
+  <span class="pl-k">int</span> abc <span class="pl-k">=</span> <span class="pl-c1">100</span>;
+  <span class="pl-smi">ControlP5</span> cp5;
+  <span class="pl-smi">Object</span> parent;
+
+  <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">setup</span>() {
+    size(w, h);
+    frameRate(<span class="pl-c1">25</span>);
+    cp5 <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">ControlP5</span>(<span class="pl-v">this</span>);
+    cp5<span class="pl-k">.</span>addSlider(<span class="pl-s"><span class="pl-pds">"</span>abc<span class="pl-pds">"</span></span>)<span class="pl-k">.</span>setRange(<span class="pl-c1">0</span>, <span class="pl-c1">255</span>)<span class="pl-k">.</span>setPosition(<span class="pl-c1">10</span>, <span class="pl-c1">10</span>);
+    cp5<span class="pl-k">.</span>addSlider(<span class="pl-s"><span class="pl-pds">"</span>def<span class="pl-pds">"</span></span>)<span class="pl-k">.</span>plugTo(parent, <span class="pl-s"><span class="pl-pds">"</span>def<span class="pl-pds">"</span></span>)<span class="pl-k">.</span>setRange(<span class="pl-c1">0</span>, <span class="pl-c1">255</span>)<span class="pl-k">.</span>setPosition(<span class="pl-c1">10</span>, <span class="pl-c1">30</span>);
+  }
+
+  <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">draw</span>() {
+    background(abc);
+  }
+
+  <span class="pl-k">private</span> <span class="pl-en">ControlFrame</span>() {
+  }
+
+  <span class="pl-k">public</span> <span class="pl-en">ControlFrame</span>(<span class="pl-smi">Object</span> <span class="pl-v">theParent</span>, <span class="pl-k">int</span> <span class="pl-v">theWidth</span>, <span class="pl-k">int</span> <span class="pl-v">theHeight</span>) {
+    parent <span class="pl-k">=</span> theParent;
+    w <span class="pl-k">=</span> theWidth;
+    h <span class="pl-k">=</span> theHeight;
+  }
+
+  <span class="pl-k">public</span> <span class="pl-smi">ControlP5</span> <span class="pl-en">control</span>() {
+    <span class="pl-k">return</span> cp5;
+  }
+}</pre></div>
+
+<p>En premier lieu notre classe fait appel à une nouvelle instance de controlP5 rattachée à cette nouvelle fenêtre (ligne 50). A la ligne 51, on crée un slider appelé « abc », qui va sortir des valeurs comprises entre 0 et 255, et qui sera situé à la position (10,10) dans la nouvelle fenêtre. De part son nom, les valeurs du slider « abc », seront directement stockées dans la variable du même nom.</p>
+
+<p>A la ligne 52 on crée un second slider, cette fois appelé « def », qui va sortir le même type de valeurs, à la différence que ces données seront envoyées à notre fenêtre parente, et stockées dans notre variable de type entier « def ».</p>
+
+<p>D’un façon générale, il est plus clair d’utiliser systématiquement fonction « .plugTo(this,myVar) » pour associer la valeur d’un gui à une variable. Dans notre exemple, on utilise « parent », pour spécifier qu’il s’agit d’une autre fenêtre que l’on a préalablement définit, mais l’utilisation de « this » permet de le faire aussi lorsque contrôles et dessins se passent dans la même fenêtre.</p>
+
+<p><img src="assets/018_cp5.png" alt="cp5 exemple"></p>
+
+<p>Une fois la librairie installée vous pourrez trouver un exemple ici :
+File-&gt;Examples-&gt;ContributerLibrairies-&gt; ControlP5-&gt;Extra-&gt;ControlP5frame.pde</p>
+
+<p>ControlP5 est une librairie très aboutie avec beaucoup de fonctionnalités, mais sa mise en œuvre peut-être parfois un peu lourde. S’il s’agit de faire des tests, le mode « Tweak » peut  s’avérer être une bonne alternative.</p>
+
+<p><a name="oscp5"></a></p>
+
+<h2>
+<a id="oscp5-pour-la-communication-avec-dautres-programmes" class="anchor" href="#oscp5-pour-la-communication-avec-dautres-programmes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OSCP5 pour la communication avec d’autres programmes</h2>
+
+<p>OSCP5 est un support pour processing de la fameuse librairie de communication entre différents paradigmes de programmation. OSC est présent dans quasiment tous les langages c’est donc un classique à connaitre et à utiliser sans modération.</p>
+
+<p>Les exemples sketch_3_01_OSC_Receive.pde et sketch_3_01_OSC_Send.pde sont donc à utiliser conjointement. Le premier programme recevra des informations du second, et changera sa couleur de fond en fonction de la valeur reçue. Le second programme, enverra une valeur aléatoire lorsque l’on clique sur sa fenêtre.</p>
+
+<p>Pour effectuer cela, il important de pouvoir spécifier une adresse ip pour pouvoir envoyer un message a un endroit précis et un numéro de port.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">//Receiver</span>
+<span class="pl-k">import</span> <span class="pl-smi">oscP5.*</span>;
+<span class="pl-k">import</span> <span class="pl-smi">netP5.*</span>;
+
+<span class="pl-smi">OscP5</span> oscP5;
+
+<span class="pl-k">float</span> receivedValue;
+
+<span class="pl-k">void</span> setup() {
+  size(<span class="pl-c1">400</span>, <span class="pl-c1">400</span>);
+  frameRate(<span class="pl-c1">25</span>);
+
+  receivedValue <span class="pl-k">=</span><span class="pl-c1">0</span>;
+
+  oscP5 <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">OscP5</span>(<span class="pl-v">this</span>, <span class="pl-c1">1234</span>);
+}
+
+<span class="pl-k">void</span> draw() {
+  background(receivedValue);
+}
+
+<span class="pl-k">void</span> oscEvent(<span class="pl-smi">OscMessage</span> theOscMessage) {
+   <span class="pl-k">if</span> (theOscMessage<span class="pl-k">.</span>checkAddrPattern(<span class="pl-s"><span class="pl-pds">"</span>/test<span class="pl-pds">"</span></span>)<span class="pl-k">==</span><span class="pl-c1">true</span>) {
+     <span class="pl-k">float</span> firstValue <span class="pl-k">=</span> theOscMessage<span class="pl-k">.</span>get(<span class="pl-c1">0</span>)<span class="pl-k">.</span>floatValue();  
+     <span class="pl-smi">String</span> secondValue <span class="pl-k">=</span> theOscMessage<span class="pl-k">.</span>get(<span class="pl-c1">1</span>)<span class="pl-k">.</span>stringValue();
+     receivedValue <span class="pl-k">=</span> firstValue;
+   }
+  }
+}</pre></div>
+
+<p>Les lignes 2 et 3 permettent d’importer les objets nécessaires. La ligne 5 crée une instance d’OSCP5 La ligne 15, située dans le setup est primordiale pour le bon fonctionnement de notre programme, le second argument fourni (ici « 1234 » )  est nôtre numéro de port, cette ligne signifie donc que nous écouterons toutes les informations entrantes sur cette machine (« this ») transitant par le port « 1234 ».  Lorsqu’une telle information sera reçue, elle activera la fonction présente de la ligne 22 à la ligne 28.</p>
+
+<p>Un message OSC est avant tout un préfixe « /test » ici, permettant de trier les messages arrivant puis un tableau remplit de variable de différents types, il est alors toujours plus pratique de savoir exactement ce que l’on va recevoir. Ici, comme vous pourrez le voire ci-après notre message est , d’un préfixe « /test » puis est composé : d’un float aléatoire, et d’un string constant. Pour accéder à l’élément « n » du message on utilise « theOscMessage.get(n) », puis on utilise l’accesseur approprié au type de valeur que l’on reçoit (« .floatValue() »  pour un float).</p>
+
+<p>La ligne 23 reçoit donc une valeur flottante, la ligne 25 stocke cette valeur dans une variable qui va servir à spécifier la couleur de fond de notre fenêtre.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">// Sender</span>
+<span class="pl-k">import</span> <span class="pl-smi">oscP5.*</span>;
+<span class="pl-k">import</span> <span class="pl-smi">netP5.*</span>;
+
+<span class="pl-smi">OscP5</span> oscP5;
+<span class="pl-smi">NetAddress</span> myRemoteLocation;
+
+<span class="pl-k">void</span> setup() {
+  size(<span class="pl-c1">400</span>, <span class="pl-c1">400</span>);
+  frameRate(<span class="pl-c1">25</span>);
+
+  oscP5 <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">OscP5</span>(<span class="pl-v">this</span>, <span class="pl-c1">12000</span>);
+  myRemoteLocation <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">NetAddress</span>(<span class="pl-s"><span class="pl-pds">"</span>127.0.0.1<span class="pl-pds">"</span></span>, <span class="pl-c1">1234</span>);
+}
+
+<span class="pl-k">void</span> draw() {
+   background(<span class="pl-c1">0</span>);
+}
+
+<span class="pl-k">void</span> mousePressed() {
+
+  <span class="pl-smi">OscMessage</span> myMessage <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">OscMessage</span>(<span class="pl-s"><span class="pl-pds">"</span>/test<span class="pl-pds">"</span></span>);
+  myMessage<span class="pl-k">.</span>add(random(<span class="pl-c1">255</span>));
+  myMessage<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>hello!<span class="pl-pds">"</span></span>);
+
+  oscP5<span class="pl-k">.</span>send(myMessage, myRemoteLocation);
+}</pre></div>
+
+<p>Jusqu’à la ligne 6, rien de nouveau sous le soleil.</p>
+
+<p>A la ligne 6, apparait cependant un nouvel objet propre à OSCP5 : un objet de type NetAdress, c’est en fait un couple composé d’une adresse ip et d’un numéro de port, comme vous pouvez le constater à la ligne 13.</p>
+
+<p>Le reste du programme tient dans la fonction mousePressed() (lignes 21 à 29).  A la ligne 23 on crée un nouveau message avec un préfixe spécifique. A la ligne 25 on lui ajoute une première donnée (un nombre aléatoire), puis une seconde à la ligne 26. La ligne 28, envoit notre message à l’adresse que nous avons spécifié dans le setup.</p>
+
+<p>N’oubliez pas de faire attention aux adresses ip et au numéros de ports lorsque vus utilisez OSCP5, n’hésitez pas non plus à faire des print pour être bien sûrs de recevoir vos messages !</p>
+
+<p>Le Chapitre suivant vous donnera un exemple permettant de de commander Processing à l’aide d’une analyse audio faite dans Pure Data.</p>
+
+<p><a name="audio-r%C3%A9actif"></a></p>
+
+<h1>
+<a id="3d-et-audio-réactif-avec-pure-data" class="anchor" href="#3d-et-audio-r%C3%A9actif-avec-pure-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3D et audio-réactif avec Pure-Data</h1>
+
+<p>Pour compléter le petit projet initié dans le chapitre sur les images, nous allons ajouter une partie audio-réactive, le temps pour Pure-Data et OSC de se rappeler à nos bons souvenirs…</p>
+
+<p>Pour faire simple nous n’allons plus utiliser la souris pour contrôler la quantité de déplacement de nos pixels, mais plutôt le niveau sonore ambiant dans la pièce dans laquelle nous travaillons. Nous allons faire l’analyse audio dans Pure-Data puis envoyer les données via OSC à Processing.</p>
+
+<p>En ce qui concerne le code Processing, nous prenons le programme précédent, auquel nous apportons quelques modifications, notamment pour ajouter la librairie OSCP5 et ajuster la réception des messages (un seul float avec le préfixe « /env »). Il faut aussi pense à la ligne 40 à changer la valeur de push_z en fonction des données que l’on reçoit.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">import</span> <span class="pl-smi">oscP5.*</span>;
+<span class="pl-k">import</span> <span class="pl-smi">netP5.*</span>;
+
+<span class="pl-smi">OscP5</span> oscP5;
+
+<span class="pl-k">float</span> r_env <span class="pl-k">=</span> <span class="pl-c1">0</span> ;
+
+<span class="pl-smi">PImage</span> img ;
+
+<span class="pl-k">int</span> [] xC;
+<span class="pl-k">int</span> [] yC;
+<span class="pl-k">int</span> [] pColor;
+
+<span class="pl-k">void</span> setup() {
+   size(<span class="pl-c1">500</span>, <span class="pl-c1">400</span>, <span class="pl-c1">P3D</span>);
+   background(<span class="pl-c1">0</span>);
+   img <span class="pl-k">=</span> loadImage(<span class="pl-s"><span class="pl-pds">"</span>image_200x100.jpg<span class="pl-pds">"</span></span>);
+   img<span class="pl-k">.</span>loadPixels();
+
+    oscP5 <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">OscP5</span>(<span class="pl-v">this</span>, <span class="pl-c1">8600</span>);
+
+   xC <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">int</span>[img<span class="pl-k">.</span>pixels<span class="pl-k">.</span>length];
+   yC <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">int</span>[img<span class="pl-k">.</span>pixels<span class="pl-k">.</span>length];
+   pColor <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">int</span>[img<span class="pl-k">.</span>pixels<span class="pl-k">.</span>length];
+
+   <span class="pl-k">for</span> (<span class="pl-k">int</span> i <span class="pl-k">=</span><span class="pl-c1">0</span> ; i <span class="pl-k">&lt;</span> img<span class="pl-k">.</span>width ; i<span class="pl-k">++</span>) {
+     <span class="pl-k">for</span> (<span class="pl-k">int</span> j <span class="pl-k">=</span> <span class="pl-c1">0</span> ; j <span class="pl-k">&lt;</span> img<span class="pl-k">.</span>height; j<span class="pl-k">++</span>) {
+       <span class="pl-k">int</span> loc <span class="pl-k">=</span> i <span class="pl-k">+</span> j<span class="pl-k">*</span>img<span class="pl-k">.</span>width;
+       xC[loc] <span class="pl-k">=</span>i;
+       yC[loc] <span class="pl-k">=</span>j;
+       pColor[loc] <span class="pl-k">=</span> img<span class="pl-k">.</span>pixels[loc];
+     }
+   }
+} 
+
+<span class="pl-k">void</span> draw() {
+  background(<span class="pl-c1">0</span>);
+
+  <span class="pl-k">float</span> push_z <span class="pl-k">=</span> map(r_env, <span class="pl-c1">45</span>, <span class="pl-c1">90</span>, <span class="pl-c1">0</span>, <span class="pl-c1">60</span>);
+
+  <span class="pl-k">for</span> (<span class="pl-k">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span> ; i <span class="pl-k">&lt;</span> xC<span class="pl-k">.</span>length ; i<span class="pl-k">++</span>) {
+    <span class="pl-k">float</span> br <span class="pl-k">=</span> brightness(pColor[i]);
+     pushMatrix();
+     noStroke();
+     fill(pColor[i]);
+     translate(<span class="pl-c1">150</span><span class="pl-k">+</span> xC[i]<span class="pl-k">+</span><span class="pl-c1">5</span>, <span class="pl-c1">150</span><span class="pl-k">+</span>yC[i]<span class="pl-k">+</span><span class="pl-c1">5</span>, push_z<span class="pl-k">*</span>br<span class="pl-k">/</span><span class="pl-c1">20</span>);
+     rect(<span class="pl-c1">0</span>, <span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">1</span>);
+     popMatrix();
+  }
+}
+
+
+<span class="pl-k">void</span> oscEvent(<span class="pl-smi">OscMessage</span> theOscMessage) {
+   <span class="pl-k">if</span> (theOscMessage<span class="pl-k">.</span>checkAddrPattern(<span class="pl-s"><span class="pl-pds">"</span>/env<span class="pl-pds">"</span></span>)<span class="pl-k">==</span><span class="pl-c1">true</span>) {
+     <span class="pl-k">float</span> firstValue <span class="pl-k">=</span> theOscMessage<span class="pl-k">.</span>get(<span class="pl-c1">0</span>)<span class="pl-k">.</span>floatValue();  
+
+     r_env <span class="pl-k">=</span> firstValue;
+   }
+}</pre></div>
+
+<p>Se référer au <em>Sketch_4_04</em>.
+<img src="assets/021_audio-r%C3%A9actif.png" alt="exemples_pdf/Sketch_4_04.pde"></p>
+
+<p>Le patch Pure-Data est quand à lui très simple : il utilise la librairie « mrpeach » qui permet l’utilisation de boites spécifiques à l’envoi de messages OSC.</p>
+
+<p><img src="assets/022_audio-r%C3%A9actif-pd.png" alt="exemples_pdf/pd-analysis"></p>
+
+<p>et voilà !</p>
+
+<p><a name="Trucs-et-astuces"></a></p>
+
+<h1>
+<a id="trucs-et-astuces" class="anchor" href="#trucs-et-astuces" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Trucs et astuces</h1>
+
+<p>Inspiré de la rubrique de Amnon sur son wordpress :
+<a href="http://amnonp5.wordpress.com/2012/01/28/25-life-saving-tips-for-processing/">http://amnonp5.wordpress.com/2012/01/28/25-life-saving-tips-for-processing/</a></p>
+
+<h2>
+<a id="ide" class="anchor" href="#ide" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>IDE</h2>
+
+<ul>
+<li>Ctrl + T : permet de formater le texte de notre code en le ré-indentant en fonction des accolades.</li>
+<li>File -&gt; Preferences : emplacement du sketchbook</li>
+<li>File -&gt; Examples : exemples de programmes classés selon différentes catégories, la documentation des librairies est aussi disponible sous cet onglet. </li>
+</ul>
+
+<h2>
+<a id="programmation-abréviation-des-opérations" class="anchor" href="#programmation-abr%C3%A9viation-des-op%C3%A9rations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Programmation abréviation des opérations</h2>
+
+<div class="highlight highlight-source-java"><pre>i <span class="pl-k">=</span> i<span class="pl-k">+</span><span class="pl-c1">1</span> ;</pre></div>
+
+<p>est équivalent à</p>
+
+<div class="highlight highlight-source-java"><pre>i<span class="pl-k">+=</span><span class="pl-c1">1</span> ;</pre></div>
+
+<h2>
+<a id="graphisme" class="anchor" href="#graphisme" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Graphisme</h2>
+
+<h3>
+<a id="un-blur-très-simple" class="anchor" href="#un-blur-tr%C3%A8s-simple" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Un blur très simple</h3>
+
+<p>Au lieu d’effacer le fond à chaque image en utilisant </p>
+
+<div class="highlight highlight-source-java"><pre>background (maCouleur) ;</pre></div>
+
+<p>Il est très simple de créer un effet de « blur » en utilisant de la transparence.</p>
+
+<div class="highlight highlight-source-java"><pre>fill(<span class="pl-c1">0</span>,<span class="pl-c1">20</span>) ;
+noStroke();
+rect(<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,width,height) ;</pre></div>
+
+<h3>
+<a id="color-selector" class="anchor" href="#color-selector" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Color Selector</h3>
+
+<p>Utilisez l’outil Color Selector pour spécifier plus facilement vos couleurs dans les different modes.
+Tools -&gt; Color Selector.</p>
+
+<h3>
+<a id="inout" class="anchor" href="#inout" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>In/Out</h3>
+
+<h4>
+<a id="sauvegarder-une-image" class="anchor" href="#sauvegarder-une-image" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sauvegarder une image</h4>
+
+<p>Pour sauvegarder un image on peut utiliser la fonction saveFrame(), on peut la coupler avec une interaction clavier, ainsi qu’une condition pour que la sauvegarde s’effectue lorsqu’on appuie sur la touche S. Le must est de composer une chaîne de caractère pour que chaque fichier ait un nom unique.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">// function d’interception des évenements clavier</span>
+<span class="pl-k">void</span> keyPressed() {
+ <span class="pl-c">// condition pour identifier si la touche est un “s”</span>
+ <span class="pl-k">if</span> (key <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>s<span class="pl-pds">'</span></span> <span class="pl-k">||</span> key <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>S<span class="pl-pds">'</span></span>) {
+  <span class="pl-c">/* composition d’une string comportant le nom du sketch puis des informations de temps à l’aide de functions de processing pour récupérer des événements temporels*/</span>
+  <span class="pl-smi">String</span> name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>monSketch-<span class="pl-pds">"</span></span><span class="pl-k">+</span>year()<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span>-<span class="pl-pds">"</span></span><span class="pl-k">+</span>month()<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span>-<span class="pl-pds">"</span></span><span class="pl-k">+</span>day()<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span>-<span class="pl-pds">"</span></span><span class="pl-k">+</span>hour()<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span>h<span class="pl-pds">"</span></span><span class="pl-k">+</span>minute()<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span>m<span class="pl-pds">"</span></span><span class="pl-k">+</span>second()<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span>s.png<span class="pl-pds">"</span></span>
+  saveFrame(name);
+ }
+}</pre></div>
+
+<h4>
+<a id="redimensionner-une-image" class="anchor" href="#redimensionner-une-image" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redimensionner une image</h4>
+
+<p>Il suffit de changer la taille de la fenêtre du programme pour sauvegarder une image au nouvelles dimensions.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">PImage</span> img ;
+
+<span class="pl-k">void</span> setup(){
+  size(<span class="pl-c1">200</span>,<span class="pl-c1">100</span>,<span class="pl-c1">P3D</span>);
+  background(<span class="pl-c1">0</span>);
+  img <span class="pl-k">=</span> loadImage(<span class="pl-s"><span class="pl-pds">"</span>ville.jpg<span class="pl-pds">"</span></span>);
+  img<span class="pl-k">.</span>resize(width,height);  
+}
+
+
+<span class="pl-k">void</span> draw(){  
+  background(<span class="pl-c1">0</span>);
+  image(img,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>);
+  saveFrame(<span class="pl-s"><span class="pl-pds">"</span>image_<span class="pl-pds">"</span></span><span class="pl-k">+</span>width<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span>x<span class="pl-pds">"</span></span><span class="pl-k">+</span>height<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span>.jpg<span class="pl-pds">"</span></span>);
+  noLoop();
+}</pre></div>
+
+<p><a name="Ressources"></a></p>
+
+<h1>
+<a id="ressoures" class="anchor" href="#ressoures" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ressoures</h1>
+
+<p>Site officiel : <a href="http://processing.org/">http://processing.org/</a></p>
+
+<p>La référence de l’API processing : <a href="http://processing.org/reference/">http://processing.org/reference/</a></p>
+
+<p>Le Wiki( parfois la référence n’est pas complète) : <a href="http://wiki.processing.org/w/Main_Page">http://wiki.processing.org/w/Main_Page</a></p>
+
+<p>Les tutoriaux officiels : <a href="http://processing.org/tutorials/">http://processing.org/tutorials/</a></p>
+
+<p>Plus à propos de processing :  <a href="http://en.wikipedia.org/wiki/Processing_(programming_language)">http://en.wikipedia.org/wiki/Processing_(programming_language)</a></p>
+
+<p>Initiation (français) : <a href="http://fr.flossmanuals.net/processing/">http://fr.flossmanuals.net/processing/</a></p>
+
+<p>Ressources diverses : <a href="http://codelab.fr/39">http://codelab.fr/39</a></p>
+
+<p>Forum dédié à Processing (français) : <a href="http://codelab.fr/processing">http://codelab.fr/processing</a></p>
+
+<p>Forum officiel de Processing (anglais) : <a href="http://forum.processing.org/">http://forum.processing.org/</a></p>
+
+<p>Tutoriel (français) : <a href="http://www.ecole-art-aix.fr/rubrique81.html">http://www.ecole-art-aix.fr/rubrique81.html</a></p>
+
+<p>D’autres tutoriels en français : <a href="http://tutoprocessing.com/tutos/">http://tutoprocessing.com/tutos/</a></p>
+
+<p>Vidéos de fun programming : <a href="http://funprogramming.org/">http://funprogramming.org/</a></p>
+
+<p>Vidéos de Daniel Shiffmann : </p>
+
+<p>Computer programming for total beginner : <a href="https://vimeo.com/channels/introcompmedia">https://vimeo.com/channels/introcompmedia</a></p>
+
+<p>Nature of Code : <a href="https://vimeo.com/channels/natureofcode">https://vimeo.com/channels/natureofcode</a></p>
+
+<h1></h1>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Introduction processing maintained by <a href="https://github.com/b2renger">b2renger</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
