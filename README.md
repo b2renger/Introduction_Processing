@@ -66,6 +66,7 @@ Notes :
 * [3D et audio réactif avec Pure-Data](#audio-réactif)<br>
 * [Trucs et astuces](#Trucs-et-astuces)<br>
 * [Ressources](#Ressources)<br>
+* [Références](#References)<br>
 
 <a name="Introduction"/>
 #Introduction
@@ -1815,6 +1816,22 @@ void draw(){
 <a name="Ressources"/>
 #Ressoures
 
+
+## Ressources collaboratives
+
+Page de ressources sur codelab (fr) : http://codelab.fr/39
+
+Forum dédié à Processing (français) : http://codelab.fr/processing
+
+Forum officiel de Processing (anglais) : http://forum.processing.org/
+
+Plateforme de code ouverte : Openprocessing - http://www.openprocessing.org/
+
+Code des workshops des Journées du Code Créatif 2014 dédiées à Processing : https://github.com/stereolux/JCC2
+
+
+## Ressources officielles
+
 Site officiel : http://processing.org/
 
 La référence de l’API processing : http://processing.org/reference/
@@ -1825,22 +1842,100 @@ Les tutoriaux officiels : http://processing.org/tutorials/
 
 Plus à propos de processing :  http://en.wikipedia.org/wiki/Processing_(programming_language)
 
+
+## Tutoriels écrits en français :
+
 Initiation (français) : http://fr.flossmanuals.net/processing/
-
-Ressources diverses : http://codelab.fr/39
-
-Forum dédié à Processing (français) : http://codelab.fr/processing
-
-Forum officiel de Processing (anglais) : http://forum.processing.org/
 
 Tutoriel (français) : http://www.ecole-art-aix.fr/rubrique81.html
 
 D’autres tutoriels en français : http://tutoprocessing.com/tutos/
 
+
+## Tutoriels vidéo en anglais :
+
 Vidéos de fun programming : http://funprogramming.org/
 
-Vidéos de Daniel Shiffmann : 
+Vidéos de Daniel Shiffmann : https://www.youtube.com/user/shiffman/playlists
 
 Computer programming for total beginner : https://vimeo.com/channels/introcompmedia
 
 Nature of Code : https://vimeo.com/channels/natureofcode
+
+
+## Livres en anglais :
+
+Generative Art de Matt Pearson - débutant : http://zenbullets.com/book.php
+
+Nature of Code de Daniel Shiffman - intermédiaire (gratuit sur internet) : http://natureofcode.com/
+
+Generative Design (en-fr) - intermédiaire : http://www.generative-gestaltung.de/
+
+
+<a name="References"/>
+#Références
+
+
+# Références artistiques :
+
+** Documentaire ** : Hello World : https://vimeo.com/60735314
+
+## Quelques exemples de code
+
+My Code History : exemples de generative design revisités - http://mycodehistory.wordpress.com/
+
+Abandoned Art de Matt Pearson - http://abandonedart.org/
+
+
+## Tumblr
+
+Processing : http://processing.tumblr.com/ 
+
+fyprocessing: http://fyprocessing.tumblr.com/ 
+
+p5art : http://p5art.tumblr.com/ 
+
+hamoid : http://hamoid.tumblr.com/
+
+
+## Artistes
+
+Ben Fry : http://fathom.info/ 
+
+Casey Reas : http://reas.com/pfft/
+
+Aaron Koblin : http://www.aaronkoblin.com/
+
+Karsten Schmidt: http://postspectacular.com/
+
+Ira Greenberg : http://www.iragreenberg.com/ira_greenberg_data/index.html
+
+Daniel Shiffman : http://shiffman.net/ 
+
+Jer Thorpe : http://blog.blprnt.com/
+
+Matt Pearson : http://zenbullets.com/
+
+Lionel Raddisson : http://makio135.com/
+
+Amnon Owed : http://amnonp5.wordpress.com/
+
+Cedric Kieffer & Julia Laub : http://www.onformative.com/about/
+
+
+## Quelques Videos et Projets
+
+Processing exhibition : https://processing.org/exhibition/
+
+Shadow Monsters de Philipp Worthington : https://www.youtube.com/watch?v=XNHv6VryB8o
+
+The wilderness downtown de Chris Milk et Aaron Koblin : http://www.thewildernessdowntown.com
+
+The Johnny Cash project de Chris Milk et Aaron Koblin : http://www.thejohnnycashproject.com  
+
+Prisms de Matt Pearson : https://vimeo.com/75299268 
+
+Tempest de Antoine Schmitt : https://vimeo.com/49065256
+
+Written Images projet d'édition générative : http://writtenimages.net/
+
