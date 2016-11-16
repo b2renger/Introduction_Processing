@@ -7,7 +7,7 @@ Notes :
 * Ce document a pour but de rappeler les informations vues en cours sous une autre forme et d'en apporter de nouvelles, sa lecture doit donc s’accompagner des exemples de code construits pendant le module.
 
 
-
+<a name="Contenu"/>
 # Contenu
 * [Introduction](#Introduction)<br>
 * [L'IDE](#ide)<br>
@@ -101,6 +101,9 @@ processing comme le développement pour android (smartphones et tablettes), ou e
 Processing existe aussi bien sous Linux, Windows que Mac OS. Le projet étant à but pédagogique et
 porté par une communauté très active il est excessivement bien documenté.
 
+[^ home](#Contenu)<br>
+
+
 <a name="ide"/>
 #L'IDE
 IDE signifie Inegrated Developpemet Environment, c'est l'outil avec lequel on va travailler, c'est la fenêtre qu'ouvre notre système d'exploitation lorsque l'on lance processing. Cela ressemble à un éditeur de texte, mais nous avons des boutons pour compiler nos programmes et une seconde fenêtre de rendu qui s'ouvre à la compilation.
@@ -116,6 +119,9 @@ IDE signifie Inegrated Developpemet Environment, c'est l'outil avec lequel on va
 * La zone 4 est la fenêtre d’exécution de notre programme. 
 
 Processing fonctionne par défaut avec l’utilisation d’un « sketchbook ». C’est un dossier sur votre disque dur dans lequel seront stockés vos programmes et toutes les librairies, ainsi que les diférents modes que vous avez installé. Il est possible de modifier l’emplacement de ce dossier en allant dans : <i> File -> Preferences </i>
+
+[^ home](#Contenu)<br>
+
 
 <a name="Premier-Programme"/>
 #Premier Programme
@@ -148,6 +154,9 @@ Ce programme se compose de deux parties principales, appelées aussi « fonctio
 Il existe des fonction spécifique au langage processing appelée primitives, on peut les appeler simplement en utilisant leur syntaxe spécifique. Chaque fonction indiquée en surbrillance possède une documentation en ligne, il est fortement conseillé de s’y référer pour savoir comment les utiliser.
 
 A noter que par défaut nous utilisons un systèmes de coordonnées cartésiennes centré en haut à gauche de la fenêtre de dessin. Dans notre programme, le coin en haut à gauche a donc les coordonnées(0,0), le coin en bas à droite a donc les coordonnées (199,199) 
+
+[^ home](#Contenu)<br>
+
 
 <a name="Les-variables"/>
 #Les variables
@@ -194,6 +203,9 @@ Certain type sont compatibles avec d’autres : on peut par exemple stocker un 
 
 Il est aussi possible de stocker des données plus complexes comme des tableaux. Les tableaux servent à stocker des ensembles de données d’un type précis, on peut même y stocker des instances de classes… (nous verrons ceci dans la section dédiée aux classes).
 
+[^ home](#Contenu)<br>
+
+
 <a name="portée"/>
 ##La portée des variables
 
@@ -202,6 +214,9 @@ Un point essentiel réside dans la portée de ces variables (en anglais on parle
 Cela signifie qui si je définie une variable dans le setup() de mon programme celle-ne sera accessible uniquement dans le setup().
 
 Il est possible de définir des variables à l’extérieur des fonctions setup() et draw() : par exemple en tout début de programme, ces variables seront alors accessibles partout dans notre programme.
+
+[^ home](#Contenu)<br>
+
 
 <a name="exemples"/>
 ##Exemple d’utilisation des variables
@@ -234,6 +249,9 @@ Habituellement on a tendance à créer les variables tout en haut de notre progr
 ```
 ![exemples_pdf/Sketch_1_02.pde](assets/003_Utilisation_variables.png)
 
+[^ home](#Contenu)<br>
+
+
 <a name="globales"/>
 ##Variables globales de processing
 
@@ -243,6 +261,9 @@ C’est le cas entre autres de :
 
 **width** : (float) qui est associée par défaut à largeur de la fenêtre de dessin.
 **height** : (float) qui est associée par défaut à la hauteur de la fenêtre de dessin.
+
+[^ home](#Contenu)<br>
+
 
 <a name="L'aléatoire"/>
 #L'aléatoire
@@ -299,6 +320,9 @@ Ce programme va dessiner, à chaque image, un cercle positionné aléatoirement 
 
 ![exemples_pdf/Sketch_1_03.pde](assets/004_Aléatoire.png)
 
+[^ home](#Contenu)<br>
+
+
 <a name="noise"/>
 ##noise()
 
@@ -336,6 +360,9 @@ void draw() {
 
 Ce programme dessine un cercle qui va se déplacer aléatoirement dans l’espace de dessin. Il est d’ailleurs fort probable qu’il en sorte, mais nous y reviendrons plus tard.
 
+[^ home](#Contenu)<br>
+
+
 <a name="randomSeed"/>
 ##randomSeed() et noiseSeed()
 
@@ -361,6 +388,9 @@ randomSeed(seed);
 a = random(500);
 println("seed" + seed +" : " + a); 
 ```
+
+[^ home](#Contenu)<br>
+
 
 <a name="Les-boucles"/>
 #Les Boucles
@@ -394,6 +424,9 @@ Le code présenté ci-dessus permet donc de dessiner 10 cercles blancs de 5 pixe
 
 Comme nous le verrons ces boucles sont très utilisées en programmation objet car elles permettent d’itérer une série d’instructions sur les éléments d’un tableau.
 
+[^ home](#Contenu)<br>
+
+
 <a name="while"/>
 ##While()
 
@@ -409,6 +442,9 @@ i+=5;
 }
 ```
 Ici, nous avons un variable initialisée à zéro, tant que cette variable est inférieure à la largeur de notre fenêtre de dessin, nous dessinons une ellipse blanche, de 5 pixels de diamètre placée en abscisses à la valeur de « i » et en ordonnées au milieu de notre fenêtre de dessin.
+
+[^ home](#Contenu)<br>
+
 
 <a name="exemple"/>
 ##Exemple
@@ -442,6 +478,8 @@ void draw(){
 
 ![exemples_pdf/Sketch_1_06.pde](assets/006_boucles.png)
 
+[^ home](#Contenu)<br>
+
 
 <a name="couleur"/>
 #Couleur
@@ -457,6 +495,9 @@ fill(180) ;
 ellipse(width/2,height/2,50,50) ;
 ```
 Le code va donc dessiner un cercle gris souris avec un contour noir.
+
+[^ home](#Contenu)<br>
+
 
 <a name="rgb"/>
 ##Le mode RGB
@@ -474,6 +515,9 @@ ellipse(width*3/5,height/2,10,10);
 fill(255,100,100);// Rose
 ellipse(width*4/5,height/2,10,10);
 ```
+
+[^ home](#Contenu)<br>
+
 
 <a name="hsb"/>
 ##Le mode HSB
@@ -495,6 +539,9 @@ for (int i =0 ; i < width ; i++){
    line(i,0,i,height);
 }
 ```
+
+[^ home](#Contenu)<br>
+
 
 <a name="transparence"/>
 ##La transparence
@@ -532,6 +579,8 @@ void draw() {
 ```
 
 ![exemples_pdf/Sketch_1_07.pde](assets/007_couleurs.png)
+
+[^ home](#Contenu)<br>
 
 
 <a name="Primitives-de-dessin"/>
