@@ -603,6 +603,9 @@ Concenant les instruction de lignes, il existe aussi les fonction strokeCap() ;
 
 Une autre instruction est importante , il s’agit de smooth() ; qui permet de modifier les paramètres de l’anti-aliasing de processing. On peut lui attribuer les valeurs de 2, 4 ou 8. Cela permet d’avoir des lignes fines plus précises à haute résolution.
 
+[^ home](#Contenu)<br>
+
+
 <a name="primitives"/>
 ##Les primitves (formes)
 
@@ -615,6 +618,9 @@ Nous avons pour l’instant principalement utilisé des ellipses pour nos code. 
 * triangle(x1, y1, x2, y2, x3, y3) ; permet de spécifier un triangle.
 
 Il existe souvent différent modes pour dessiner ces formes, je vous conseille donc de regarder les documentation de rectMode() (String) et ellipseMode() (String) par exemple. On peut par exemple choisir de dessiner à partir d’un coin (CORNER - par défaut lorsque l’on dessine un rectangle), ou à partir du centre de nôtre forme (CENTER – par défaut pour l’ellipse).
+
+[^ home](#Contenu)<br>
+
 
 <a name="vertices"/>
 ##Les vertices (formes sur mesure)
@@ -681,6 +687,9 @@ Pour plus d’informations, il peut-êre utile de se référer à le documentati
 Concernant les vertices, il existe aussi plusieurs type de fonctions permettant de les utiliser : curveVertex(), bezierVertex(), quadraticVertex() sont d’autres façons de définir des vertices demandant plus ou moins d’arguments et donc plus ou moins simples à mettre en œuvre.
 
 Enfin pour ceux qui persiste dans l’utilisation de processing, il est intéressant de regarder le foncionnement de l’objet PShape, qui permet de créer des formes complexes,  de les stocker puis de les manipuler plus facilement.
+
+[^ home](#Contenu)<br>
+
 
 <a name="Transformation-de-l’espace"/>
 #Les Transformations de l’espace
@@ -762,6 +771,9 @@ void draw(){
 
 popMatrix() permet en fait de replace la feuille pour dessiner éventuellement d’autres choses après. Ces deux objets doivent impérativement être utilisés conjointement, l’un sans l’autre renverra une erreur…
 
+[^ home](#Contenu)<br>
+
+
 <a name="rotate"/>
 ##rotate()
 
@@ -806,6 +818,8 @@ void draw() {
 
 Si vous intervertissez rotate() et translate() l’effet ne sera plus du tout le même, idem si l’on oublie d’utiliser pushMatrix() et popMatrix().
 
+[^ home](#Contenu)<br>
+
 
 <a name="Coder-ses-propres-fonctions"/>
 #Coder ses propres fonctions
@@ -848,6 +862,9 @@ et consulter la vidéo d'abe pazos de funprogamming dont ce code est tirée : ht
 
 ![exemples_pdf/Sketch_1_10.pde](assets/010_grid.png)
 
+[^ home](#Contenu)<br>
+
+
 <a name="Interactions-Souris-et-clavier"/>
 #Interactions avec la souris et le clavier
 
@@ -888,6 +905,9 @@ void draw() {
 ```
 
 ![Sketch_1_12.pde](assets/011_mouse.png)
+
+[^ home](#Contenu)<br>
+
 
 <a name="souris_fonctions"/>
 ###Les fonctions relatives à la souris
@@ -941,6 +961,9 @@ void mouseWheel(MouseEvent event) {
 
 ![exemples_pdf/Sketch_1_14.pde](assets/013_mouse_wheel.png)
 
+[^ home](#Contenu)<br>
+
+
 <a name="map"/>
 ###map()
 
@@ -952,6 +975,8 @@ Nous voulons que lorsque la souris est tout à gauche de l’écran, notre cercl
 	float diam ;
 	diam = map(mouseX,0,width,5,100) ;
 ```
+[^ home](#Contenu)<br>
+
 
 <a name="clavier"/>
 ##Clavier
@@ -968,6 +993,9 @@ qui retournent les valeurs de la dernière touche de clavier enfoncée ; il exi
 **keyTyped()**  va ignorer l’enfoncement des touches CTRL, ALT etc.
 
 En fonction des machines, des systèmes d’exploitation ces fonctions et variables ne renvoient pas systématiquement les même valeurs. Attention donc pour le développement sur plusieurs plateformes.(Pour débugger il est conseillé d’avoir recours à des println pour vérifier les valeurs dans la console). Le chapitre suivant concernant le texte et les polices de caractère vous donnera un exemple d’utilisation de ces fonction.
+
+[^ home](#Contenu)<br>
+
 
 <a name="Dessiner-du-texte-et-utiliser-des-polices-de-caractère"/>
 #Dessiner du texte, utiliser des polices de caractère
@@ -1052,6 +1080,9 @@ void keyPressed() {
 
 Il existe un outil permettant de construire des fonts au format .vlw et donc utilizable dans processing à partir des polices installées sur le système. Il suffit de cliquer sur le menu « Tools -> Create Font ».
 
+[^ home](#Contenu)<br>
+
+
 <a name="Les-Classes-Programmation-Orientée-Objet"/>
 #Les Classes : Programmation Orientée Objet
 
@@ -1082,6 +1113,9 @@ class Mover {
 }
 ```
 
+[^ home](#Contenu)<br>
+
+
 <a name="construction-classe"/>
 ##Construction d'une classe simple
 
@@ -1096,6 +1130,9 @@ Mover aura donc besoin pour fonctionner de deux vecteurs : un vecteur définiss
 ```java
 PVector loc, vel; 
 ```
+
+[^ home](#Contenu)<br>
+
 
 <a name="constructeur-classe"/>
 ###Constructeur : initialisation
@@ -1120,6 +1157,9 @@ Le « this » sert à cela. Lorsque vous êtes dans cette situation le fait d�
 this.maVariable = maVariable ;
 ```
 Autrement dit on attribue à la variable qui est utilisée dans notre classe, la valeur que l’on spécifie en argument de notre fonction.
+
+[^ home](#Contenu)<br>
+
 
 <a name="méthodes-classe"/>
 ###Méthodes complémentaires : update() et draw()
@@ -1168,6 +1208,9 @@ void check_collisions(){
 	}
 }
 ```
+[^ home](#Contenu)<br>
+
+
 <a name="utilisation-classe"/>
 ##Utilisation d'une classe simple
 
@@ -1213,6 +1256,9 @@ Le code assemblé est disponible dans *Sketch_2_01*.
 ![exemples_pdf/Sketch_2_01.pde](assets/015_oop1.png)
 
 A priori cela représente beaucoup d'efforts pour peux d'avantages, mais l'usage conjoint de classes et de tableaux, permet de simplifier la manipulation de milliers d'objets.
+
+[^ home](#Contenu)<br>
+
 
 <a name="Les-Tableaux"/>
 #Les Tableaux
@@ -1265,6 +1311,9 @@ void draw() {
 ![exemples_pdf/Sketch_2_02.pde](assets/016_oop2.png)
 
 Nous avons donc maintenant 1000 objets Mover qui agissent indépendamment les uns des autres, et rebondissent sur les bords de notre fenêtre de dessin. 
+
+[^ home](#Contenu)<br>
+
 
 <a name="Emergence"/>
 #Emergence : Un programme interactif complexe
@@ -1340,6 +1389,8 @@ class Mover {
 ```
 ![exemples_pdf/Sketch_2_03.pde](assets/017_oop3.png)
 
+[^ home](#Contenu)<br>
+
 
 <a name="Travailler-avec-les-images"/>
 #Travailler avec les images
@@ -1372,12 +1423,16 @@ void draw(){
    background(0);
    image(img,0,0); 
 }
+```
 
 A la ligne 1 on crée un nouvel objet PImage appelé « img », on l’initialise à la ligne 5 en chargeant l’image présente dans le dossier data. En suite à la ligne 13, on affiche cette image, au point de coordonnées (0,0).
 
 Ce code correspond au *Sketch_4_01.pde*.
 
 ![exemples_pdf/Sketch_4_01.pde](assets/018_images.png)
+
+[^ home](#Contenu)<br>
+
 
 <a name="pixels-image"/>
 #Acccéder aux pixels
@@ -1414,6 +1469,8 @@ Il faut cependant bien noter qu’à la ligne 16 nous convertissons les coordonn
 En effet, pixels[] est un tableau, à titre chaque valeur est stockée à un index précis, mais cet index est à une seule dimension, alors que les coordonnée de la souris sont en 2D.
 
 Cette pipette à couleur es disponible dans les exemples : *Sketch_4_02*.
+
+[^ home](#Contenu)<br>
 
 
 <a name="pixels-3d"/>
@@ -1476,6 +1533,8 @@ void draw() {
 
 ![exemples_pdf/Sketch_4_03.pde](assets/019_pixels.png)
 
+[^ home](#Contenu)<br>
+
 
 <a name="Les-Librairies"/>
 #Les Librairies
@@ -1508,6 +1567,9 @@ Généralement une librairie est composée d’un dossier principal contenant qu
 Dans le dossier /library/ vous devez normalement trouver un fichier *.jar portant le même nom que votre dossier racine. Si c’est bien le cas votre librairie sera alors reconnue et utilisable.
 
 Généralement lorsque vous installez une librairie elle est fournie avec un certains nombres d’exemples censé expliquer son fonctionnement. On y accède via le menu File->Examples, il faut ensuite naviguer jusqu’au menu déroulant intitulé « Contributed Libraries », puis trouver le dossier correspondant à la librairie installée.
+
+[^ home](#Contenu)<br>
+
 
 <a name="cp5"/>
 ##ControlP5 pour la création de GUI (exemples de niveau intermédiaire)
@@ -1617,6 +1679,9 @@ Une fois la librairie installée vous pourrez trouver un exemple ici :
 File->Examples->ContributerLibrairies-> ControlP5->Extra->ControlP5frame.pde
 
 ControlP5 est une librairie très aboutie avec beaucoup de fonctionnalités, mais sa mise en œuvre peut-être parfois un peu lourde. S’il s’agit de faire des tests, le mode « Tweak » peut  s’avérer être une bonne alternative.
+
+[^ home](#Contenu)<br>
+
 
 <a name="oscp5"/>
 ##OSCP5 pour la communication avec d’autres programmes
@@ -1786,6 +1851,9 @@ Le patch Pure-Data est quand à lui très simple : il utilise la librairie « 
 
 et voilà !
 
+[^ home](#Contenu)<br>
+
+
 <a name="Trucs-et-astuces"/>
 #Trucs et astuces
 
@@ -1862,6 +1930,9 @@ void draw(){
 }
 ```
 
+[^ home](#Contenu)<br>
+
+
 <a name="Ressources"/>
 #Ressoures
 
@@ -1919,6 +1990,8 @@ Generative Art de Matt Pearson - débutant : http://zenbullets.com/book.php
 Nature of Code de Daniel Shiffman - intermédiaire (gratuit sur internet) : http://natureofcode.com/
 
 Generative Design (en-fr) - intermédiaire : http://www.generative-gestaltung.de/
+
+[^ home](#Contenu)<br>
 
 
 <a name="References"/>
