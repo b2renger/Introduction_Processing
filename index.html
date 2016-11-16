@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Introduction processing : This respository is a french introduction to the Processing programming language">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <title>Introduction processing</title>
+    <title>Introduction processing by b2renger</title>
   </head>
 
   <body>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/b2renger/Introduction_Processing">View on GitHub</a>
+    <header>
+      <div class="container">
+        <h1>Introduction processing</h1>
+        <h2>This respository is a french introduction to the Processing programming language</h2>
 
-          <h1 id="project_title">Introduction processing</h1>
-          <h2 id="project_tagline">This respository is a french introduction to the Processing programming language</h2>
+        <section id="downloads">
+          <a href="https://github.com/b2renger/Introduction_Processing/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/b2renger/Introduction_Processing/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/b2renger/Introduction_Processing" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/b2renger/Introduction_Processing/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/b2renger/Introduction_Processing/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+    <div class="container">
+      <section id="main_content">
         <h1>
 <a id="introduction_processing" class="anchor" href="#introduction_processing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction_Processing</h1>
 
@@ -43,6 +40,8 @@
 <li>Ce document ne se veut pas exhaustif, il présente les fonctions principales dont nous aurons l’utilité dans le cadre de ce cours. Processing étant très bien documenté il est très facile de trouver de nombreux tutoriels en ligne sur les différents aspects du programme. Se référer à la section « Ressources » pour plus d’informations.</li>
 <li>Ce document a pour but de rappeler les informations vues en cours sous une autre forme et d'en apporter de nouvelles, sa lecture doit donc s’accompagner des exemples de code construits pendant le module.</li>
 </ul>
+
+<p><a name="Contenu"></a></p>
 
 <h1>
 <a id="contenu" class="anchor" href="#contenu" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contenu</h1>
@@ -289,6 +288,8 @@ processing comme le développement pour android (smartphones et tablettes), ou e
 <p>Processing existe aussi bien sous Linux, Windows que Mac OS. Le projet étant à but pédagogique et
 porté par une communauté très active il est excessivement bien documenté.</p>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="ide"></a></p>
 
 <h1>
@@ -306,6 +307,8 @@ porté par une communauté très active il est excessivement bien documenté.</p
 </ul>
 
 <p>Processing fonctionne par défaut avec l’utilisation d’un « sketchbook ». C’est un dossier sur votre disque dur dans lequel seront stockés vos programmes et toutes les librairies, ainsi que les diférents modes que vous avez installé. Il est possible de modifier l’emplacement de ce dossier en allant dans : <i> File -&gt; Preferences </i></p>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="Premier-Programme"></a></p>
 
@@ -341,6 +344,8 @@ porté par une communauté très active il est excessivement bien documenté.</p
 <p>Il existe des fonction spécifique au langage processing appelée primitives, on peut les appeler simplement en utilisant leur syntaxe spécifique. Chaque fonction indiquée en surbrillance possède une documentation en ligne, il est fortement conseillé de s’y référer pour savoir comment les utiliser.</p>
 
 <p>A noter que par défaut nous utilisons un systèmes de coordonnées cartésiennes centré en haut à gauche de la fenêtre de dessin. Dans notre programme, le coin en haut à gauche a donc les coordonnées(0,0), le coin en bas à droite a donc les coordonnées (199,199) </p>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="Les-variables"></a></p>
 
@@ -391,6 +396,8 @@ println(result);
 
 <p>Il est aussi possible de stocker des données plus complexes comme des tableaux. Les tableaux servent à stocker des ensembles de données d’un type précis, on peut même y stocker des instances de classes… (nous verrons ceci dans la section dédiée aux classes).</p>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="port%C3%A9e"></a></p>
 
 <h2>
@@ -401,6 +408,8 @@ println(result);
 <p>Cela signifie qui si je définie une variable dans le setup() de mon programme celle-ne sera accessible uniquement dans le setup().</p>
 
 <p>Il est possible de définir des variables à l’extérieur des fonctions setup() et draw() : par exemple en tout début de programme, ces variables seront alors accessibles partout dans notre programme.</p>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="exemples"></a></p>
 
@@ -434,6 +443,8 @@ println(result);
 
 <p><img src="assets/003_Utilisation_variables.png" alt="exemples_pdf/Sketch_1_02.pde"></p>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="globales"></a></p>
 
 <h2>
@@ -445,6 +456,8 @@ println(result);
 
 <p><strong>width</strong> : (float) qui est associée par défaut à largeur de la fenêtre de dessin.
 <strong>height</strong> : (float) qui est associée par défaut à la hauteur de la fenêtre de dessin.</p>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="L'al%C3%A9atoire"></a></p>
 
@@ -503,6 +516,8 @@ println(nb_aleatoire) ;</pre></div>
 
 <p><img src="assets/004_Al%C3%A9atoire.png" alt="exemples_pdf/Sketch_1_03.pde"></p>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="noise"></a></p>
 
 <h2>
@@ -541,6 +556,8 @@ println(nb_aleatoire) ;</pre></div>
 
 <p>Ce programme dessine un cercle qui va se déplacer aléatoirement dans l’espace de dessin. Il est d’ailleurs fort probable qu’il en sorte, mais nous y reviendrons plus tard.</p>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="randomSeed"></a></p>
 
 <h2>
@@ -566,6 +583,8 @@ seed <span class="pl-k">=</span> <span class="pl-c1">123</span>;
 randomSeed(seed);
 a <span class="pl-k">=</span> random(<span class="pl-c1">500</span>);
 println(<span class="pl-s"><span class="pl-pds">"</span>seed<span class="pl-pds">"</span></span> <span class="pl-k">+</span> seed <span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span> : <span class="pl-pds">"</span></span> <span class="pl-k">+</span> a); </pre></div>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="Les-boucles"></a></p>
 
@@ -608,6 +627,8 @@ println(<span class="pl-s"><span class="pl-pds">"</span>seed<span class="pl-pds"
 
 <p>Comme nous le verrons ces boucles sont très utilisées en programmation objet car elles permettent d’itérer une série d’instructions sur les éléments d’un tableau.</p>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="while"></a></p>
 
 <h2>
@@ -624,6 +645,8 @@ i<span class="pl-k">+=</span><span class="pl-c1">5</span>;
 }</pre></div>
 
 <p>Ici, nous avons un variable initialisée à zéro, tant que cette variable est inférieure à la largeur de notre fenêtre de dessin, nous dessinons une ellipse blanche, de 5 pixels de diamètre placée en abscisses à la valeur de « i » et en ordonnées au milieu de notre fenêtre de dessin.</p>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="exemple"></a></p>
 
@@ -657,6 +680,8 @@ i<span class="pl-k">+=</span><span class="pl-c1">5</span>;
 
 <p><img src="assets/006_boucles.png" alt="exemples_pdf/Sketch_1_06.pde"></p>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="couleur"></a></p>
 
 <h1>
@@ -675,6 +700,8 @@ ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,height<span
 
 <p>Le code va donc dessiner un cercle gris souris avec un contour noir.</p>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="rgb"></a></p>
 
 <h2>
@@ -691,6 +718,8 @@ fill(<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c
 ellipse(width<span class="pl-k">*</span><span class="pl-c1">3</span><span class="pl-k">/</span><span class="pl-c1">5</span>,height<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);
 fill(<span class="pl-c1">255</span>,<span class="pl-c1">100</span>,<span class="pl-c1">100</span>);<span class="pl-c">// Rose</span>
 ellipse(width<span class="pl-k">*</span><span class="pl-c1">4</span><span class="pl-k">/</span><span class="pl-c1">5</span>,height<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class="pl-c1">10</span>,<span class="pl-c1">10</span>);</pre></div>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="hsb"></a></p>
 
@@ -710,6 +739,8 @@ colorMode(<span class="pl-c1">HSB</span>,<span class="pl-c1">360</span>,<span cl
    stroke(i,<span class="pl-c1">100</span>,<span class="pl-c1">100</span>);
    line(i,<span class="pl-c1">0</span>,i,height);
 }</pre></div>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="transparence"></a></p>
 
@@ -748,6 +779,8 @@ colorMode(<span class="pl-c1">HSB</span>,<span class="pl-c1">360</span>,<span cl
 
 <p><img src="assets/007_couleurs.png" alt="exemples_pdf/Sketch_1_07.pde"></p>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="Primitives-de-dessin"></a></p>
 
 <h1>
@@ -775,6 +808,8 @@ colorMode(<span class="pl-c1">HSB</span>,<span class="pl-c1">360</span>,<span cl
 
 <p>Une autre instruction est importante , il s’agit de smooth() ; qui permet de modifier les paramètres de l’anti-aliasing de processing. On peut lui attribuer les valeurs de 2, 4 ou 8. Cela permet d’avoir des lignes fines plus précises à haute résolution.</p>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="primitives"></a></p>
 
 <h2>
@@ -791,6 +826,8 @@ colorMode(<span class="pl-c1">HSB</span>,<span class="pl-c1">360</span>,<span cl
 </ul>
 
 <p>Il existe souvent différent modes pour dessiner ces formes, je vous conseille donc de regarder les documentation de rectMode() (String) et ellipseMode() (String) par exemple. On peut par exemple choisir de dessiner à partir d’un coin (CORNER - par défaut lorsque l’on dessine un rectangle), ou à partir du centre de nôtre forme (CENTER – par défaut pour l’ellipse).</p>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="vertices"></a></p>
 
@@ -856,6 +893,8 @@ colorMode(<span class="pl-c1">HSB</span>,<span class="pl-c1">360</span>,<span cl
 <p>Concernant les vertices, il existe aussi plusieurs type de fonctions permettant de les utiliser : curveVertex(), bezierVertex(), quadraticVertex() sont d’autres façons de définir des vertices demandant plus ou moins d’arguments et donc plus ou moins simples à mettre en œuvre.</p>
 
 <p>Enfin pour ceux qui persiste dans l’utilisation de processing, il est intéressant de regarder le foncionnement de l’objet PShape, qui permet de créer des formes complexes,  de les stocker puis de les manipuler plus facilement.</p>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="Transformation-de-l%E2%80%99espace"></a></p>
 
@@ -938,6 +977,8 @@ translate en réalité déplace notre repère de dessin, par défaut le centre d
 
 <p>popMatrix() permet en fait de replace la feuille pour dessiner éventuellement d’autres choses après. Ces deux objets doivent impérativement être utilisés conjointement, l’un sans l’autre renverra une erreur…</p>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="rotate"></a></p>
 
 <h2>
@@ -979,6 +1020,8 @@ ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class
 
 <p>Si vous intervertissez rotate() et translate() l’effet ne sera plus du tout le même, idem si l’on oublie d’utiliser pushMatrix() et popMatrix().</p>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="Coder-ses-propres-fonctions"></a></p>
 
 <h1>
@@ -1017,6 +1060,8 @@ ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class
 <p>et consulter la vidéo d'abe pazos de funprogamming dont ce code est tirée : <a href="http://funprogramming.org/35-A-grid-of-rotating-objects-creates-a-wave-of-rectangles.html">http://funprogramming.org/35-A-grid-of-rotating-objects-creates-a-wave-of-rectangles.html</a></p>
 
 <p><img src="assets/010_grid.png" alt="exemples_pdf/Sketch_1_10.pde"></p>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="Interactions-Souris-et-clavier"></a></p>
 
@@ -1063,6 +1108,8 @@ ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class
 }</pre></div>
 
 <p><img src="assets/011_mouse.png" alt="Sketch_1_12.pde"></p>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="souris_fonctions"></a></p>
 
@@ -1117,6 +1164,8 @@ ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class
 
 <p><img src="assets/013_mouse_wheel.png" alt="exemples_pdf/Sketch_1_14.pde"></p>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="map"></a></p>
 
 <h3>
@@ -1128,6 +1177,8 @@ ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class
 
 <div class="highlight highlight-source-java"><pre>    <span class="pl-k">float</span> diam ;
     diam <span class="pl-k">=</span> map(mouseX,<span class="pl-c1">0</span>,width,<span class="pl-c1">5</span>,<span class="pl-c1">100</span>) ;</pre></div>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="clavier"></a></p>
 
@@ -1152,6 +1203,8 @@ ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class
 <p><strong>keyTyped()</strong>  va ignorer l’enfoncement des touches CTRL, ALT etc.</p>
 
 <p>En fonction des machines, des systèmes d’exploitation ces fonctions et variables ne renvoient pas systématiquement les même valeurs. Attention donc pour le développement sur plusieurs plateformes.(Pour débugger il est conseillé d’avoir recours à des println pour vérifier les valeurs dans la console). Le chapitre suivant concernant le texte et les polices de caractère vous donnera un exemple d’utilisation de ces fonction.</p>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="Dessiner-du-texte-et-utiliser-des-polices-de-caract%C3%A8re"></a></p>
 
@@ -1234,6 +1287,8 @@ ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class
 
 <p>Il existe un outil permettant de construire des fonts au format .vlw et donc utilizable dans processing à partir des polices installées sur le système. Il suffit de cliquer sur le menu « Tools -&gt; Create Font ».</p>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="Les-Classes-Programmation-Orient%C3%A9e-Objet"></a></p>
 
 <h1>
@@ -1266,6 +1321,8 @@ ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class
     }
 }</pre></div>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="construction-classe"></a></p>
 
 <h2>
@@ -1281,6 +1338,8 @@ ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class
 <p>Mover aura donc besoin pour fonctionner de deux vecteurs : un vecteur définissant la position de notre objet, et un vecteur définissant sa vitesse. Nous n’aurons donc que deux variables à déclarer :</p>
 
 <div class="highlight highlight-source-java"><pre><span class="pl-smi">PVector</span> loc, vel; </pre></div>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="constructeur-classe"></a></p>
 
@@ -1304,6 +1363,8 @@ ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class
 <div class="highlight highlight-source-java"><pre><span class="pl-v">this</span><span class="pl-k">.</span>maVariable <span class="pl-k">=</span> maVariable ;</pre></div>
 
 <p>Autrement dit on attribue à la variable qui est utilisée dans notre classe, la valeur que l’on spécifie en argument de notre fonction.</p>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="m%C3%A9thodes-classe"></a></p>
 
@@ -1349,6 +1410,8 @@ ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class
     }
 }</pre></div>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="utilisation-classe"></a></p>
 
 <h2>
@@ -1390,6 +1453,8 @@ ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class
 <p><img src="assets/015_oop1.png" alt="exemples_pdf/Sketch_2_01.pde"></p>
 
 <p>A priori cela représente beaucoup d'efforts pour peux d'avantages, mais l'usage conjoint de classes et de tableaux, permet de simplifier la manipulation de milliers d'objets.</p>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="Les-Tableaux"></a></p>
 
@@ -1437,6 +1502,8 @@ ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class
 <p><img src="assets/016_oop2.png" alt="exemples_pdf/Sketch_2_02.pde"></p>
 
 <p>Nous avons donc maintenant 1000 objets Mover qui agissent indépendamment les uns des autres, et rebondissent sur les bords de notre fenêtre de dessin. </p>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="Emergence"></a></p>
 
@@ -1513,6 +1580,8 @@ ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class
 
 <p><img src="assets/017_oop3.png" alt="exemples_pdf/Sketch_2_03.pde"></p>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="Travailler-avec-les-images"></a></p>
 
 <h1>
@@ -1546,25 +1615,28 @@ ellipse(width<span class="pl-k">/</span><span class="pl-c1">2</span>,<span class
 <span class="pl-k">void</span> draw(){ 
    background(<span class="pl-c1">0</span>);
    image(img,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>); 
-}
+}</pre></div>
 
-<span class="pl-smi">A</span> la ligne <span class="pl-c1">1</span> on crée un nouvel objet <span class="pl-smi">PImage</span> appelé « img », on l’initialise à la ligne <span class="pl-c1">5</span> en chargeant l’image présente dans le dossier data. <span class="pl-smi">En</span> suite à la ligne <span class="pl-c1">13</span>, on affiche cette image, au point de coordonnées (<span class="pl-c1">0</span>,<span class="pl-c1">0</span>)<span class="pl-c1">.</span>
+<p>A la ligne 1 on crée un nouvel objet PImage appelé « img », on l’initialise à la ligne 5 en chargeant l’image présente dans le dossier data. En suite à la ligne 13, on affiche cette image, au point de coordonnées (0,0).</p>
 
-<span class="pl-smi">Ce</span> code correspond au <span class="pl-k">*</span><span class="pl-smi">Sketch_4_01</span><span class="pl-k">.</span>pde<span class="pl-k">*</span><span class="pl-c1">.</span>
+<p>Ce code correspond au <em>Sketch_4_01.pde</em>.</p>
 
-<span class="pl-k">!</span>[exemples_pdf<span class="pl-k">/</span><span class="pl-smi">Sketch_4_01</span><span class="pl-k">.</span>pde](assets<span class="pl-k">/</span>018_images<span class="pl-k">.</span>png)
+<p><img src="assets/018_images.png" alt="exemples_pdf/Sketch_4_01.pde"></p>
 
-<span class="pl-k">&lt;</span>a name<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>pixels-image<span class="pl-pds">"</span></span><span class="pl-k">/</span><span class="pl-k">&gt;</span>
-#<span class="pl-smi">Accc</span>éder aux pixels
+<p><a href="#Contenu">^ home</a><br></p>
 
-<span class="pl-smi">Une</span> fois l’image chargée, il est possible de faire énormément de manipulations, il existe beaucoup d’exemples dans la documentation en ligne de processing a propos des filtres que l’on peut appliquer. <span class="pl-smi">Nous</span> allons plutôt nous <span class="pl-k">int</span>éresser à la manipulation de pixels. 
+<p><a name="pixels-image"></a></p>
 
-<span class="pl-smi">Il</span> existe une fonction appelée « loadPixels() » qui permet de charger automatiquement les couleurs des pixels d’une image dans un tableau qui se nommera pixels[]<span class="pl-c1">.</span> 
+<h1>
+<a id="acccéder-aux-pixels" class="anchor" href="#accc%C3%A9der-aux-pixels" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Acccéder aux pixels</h1>
 
-<span class="pl-smi">Le</span> code suivant permet de lire la teinte du pixel d’une image pré<span class="pl-k">-</span>chargée à l’endroit précis du curseur de la souris <span class="pl-k">:</span>
+<p>Une fois l’image chargée, il est possible de faire énormément de manipulations, il existe beaucoup d’exemples dans la documentation en ligne de processing a propos des filtres que l’on peut appliquer. Nous allons plutôt nous intéresser à la manipulation de pixels. </p>
 
-```java
-<span class="pl-smi">PImage</span> img ;
+<p>Il existe une fonction appelée « loadPixels() » qui permet de charger automatiquement les couleurs des pixels d’une image dans un tableau qui se nommera pixels[]. </p>
+
+<p>Le code suivant permet de lire la teinte du pixel d’une image pré-chargée à l’endroit précis du curseur de la souris :</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">PImage</span> img ;
 
 <span class="pl-k">void</span> setup(){ 
   background(<span class="pl-c1">0</span>);
@@ -1588,6 +1660,8 @@ Il faut cependant bien noter qu’à la ligne 16 nous convertissons les coordonn
 <p>En effet, pixels[] est un tableau, à titre chaque valeur est stockée à un index précis, mais cet index est à une seule dimension, alors que les coordonnée de la souris sont en 2D.</p>
 
 <p>Cette pipette à couleur es disponible dans les exemples : <em>Sketch_4_02</em>.</p>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="pixels-3d"></a></p>
 
@@ -1647,6 +1721,8 @@ Il faut cependant bien noter qu’à la ligne 16 nous convertissons les coordonn
 
 <p><img src="assets/019_pixels.png" alt="exemples_pdf/Sketch_4_03.pde"></p>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="Les-Librairies"></a></p>
 
 <h1>
@@ -1684,6 +1760,8 @@ Il faut cependant bien noter qu’à la ligne 16 nous convertissons les coordonn
 <p>Dans le dossier /library/ vous devez normalement trouver un fichier *.jar portant le même nom que votre dossier racine. Si c’est bien le cas votre librairie sera alors reconnue et utilisable.</p>
 
 <p>Généralement lorsque vous installez une librairie elle est fournie avec un certains nombres d’exemples censé expliquer son fonctionnement. On y accède via le menu File-&gt;Examples, il faut ensuite naviguer jusqu’au menu déroulant intitulé « Contributed Libraries », puis trouver le dossier correspondant à la librairie installée.</p>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="cp5"></a></p>
 
@@ -1791,6 +1869,8 @@ Après avoir appelé nos librairies, nous créons une instance de ControlP5 qui 
 File-&gt;Examples-&gt;ContributerLibrairies-&gt; ControlP5-&gt;Extra-&gt;ControlP5frame.pde</p>
 
 <p>ControlP5 est une librairie très aboutie avec beaucoup de fonctionnalités, mais sa mise en œuvre peut-être parfois un peu lourde. S’il s’agit de faire des tests, le mode « Tweak » peut  s’avérer être une bonne alternative.</p>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="oscp5"></a></p>
 
@@ -1957,6 +2037,8 @@ File-&gt;Examples-&gt;ContributerLibrairies-&gt; ControlP5-&gt;Extra-&gt;Control
 
 <p>et voilà !</p>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="Trucs-et-astuces"></a></p>
 
 <h1>
@@ -2045,6 +2127,8 @@ Tools -&gt; Color Selector.</p>
   noLoop();
 }</pre></div>
 
+<p><a href="#Contenu">^ home</a><br></p>
+
 <p><a name="Ressources"></a></p>
 
 <h1>
@@ -2104,6 +2188,8 @@ Tools -&gt; Color Selector.</p>
 <p>Nature of Code de Daniel Shiffman - intermédiaire (gratuit sur internet) : <a href="http://natureofcode.com/">http://natureofcode.com/</a></p>
 
 <p>Generative Design (en-fr) - intermédiaire : <a href="http://www.generative-gestaltung.de/">http://www.generative-gestaltung.de/</a></p>
+
+<p><a href="#Contenu">^ home</a><br></p>
 
 <p><a name="References"></a></p>
 
@@ -2177,15 +2263,6 @@ Tools -&gt; Color Selector.</p>
       </section>
     </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Introduction processing maintained by <a href="https://github.com/b2renger">b2renger</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
     
-
   </body>
 </html>
