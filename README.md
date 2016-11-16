@@ -1327,7 +1327,7 @@ A la ligne 1 on crée un nouvel objet PImage appelé « img », on l’initial
 
 Ce code correspond au *Sketch_4_01.pde*.
 
-![exemples_pdf/Sketch_4_01.pde](assets/018_images.png)
+![exemples_pdf/Sketch_4_01.pde](assets/020_image.png)
 
 <a name="pixels-image"/>
 #Acccéder aux pixels
@@ -1424,7 +1424,7 @@ void draw() {
 }
 ```
 
-![exemples_pdf/Sketch_4_03.pde](assets/019_pixels.png)
+![exemples_pdf/Sketch_4_03.pde](assets/020_pixels.png)
 
 
 <a name="Les-Librairies"/>
