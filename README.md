@@ -15,11 +15,11 @@ Notes :
 * [L'IDE](#ide)<br>
 * [Premier Programme](#Premier-Programme)<br>
 * [Les variables](#Les-variables)<br>
-	*[Définition](#définition)<br>
- 	*[Différents types de variables](#types)<br>
-	*[La portée des variables](#portée)<br>
- 	*[Exemple d’utilisation des variables](#exemples)<br>
- 	*[Variables globales de processing](#globales)<br>
+	* [Définition](#définition)<br>
+ 	* [Différents types de variables](#types)<br>
+	* [La portée des variables](#portée)<br>
+ 	* [Exemple d’utilisation des variables](#exemples)<br>
+ 	* [Variables globales de processing](#globales)<br>
 * [L’aléatoire](#L’aléatoire)<br>
  	*[random()](#random)<br>
  	*[noise()](#noise)<br>
