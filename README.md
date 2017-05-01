@@ -11,64 +11,64 @@ Notes :
 
 # Contenu
 
-* [Introduction](#Introduction)<br>
-* [L'IDE](#ide)<br>
-* [Premier Programme](#Premier-Programme)<br>
-* [Les variables](#Les-variables)<br>
- * [Définition](#définition)<br>
- * [Différents types de variables](#types)<br>
- * [La portée des variables](#portée)<br>
- * [Exemple d’utilisation des variables](#exemples)<br>
- * [Variables globales de processing](#globales)<br>
-* [L’aléatoire](#L’aléatoire)<br>
- * [random()](#random)<br>
- * [noise()](#noise)<br>
- * [randomSeed() et noiseSeed()](#randomSeed)<br>
-* [Les boucles](#Les-boucles)<br>
- * [for()](#for)<br>
- * [while()](#while)<br>
- * [Exemple](#exemple)<br>
-* [Couleurs](#Couleurs)<br>
- * [Niveaux de gris](#gris)<br>
- * [Mode RGB](#rgb)<br>
- * [Mode HSB](#hsb)<br>
- * [Transparence](#transparence)<br>
-* [Primitives de dessin](#Primitives-de-dessin)<br>
- * [Les instructions de dessin](#instructions)<br>
- * [Les primitives (formes prêtes à l'emploi)](#primitives)<br>
- * [Les vertices (formes sur mesure)](#vertices)<br>
-* [Transformation de l’espace](#Transformation-de-l’espace)<br>
- * [translate()](#translate)<br>
- * [rotate()](#rotate)<br>
-* [Coder ses propres fonctions](#Coder-ses-propres-fonctions)<br>
-* [Interactions Souris et clavier](#Interactions-Souris-et-clavier)<br>
- * [Souris](#souris)<br>
-  * [Variables globales](#souris-globales)<br>
-  * [Fonctions](#souris-fonctions)<br>
-  * [map()](#map)<br>
- * [Clavier](#clavier)<br>
-* [Dessiner du texte et utiliser des polices de caractère](#Dessiner-du-texte-et-utiliser-des-polices-de-caractère)<br>
-* [Les Classes Programmation Orientée Objet](#Les-Classes-Programmation-Orientée-Objet)<br>
- * [Structure d'une classe](#structure-classe)<br>
- * [Construction d’un classe simple](#construction-classe)<br>
-  * [Déclaration de variables](#variables-classe)<br>
-  * [Constructeur : initialisation](#constructeur-classe)<br>
-  * [Méthodes complémentaires : update() et draw()](#méthodes-classe)<br>
- * [Utilisation d’un classe simple](#utilisation-classe)<br>
-* [Les Tableaux](#Les-Tableaux)<br>
-* [Emergence : Un programme interactif complexe](#Emergence)<br>
-* [Travailler avec les images](#Travailler-avec-les-images)<br>
- * [Charger et afficher une image](#charger-image)<br>
- * [Accéder aux pixels](#pixels-image)<br>
- * [Explosion de pixels en 3D](#pixels-3d)<br>
-* [Les Librairies](#Les-Librairies)<br>
- * [Installation d'une librairie](#installation)<br>
- * [ControlP5 pour la création de gui](#cp5)<br>
- * [OSCP5 pour la communication entre divers programmes](#oscp5)<br>
-* [3D et audio réactif avec Pure-Data](#audio-réactif)<br>
-* [Trucs et astuces](#Trucs-et-astuces)<br>
-* [Ressources](#Ressources)<br>
-* [Références](#References)<br>
+*[Introduction](#Introduction)<br>
+*[L'IDE](#ide)<br>
+*[Premier Programme](#Premier-Programme)<br>
+*[Les variables](#Les-variables)<br>
+	*[Définition](#définition)<br>
+ 	*[Différents types de variables](#types)<br>
+	*[La portée des variables](#portée)<br>
+ 	*[Exemple d’utilisation des variables](#exemples)<br>
+ 	*[Variables globales de processing](#globales)<br>
+*[L’aléatoire](#L’aléatoire)<br>
+ 	*[random()](#random)<br>
+ 	*[noise()](#noise)<br>
+ 	*[randomSeed() et noiseSeed()](#randomSeed)<br>
+*[Les boucles](#Les-boucles)<br>
+ 	*[for()](#for)<br>
+ 	*[while()](#while)<br>
+ 	*[Exemple](#exemple)<br>
+*[Couleurs](#Couleurs)<br>
+ 	*[Niveaux de gris](#gris)<br>
+ 	*[Mode RGB](#rgb)<br>
+ 	*[Mode HSB](#hsb)<br>
+ 	*[Transparence](#transparence)<br>
+*[Primitives de dessin](#Primitives-de-dessin)<br>
+ 	*[Les instructions de dessin](#instructions)<br>
+ 	*[Les primitives (formes prêtes à l'emploi)](#primitives)<br>
+ 	*[Les vertices (formes sur mesure)](#vertices)<br>
+*[Transformation de l’espace](#Transformation-de-l’espace)<br>
+ 	*[translate()](#translate)<br>
+ 	*[rotate()](#rotate)<br>
+*[Coder ses propres fonctions](#Coder-ses-propres-fonctions)<br>
+*[Interactions Souris et clavier](#Interactions-Souris-et-clavier)<br>
+ 	*[Souris](#souris)<br>
+  	*[Variables globales](#souris-globales)<br>
+  	*[Fonctions](#souris-fonctions)<br>
+  	*[map()](#map)<br>
+ 	*[Clavier](#clavier)<br>
+*[Dessiner du texte et utiliser des polices de caractère](#Dessiner-du-texte-et-utiliser-des-polices-de-caractère)<br>
+*[Les Classes Programmation Orientée Objet](#Les-Classes-Programmation-Orientée-Objet)<br>
+ 	*[Structure d'une classe](#structure-classe)<br>
+ 	*[Construction d’un classe simple](#construction-classe)<br>
+  	*[Déclaration de variables](#variables-classe)<br>
+  	*[Constructeur : initialisation](#constructeur-classe)<br>
+  	*[Méthodes complémentaires : update() et draw()](#méthodes-classe)<br>
+ 	*[Utilisation d’un classe simple](#utilisation-classe)<br>
+*[Les Tableaux](#Les-Tableaux)<br>
+*[Emergence : Un programme interactif complexe](#Emergence)<br>
+*[Travailler avec les images](#Travailler-avec-les-images)<br>
+ 	*[Charger et afficher une image](#charger-image)<br>
+ 	*[Accéder aux pixels](#pixels-image)<br>
+ 	*[Explosion de pixels en 3D](#pixels-3d)<br>
+*[Les Librairies](#Les-Librairies)<br>
+ 	*[Installation d'une librairie](#installation)<br>
+ 	*[ControlP5 pour la création de gui](#cp5)<br>
+ 	*[OSCP5 pour la communication entre divers programmes](#oscp5)<br>
+*[3D et audio réactif avec Pure-Data](#audio-réactif)<br>
+*[Trucs et astuces](#Trucs-et-astuces)<br>
+*[Ressources](#Ressources)<br>
+*[Références](#References)<br>
 
 
 <a name="Introduction"/>
