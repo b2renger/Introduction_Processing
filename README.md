@@ -10,6 +10,7 @@ Notes :
 
 
 # Contenu
+
 * [Introduction](#Introduction)<br>
 * [L'IDE](#L'IDE)<br>
 * [Premier Programme](#Premier-Programme)<br>
@@ -42,9 +43,7 @@ Notes :
 * [Coder ses propres fonctions](#Coder-ses-propres-fonctions)<br>
 * [Interactions avec la souris et le clavier](#Interactions-avec-la-souris-et-le-clavier)<br>
   * [Souris](#souris)<br>
-    * [Les variables relatives à la souris
-](#Les-variables-relatives-a-la-souris
-)<br>
+    * [Les variables relatives à la souris](#Les-variables-relatives-a-la-souris)<br>
     * [Les fonctions relatives a la souris](#Les-fonctions-relatives-a-la-souris)<br>
   * [map()](#map)<br>
   * [Clavier](#clavier)<br>
