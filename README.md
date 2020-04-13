@@ -1,75 +1,78 @@
 # Introduction_Processing
 This respository is a french introduction to the Processing programming language
 
+Vous pouvez retrouver l'ensemble du code décrit ici dans ce dépôt [github](https://github.com/b2renger/Introduction_Processing)
+
 Notes : 
 * Le dossier "bonus" propose des outils à usage spécifique. Les explications sont disponnibles dans le code sous forme de commentaires.
 * Ce document ne se veut pas exhaustif, il présente les fonctions principales dont nous aurons l’utilité dans le cadre de ce cours. Processing étant très bien documenté il est très facile de trouver de nombreux tutoriels en ligne sur les différents aspects du programme. Se référer à la section « Ressources » pour plus d’informations.
 * Ce document a pour but de rappeler les informations vues en cours sous une autre forme et d'en apporter de nouvelles, sa lecture doit donc s’accompagner des exemples de code construits pendant le module.
 
 
-<a name="Contenu"/>
 # Contenu
 * [Introduction](#Introduction)<br>
-* [L'IDE](#ide)<br>
+* [L'IDE](#L'IDE)<br>
 * [Premier Programme](#Premier-Programme)<br>
 * [Les variables](#Les-variables)<br>
- * [Définition](#définition)<br>
- * [Différents types de variables](#types)<br>
- * [La portée des variables](#portée)<br>
- * [Exemple d’utilisation des variables](#exemples)<br>
- * [Variables globales de processing](#globales)<br>
-* [L’aléatoire](#L’aléatoire)<br>
- * [random()](#random)<br>
- * [noise()](#noise)<br>
- * [randomSeed() et noiseSeed()](#randomSeed)<br>
+  * [Définition](#définition)<br>
+  * [Différents types de variables](#Differents-types-de-variables)<br>
+  * [La portée des variables](#La-portee-des-variables-ou-le-scope)<br>
+  * [Exemple d’utilisation des variables](#Exemple-d’utilisation-des-variables)<br>
+  * [Variables globales de processing](#Variables-globales-de-processing)<br>
+* [L’aléatoire](#Le-hasard)<br>
+  * [random()](#random)<br>
+  * [noise()](#noise)<br>
+  * [randomSeed() et noiseSeed()](#randomSeed()-et-noiseSeed())<br>
 * [Les boucles](#Les-boucles)<br>
- * [for()](#for)<br>
- * [while()](#while)<br>
- * [Exemple](#exemple)<br>
-* [Couleurs](#Couleurs)<br>
- * [Niveaux de gris](#gris)<br>
- * [Mode RGB](#rgb)<br>
- * [Mode HSB](#hsb)<br>
- * [Transparence](#transparence)<br>
+  * [for()](#for)<br>
+  * [while()](#while)<br>
+  * [Exemple](#exemple)<br>
+* [Les principes de bases des couleurs](#Les-principes-de-bases-des-couleurs)<br>
+  * [Niveaux de gris](#Niveaux-de-gris)<br>
+  * [Mode RGB](#Le-mode-rgb)<br>
+  * [Mode HSB](#Le-mode-hsb)<br>
+  * [Transparence](#La-transparence)<br>
 * [Primitives de dessin](#Primitives-de-dessin)<br>
- * [Les instructions de dessin](#instructions)<br>
- * [Les primitives (formes prêtes à l'emploi)](#primitives)<br>
- * [Les vertices (formes sur mesure)](#vertices)<br>
-* [Transformation de l’espace](#Transformation-de-l’espace)<br>
- * [translate()](#translate)<br>
- * [rotate()](#rotate)<br>
+  * [Les instructions de dessin](#Les-instructions-de-dessin)<br>
+  * [Les primitves - formes classiques](#Les-primitves---formes-classiques)<br>
+  * [Les vertices - formes sur mesure](#Les-vertices---formes-sur-mesure)<br>
+* [Les Transformations de l’espace](#Les-transformations-de-l’espace)<br>
+  * [translate()](#translate)<br>
+  * [rotate()](#rotate)<br>
 * [Coder ses propres fonctions](#Coder-ses-propres-fonctions)<br>
-* [Interactions Souris et clavier](#Interactions-Souris-et-clavier)<br>
- * [Souris](#souris)<br>
-  * [Variables globales](#souris-globales)<br>
-  * [Fonctions](#souris-fonctions)<br>
+* [Interactions avec la souris et le clavier](#Interactions-avec-la-souris-et-le-clavier)<br>
+  * [Souris](#souris)<br>
+    * [Les variables relatives à la souris
+](#Les-variables-relatives-a-la-souris
+)<br>
+    * [Les fonctions relatives a la souris](#Les-fonctions-relatives-a-la-souris)<br>
   * [map()](#map)<br>
- * [Clavier](#clavier)<br>
-* [Dessiner du texte et utiliser des polices de caractère](#Dessiner-du-texte-et-utiliser-des-polices-de-caractère)<br>
-* [Les Classes Programmation Orientée Objet](#Les-Classes-Programmation-Orientée-Objet)<br>
- * [Structure d'une classe](#structure-classe)<br>
- * [Construction d’un classe simple](#construction-classe)<br>
-  * [Déclaration de variables](#variables-classe)<br>
-  * [Constructeur : initialisation](#constructeur-classe)<br>
-  * [Méthodes complémentaires : update() et draw()](#méthodes-classe)<br>
- * [Utilisation d’un classe simple](#utilisation-classe)<br>
-* [Les Tableaux](#Les-Tableaux)<br>
-* [Emergence : Un programme interactif complexe](#Emergence)<br>
+  * [Clavier](#clavier)<br>
+    * [Dessiner du texte et utiliser des polices de caractère](#Dessiner-du-texte-et-utiliser-des-polices-de-caractere)<br>
+* [Les Classes Programmation Orientéee Objet](#Les-Classes-et-la-Programmation-Orientee-Objet)<br>
+  * [Structure d'une classe](#Structure-d'une-classe)<br>
+  * [Construction d’une classe simple](#Construction-d'une-classe-simple)<br>
+    * [Déclaration de variables](#Declaration-de-variables)<br>
+    * [Constructeur et initialisation](#Constructeur-et-initialisation)<br>
+    * [Méthodes complémentaires : update() et draw()](#Methodes-update()-et-draw())<br>
+  * [Utilisation d’une classe simple](#Utilisation-d'une-classe-simple)<br>
+  * [Les Tableaux pour y stocker des instances de classe](#Les-Tableaux-pour-stocker-des-instances-de-classe)<br>
+  * [Emergence - un programme interactif graphiquement complexe avec un algorithme simple](#Emergence---un-programme-interactif-graphiquement-complexe-avec-un-algorithme-simple)<br>
 * [Travailler avec les images](#Travailler-avec-les-images)<br>
- * [Charger et afficher une image](#charger-image)<br>
- * [Accéder aux pixels](#pixels-image)<br>
- * [Explosion de pixels en 3D](#pixels-3d)<br>
+  * [Charger et afficher une image](#Charger-et-afficher-une-image)<br>
+  * [Acceder aux pixels](#Acceder-aux-pixels)<br>
+  * [Explosion de pixels en 3D](#Explosion-de-pixels-en-3D)<br>
 * [Les Librairies](#Les-Librairies)<br>
- * [Installation d'une librairie](#installation)<br>
- * [ControlP5 pour la création de gui](#cp5)<br>
- * [OSCP5 pour la communication entre divers programmes](#oscp5)<br>
-* [3D et audio réactif avec Pure-Data](#audio-réactif)<br>
+  * [Installation d'une librairie](#installation)<br>
+  * [ControlP5 pour la creation de GUI ](#ControlP5-pour-la-creation-de-GUI )<br>
+  * [OSCP5 pour la communication entre divers programmes](#OSCP5-pour-la-communication-avec-d’autres-programmes)<br>
+  * [3D et audio réactif avec Pure-Data](#3D-et-audio-reactif-avec-Pure-Data)<br>
 * [Trucs et astuces](#Trucs-et-astuces)<br>
 * [Ressources](#Ressources)<br>
 * [Références](#References)<br>
 
-<a name="Introduction"/>
-#Introduction
+
+## Introduction
 
 Processing est un langage de programmation basé sur java et principalement destiné à la création
 graphique. Il est apparut en 2001, crée par deux artistes Ben Fry et Casey Reas, alors étudiants au
@@ -101,11 +104,13 @@ processing comme le développement pour android (smartphones et tablettes), ou e
 Processing existe aussi bien sous Linux, Windows que Mac OS. Le projet étant à but pédagogique et
 porté par une communauté très active il est excessivement bien documenté.
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="ide"/>
-#L'IDE
+
+## L'IDE
+
 IDE signifie Inegrated Developpemet Environment, c'est l'outil avec lequel on va travailler, c'est la fenêtre qu'ouvre notre système d'exploitation lorsque l'on lance processing. Cela ressemble à un éditeur de texte, mais nous avons des boutons pour compiler nos programmes et une seconde fenêtre de rendu qui s'ouvre à la compilation.
 
 ![L'IDE de Processing](assets/001_IDE.png)
@@ -120,11 +125,12 @@ IDE signifie Inegrated Developpemet Environment, c'est l'outil avec lequel on va
 
 Processing fonctionne par défaut avec l’utilisation d’un « sketchbook ». C’est un dossier sur votre disque dur dans lequel seront stockés vos programmes et toutes les librairies, ainsi que les diférents modes que vous avez installé. Il est possible de modifier l’emplacement de ce dossier en allant dans : <i> File -> Preferences </i>
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="Premier-Programme"/>
-#Premier Programme
+
+## Premier Programme
 
 A tout moment il est possible d’insérer un commentaire dans son programme en utilisant ces deux caractères en début de ligne  « // ». On peut aussi créer des commentaires sur plusieurs lignes en utilisant ces caractères :« / »  suivi de « * » pour signaler le début d’un commentaire, et de « * » suivi de « / » pour signaler la fin de ce même commentaire.
 
@@ -155,18 +161,19 @@ Il existe des fonction spécifique au langage processing appelée primitives, on
 
 A noter que par défaut nous utilisons un systèmes de coordonnées cartésiennes centré en haut à gauche de la fenêtre de dessin. Dans notre programme, le coin en haut à gauche a donc les coordonnées(0,0), le coin en bas à droite a donc les coordonnées (199,199) 
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="Les-variables"/>
-#Les variables
+## Les variables
 
-<a name="définition"/>
-##Définition
+
+### Définition
+
 Les variables correspondent à un espace utilisé dans la mémoire de l’ordinateur pour stocker une information de manière temporaire. Les variables peuvent être de différents types en fonction des données qu’elles doivent stocker.
 
-<a name="types"/>
-##Différents types de variables
+
+### Differents types de variables
+
 **int** : permet de stocker des nombres entiers.
 **float** : permet de stocker des nombres flottants soit des nombres à virgules.
 **string** : permet de stocker des chaines de caractères, c’est-à-dire du texte.
@@ -203,11 +210,12 @@ Certain type sont compatibles avec d’autres : on peut par exemple stocker un 
 
 Il est aussi possible de stocker des données plus complexes comme des tableaux. Les tableaux servent à stocker des ensembles de données d’un type précis, on peut même y stocker des instances de classes… (nous verrons ceci dans la section dédiée aux classes).
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="portée"/>
-##La portée des variables
+
+## La portee des variables ou le scope
 
 Un point essentiel réside dans la portée de ces variables (en anglais on parle de « scope »). D’une façon simplifiée : une variable sera accessible uniquement dans la fonction ou portion de code dans laquelle elle aura été définie. Une portion de code correspond à l’espace entre deux accolades « { } ».
 
@@ -215,11 +223,12 @@ Cela signifie qui si je définie une variable dans le setup() de mon programme c
 
 Il est possible de définir des variables à l’extérieur des fonctions setup() et draw() : par exemple en tout début de programme, ces variables seront alors accessibles partout dans notre programme.
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="exemples"/>
-##Exemple d’utilisation des variables
+
+### Exemple d’utilisation des variables
 
 Habituellement on a tendance à créer les variables tout en haut de notre programme, on les initialise ensuite dans le setup() , puis on les utilise dans le draw().
 
@@ -249,11 +258,11 @@ Habituellement on a tendance à créer les variables tout en haut de notre progr
 ```
 ![exemples_pdf/Sketch_1_02.pde](assets/003_Utilisation_variables.png)
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="globales"/>
-##Variables globales de processing
+### Variables globales de processing
 
 Il existe dans processing des variables globales, qui sont donc accessibles partout dans processing, ces variables sont définies par défaut et gérée par processing lui-même, il faut mieux éviter d’utiliser leur nom pour définir ses propres variables.
 
@@ -262,18 +271,17 @@ C’est le cas entre autres de :
 **width** : (float) qui est associée par défaut à largeur de la fenêtre de dessin.
 **height** : (float) qui est associée par défaut à la hauteur de la fenêtre de dessin.
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="L'aléatoire"/>
-#L'aléatoire
+## Le hasard
 
 En informatique et en design génératif , l’aléatoire est très souvent utilisé pour obtenir des résultats présentant des variantes contraintes, c’est-à-dire pour obtenir plusieurs variations d’un même algorithme.
 
 Il existe deux principales façon d’obtenir des nombres aléatoires ou plutôt pseudo-aléatoire, car il n’existe pas en informatique de méthode permettant d’obtenir un résultat réellement et statistiquement complètement aléatoire.
 
-<a name="random"/>
-##random()
+### random()
 
 La fonction random() renvoit donc des résultats aléatoires en fonction d’un argument qui sera spécifié entre les parenthèses. Ce nombre aléatoire sera de type float.
 Par exemple :
@@ -320,11 +328,12 @@ Ce programme va dessiner, à chaque image, un cercle positionné aléatoirement 
 
 ![exemples_pdf/Sketch_1_03.pde](assets/004_Aléatoire.png)
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="noise"/>
-##noise()
+
+### noise()
 
 La fonction noise() est un peu particulière puisque elle permet de générer des suites de nombres très proches les uns des autres. Cela permet notament de créer des mouvement et des contours qui paraissent plus naturels.
 
@@ -360,11 +369,13 @@ void draw() {
 
 Ce programme dessine un cercle qui va se déplacer aléatoirement dans l’espace de dessin. Il est d’ailleurs fort probable qu’il en sorte, mais nous y reviendrons plus tard.
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="randomSeed"/>
-##randomSeed() et noiseSeed()
+
+
+### randomSeed() et noiseSeed()
 
 Ces deux fonctions permettent de pouvoir retrouver un résultat qui a été obtenu avec des nombres aléatoires. Comme mentionné ci-dessus, les ordinateurs ne permettent pas d’avoir des générateurs de nombres complétement aléatoires, dans certain cas cela peut-être un avantage, notament quand il s’agit de pouvoir régénérer exactement la même image avec un algorithme qui utilise pourtant des nombres aléatoires.
 
@@ -389,18 +400,17 @@ a = random(500);
 println("seed" + seed +" : " + a); 
 ```
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="Les-boucles"/>
-#Les Boucles
+
+## Les Boucles
 
 C’est un des point primordiaux de la programmation objet, le boucles permette de répéter une action ou une suite d’instruction un nombre limité de fois. Il existe les boucles dites « for », et les boucles dites « while ». 
 
 Dans le cadre de ce document nous n’allons traiter que les boucles «for », les boucles « while » étant relativement rarement usitées.
 
-<a name="for"/>
-##for()
+### for()
 voici un exemple de boucle « for » :
 
 ```java
@@ -415,39 +425,41 @@ Un boucle for se compose, de deux parties :
 
 * Un bloc d’instructions à exécuter,  situé entre les deux accolades.
 
-* Entre les parenthèses  ce sont les conditions d’exécution de la boucle qui sont séparées par des points virgules. 
- * D’abord, on définit un nombre entier appelé « i » que l’on initialise à  0, 
- * ensuite on précise que l’on exécutera le bloc d’instruction uniquement si  « i » reste strictement inférieur à 10, 
- * puis on incrémente « i » de 1 en lui ajoutant la valeur 1.
+  * Entre les parenthèses  ce sont les conditions d’exécution de la boucle qui sont séparées par des points virgules. 
+  * D’abord, on définit un nombre entier appelé « i » que l’on initialise à  0, 
+  * ensuite on précise que l’on exécutera le bloc d’instruction uniquement si  « i » reste strictement inférieur à 10, 
+  * puis on incrémente « i » de 1 en lui ajoutant la valeur 1.
 
 Le code présenté ci-dessus permet donc de dessiner 10 cercles blancs de 5 pixels de diamètre, le premier étant situé en haut à gauche aux coordonnées (10,10), le dernier au coordonnées (100,100).(100 = 10 + 9*10).
 
 Comme nous le verrons ces boucles sont très utilisées en programmation objet car elles permettent d’itérer une série d’instructions sur les éléments d’un tableau.
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="while"/>
-##While()
+
+### While()
 
 La boucle while() est moins usitée en programmation objet, mais très commune en électronique, elle permet de réaliser un bloc d’instruction tant qu’une condition est vérifiée.
 
 ```java
 int i =0 ;
 while (i < width){	
-noStroke();
-fill(255);
-      ellipse(i,height/2,5,5);
-i+=5;
+  noStroke();
+  fill(255);
+  ellipse(i,height/2,5,5);
+  i+=5;
 }
 ```
 Ici, nous avons un variable initialisée à zéro, tant que cette variable est inférieure à la largeur de notre fenêtre de dessin, nous dessinons une ellipse blanche, de 5 pixels de diamètre placée en abscisses à la valeur de « i » et en ordonnées au milieu de notre fenêtre de dessin.
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="exemple"/>
-##Exemple
+
+### Exemple
 
 ```java
 /* voici mon premier programme utilisant des variables et de l’aléatoire et une boucle for*/
@@ -478,14 +490,12 @@ void draw(){
 
 ![exemples_pdf/Sketch_1_06.pde](assets/006_boucles.png)
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="couleur"/>
-#Couleur
+## Les principes de bases des couleurs
 
-<a name="gris"/>
-##Niveaux de gris
+### Niveaux de gris
 
 Dans processing il existe trois mode principaux de couleurs. Le premier mode est celui que nous avons déjà utilisé dans les exemples précédents : le mode grayscale ou niveau de gris. Dans ce mode il s’agit de signifier un nombre entre 0 et 255 ; 0 étant le noir et 255 le blanc.
 
@@ -496,11 +506,12 @@ ellipse(width/2,height/2,50,50) ;
 ```
 Le code va donc dessiner un cercle gris souris avec un contour noir.
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="rgb"/>
-##Le mode RGB
+
+### Le mode RGB
 
 Le mode de couleur par défaut de processing est le mode RGB (« Red Green Blue »), pour créer des couleurs il s’agit alors de spécifier les niveau de rouge, vert et de bleu que l’on souhaite entre 0 et 255 ;
 
@@ -516,11 +527,13 @@ fill(255,100,100);// Rose
 ellipse(width*4/5,height/2,10,10);
 ```
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="hsb"/>
-##Le mode HSB
+
+
+### Le mode HSB
 
 Le mode HSB correspond à la specification de niveau de Hue (teinte), Saturation (contraste), Brightness (luminosité). Lorsque l’on définie le mode HSB on spécifie généralement l’étendue de la plage que doivent occuper ces valeurs.
 
@@ -540,11 +553,13 @@ for (int i =0 ; i < width ; i++){
 }
 ```
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="transparence"/>
-##La transparence
+
+
+### La transparence
 
 Il suffit d’ajouter un paramètre final à nos couleurs quelque soit le mode choisit. Ce dernier paramètre réglera le niveau de transparence à spécifier entre 0 et 255 ; 0 étant complétement transparent (soit invisible) et 255 étant entièrement opaque.
 
@@ -580,16 +595,17 @@ void draw() {
 
 ![exemples_pdf/Sketch_1_07.pde](assets/007_couleurs.png)
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="Primitives-de-dessin"/>
-#Primitives de dessin
+
+
+## Primitives de dessin
 
 A partir de maintenant nous allons abandoner notre programme fil-rouge, qui nous a déjà appris beaucoup de choses, pour nous pencher vers d’autres rendus graphiques plus riches.
 
-<a name="instructions"/>
-##Les instructions de dessin
+### Les instructions de dessin
 
 Nous avons déjà vu la majeure partie des instructions de dessins dans les programmes précèdents, mais opérons tout de même à un petit rappel : 
 
@@ -603,11 +619,11 @@ Concenant les instruction de lignes, il existe aussi les fonction strokeCap() ;
 
 Une autre instruction est importante , il s’agit de smooth() ; qui permet de modifier les paramètres de l’anti-aliasing de processing. On peut lui attribuer les valeurs de 2, 4 ou 8. Cela permet d’avoir des lignes fines plus précises à haute résolution.
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="primitives"/>
-##Les primitves (formes)
+### Les primitves - formes classiques
 
 Nous avons pour l’instant principalement utilisé des ellipses pour nos code. Mais processing regorge d’une bonne quantité de primtives pour dessiner différentes formes géométriques.
 
@@ -619,11 +635,11 @@ Nous avons pour l’instant principalement utilisé des ellipses pour nos code. 
 
 Il existe souvent différent modes pour dessiner ces formes, je vous conseille donc de regarder les documentation de rectMode() (String) et ellipseMode() (String) par exemple. On peut par exemple choisir de dessiner à partir d’un coin (CORNER - par défaut lorsque l’on dessine un rectangle), ou à partir du centre de nôtre forme (CENTER – par défaut pour l’ellipse).
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="vertices"/>
-##Les vertices (formes sur mesure)
+### Les vertices - formes sur mesure
 
 Si cela ne vous suffisait pas il existe d’autres possibilités pour créer des formes. Les fonctions beginShape(), endShape() et vertex() vont nous y aider.
 
@@ -688,11 +704,12 @@ Concernant les vertices, il existe aussi plusieurs type de fonctions permettant 
 
 Enfin pour ceux qui persiste dans l’utilisation de processing, il est intéressant de regarder le foncionnement de l’objet PShape, qui permet de créer des formes complexes,  de les stocker puis de les manipuler plus facilement.
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="Transformation-de-l’espace"/>
-#Les Transformations de l’espace
+
+## Les Transformations de l’espace
 
 C’est un des points primordiaux de processing, il faut savoir se repérer dans un espace 2D et savoir utiliser différents systèmes de coordonnées, pour pouvoir se faciliter la vie.
 
@@ -701,8 +718,12 @@ Il existe deux types de transformation de l’espace :
 * translate() ;
 * rotate() ;
 
-<a name="translate"/>
-##translate()
+
+[**home**](#Contenu)<br>
+
+
+
+### translate()
 
 Cette fonction permet d’opérer une translation, ce qu’il est primordial de comprendre c’est que l’on n’opère pas cette translation sur les formes que l’on dessine, mais plutôt sur notre espace de dessin. C’est comme si l’on gardait notre crayon au même endroit et que l’on déplaçait la feuille.
 
@@ -771,11 +792,12 @@ void draw(){
 
 popMatrix() permet en fait de replace la feuille pour dessiner éventuellement d’autres choses après. Ces deux objets doivent impérativement être utilisés conjointement, l’un sans l’autre renverra une erreur…
 
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="rotate"/>
-##rotate()
+
+### rotate()
 
 rotate() fonctionne de la même façon que translate(), il faut lui fournir un angle en radians, une fonction radians(angle)  permet de convertir un angle spécifié en degrés en une mesure radian facilement.
 
@@ -818,11 +840,13 @@ void draw() {
 
 Si vous intervertissez rotate() et translate() l’effet ne sera plus du tout le même, idem si l’on oublie d’utiliser pushMatrix() et popMatrix().
 
-[^ home](#Contenu)<br>
+Ce petit programme interactif sur openprocessing pourra vous aider à visualiser ce qui se passe : https://www.openprocessing.org/sketch/388513
+
+[**home**](#Contenu)<br>
 
 
-<a name="Coder-ses-propres-fonctions"/>
-#Coder ses propres fonctions
+
+## Coder ses propres fonctions
 
 A partir de ces transformations simples nous allons créer une texture mouvante en quelques lignes de code. Le principe est simple  nous allons utiliser le principe du carré tournant autour de son point supérieur gauche, mais nous allons créer une grille de carrés sur toute la surface de l’écran. 
 
@@ -862,20 +886,18 @@ et consulter la vidéo d'abe pazos de funprogamming dont ce code est tirée : ht
 
 ![exemples_pdf/Sketch_1_10.pde](assets/010_grid.png)
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="Interactions-Souris-et-clavier"/>
-#Interactions avec la souris et le clavier
+## Interactions avec la souris et le clavier
 
 Processing nous donne accès à des fonctions bien pratiques pour créer de l’interaction avec nos programmes, notament à travers l’utilisation de fonction spécifiques permettant d’intercepter les événements provenant de notre souris ou de notre clavier.
 
-<a name="souris"/>
-##Souris
+
+### Souris
 Les évenements provenant de la souris peuvent être captés de diverses façon. Il est par exemple possible de connaitre la position de la souris à tout moment, de savoir quel bouton est activé etc.
 
-<a name="souris_globales"/>
-###Les variables relatives à la souris
+#### Les variables relatives a la souris
 
 Processing met à notre disposition différentes variables globales nous permettant de connaitre l’état de notre souris, ainsi :
 **mouseX** et **mouseY** , nous permettent de connaitre les coordonnées de la position de la souris dans notre fenêtre à tout moment.
@@ -906,11 +928,11 @@ void draw() {
 
 ![Sketch_1_12.pde](assets/011_mouse.png)
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="souris_fonctions"/>
-###Les fonctions relatives à la souris
+
+#### Les fonctions relatives a la souris
 
 Il existe aussi un certain nombre de fonctions permettant d’exectuer un bloc de code en fonction d’un événement souris :
 
@@ -961,11 +983,10 @@ void mouseWheel(MouseEvent event) {
 
 ![exemples_pdf/Sketch_1_14.pde](assets/013_mouse_wheel.png)
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="map"/>
-###map()
+### map()
 
 La fonction map() peut s’avérer être très utile dans le cadre de divers programmes. Elle permet d’échelonner des valeurs d’un intervalle à un autre. Imaginons par exemple qu’en fonction de la position de la souris nous voulions changer la taille d’un cercle. 
 
@@ -975,11 +996,12 @@ Nous voulons que lorsque la souris est tout à gauche de l’écran, notre cercl
 	float diam ;
 	diam = map(mouseX,0,width,5,100) ;
 ```
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="clavier"/>
-##Clavier
+
+### Clavier
 
 De la même façon, les évènements claviers peuvent être interceptés. Il existes les variables :
  * **key**
@@ -994,11 +1016,11 @@ qui retournent les valeurs de la dernière touche de clavier enfoncée ; il exi
 
 En fonction des machines, des systèmes d’exploitation ces fonctions et variables ne renvoient pas systématiquement les même valeurs. Attention donc pour le développement sur plusieurs plateformes.(Pour débugger il est conseillé d’avoir recours à des println pour vérifier les valeurs dans la console). Le chapitre suivant concernant le texte et les polices de caractère vous donnera un exemple d’utilisation de ces fonction.
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="Dessiner-du-texte-et-utiliser-des-polices-de-caractère"/>
-#Dessiner du texte, utiliser des polices de caractère
+
+#### Dessiner du texte et utiliser des polices de caractere
 
 Le programme suivant va permettre de stocker les lettres tapées sur notre clavier dans une variable de type String et va dessiner ensuite ces lettres de manière aléatoire sur l’écran. La fonction keyPressed() va gérer l’ensemble des interactions avec le clavier.
 
@@ -1080,18 +1102,17 @@ void keyPressed() {
 
 Il existe un outil permettant de construire des fonts au format .vlw et donc utilizable dans processing à partir des polices installées sur le système. Il suffit de cliquer sur le menu « Tools -> Create Font ».
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="Les-Classes-Programmation-Orientée-Objet"/>
-#Les Classes : Programmation Orientée Objet
+
+## Les Classes et la Programmation Orientee Objet
 
 Les classes sont un des concepts centraux de JAVA, elles nous permettent de créer des objets ensuite manipulables par du code. Souvent une classe permet d’encapsuler un certain nombre de concepts ensembles d’un façon générique, et permet d’améliorer la lisibilité de notre code.
 
 Cela peut paraître un peu barbare mais c’est en réalité relativement simple : un classe est la description théorique d’un objet. Par exemple dans ce chapitre nous allons créer un classe « Mover », cette classe permettra de créer un objet (représenté graphiquement par un cercle) qui se déplacera dans notre fenêtre de dessin et rebondira contre les bords.
 
-<a name="structre-classe"/>
-##Structure d’une classe
+### Structure d’une classe
 
 Sa structure ressemble furieusement à la structure d’un programme processing. D’abord nous déclarerons des variables qui pourront être utilisées dans le code de notre classe. Ensuite il nous faudra une fonction pour initialiser ces variables , jusque là nous appelions ça la fonction « setup() », dans un classe cette fonction s’appelle un constructeur. Après cela nous aurons une ribambelle de fonctions qui seont appelées à chaque image calculée, qui nous permettra soit de dessiner quelquechose soit de modéliser un comportement physique, biologique , une interaction avec l’utilisateur etc.
 
@@ -1113,15 +1134,16 @@ class Mover {
 }
 ```
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="construction-classe"/>
-##Construction d'une classe simple
 
 
-<a name="declaration-variables-classe"/>
-###Déclaration de variables
+### Construction d'une classe simple
+
+
+
+#### Declaration de variables
 
 Pour construire notre classe Mover, nous allons utiliser un nouveau type de variable, le PVector. Cette variable est bien sûr l’équivalent d’un vecteur mathématique, son utilisation nous simplifiera grandement la vie pour l’implémentation du comportement physique que nous souhaitons. (rappelons tout de même qu’un vecteur n’est ni plus ni moins qu’un couple de coordonées).
 
@@ -1131,11 +1153,10 @@ Mover aura donc besoin pour fonctionner de deux vecteurs : un vecteur définiss
 PVector loc, vel; 
 ```
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="constructeur-classe"/>
-###Constructeur : initialisation
+#### Constructeur et initialisation
 
 Pour initialiser ces variales nous allons utiliser le même type de technique que lorsque nous avions écrit des fonctions. Nous allons nous attacher à pouvoir passer des arguments à notre objet. Cela signifie que lors de la création de l’objet, nous devrons nous même spécifier certaines valeurs, qui seront propre à cet objet crée. La classe elle n’a que faire de ses valeurs, elle ne les manipule que comme des valeurs symboliques. Sans surprise le constructeur resemblera donc à ça :
 
@@ -1158,11 +1179,11 @@ this.maVariable = maVariable ;
 ```
 Autrement dit on attribue à la variable qui est utilisée dans notre classe, la valeur que l’on spécifie en argument de notre fonction.
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="méthodes-classe"/>
-###Méthodes complémentaires : update() et draw()
+
+#### Methodes update() et draw()
 
 En physique, il existe un lien entre la position, la vitesse et l’acceleration. Si l’on dérive l’accéleration par rapport au temps on obtient la vitesse, si l’on dérive cette vitesse on obtient la position. Et inversement si on intégre la position par rapport au temps on obtient la vitesse et si on intègre la vitesse on obtient la position (vérifiez si vous ne me croyez pas  !). Pour nous cela signifie que pour calculer la position de notre objet à l’image suivante , il suffit d’ajouter la vitesse à notre position actuelle ! un petit tour rapide sur la page d’aide de PVector nous apprend qu’il existe une méthode « add() » pour ajouter deux objets PVector. La fonction update() de notre classe contiendra donc très certainement cette ligne de code :
 
@@ -1208,11 +1229,13 @@ void check_collisions(){
 	}
 }
 ```
-[^ home](#Contenu)<br>
+
+[**home**](#Contenu)<br>
 
 
-<a name="utilisation-classe"/>
-##Utilisation d'une classe simple
+
+
+### Utilisation d'une classe simple
 
 Maintenant notre classe écrite nous allons pouvoir l’utiliser. Vous trouvez peut-être que pour l’intant c’est beaucoup de code pour pas grand-chose, mais la magie de la programmation objet va commencer à opérer.
 
@@ -1257,11 +1280,10 @@ Le code assemblé est disponible dans *Sketch_2_01*.
 
 A priori cela représente beaucoup d'efforts pour peux d'avantages, mais l'usage conjoint de classes et de tableaux, permet de simplifier la manipulation de milliers d'objets.
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="Les-Tableaux"/>
-#Les Tableaux
+### Les Tableaux pour stocker des instances de classe
 
 Les tableaux sont un type d’objets complexes, ils nous permettent de stocker un grand nombre d’éléments de n’importe quel type float, string …  ou même une classe que nous venons de créer. C’est précisément ce que nous allons faire. Cela nous permettra de traiter un maximum d’objet avec un minimum de lignes de code.
 
@@ -1312,11 +1334,11 @@ void draw() {
 
 Nous avons donc maintenant 1000 objets Mover qui agissent indépendamment les uns des autres, et rebondissent sur les bords de notre fenêtre de dessin. 
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="Emergence"/>
-#Emergence : Un programme interactif complexe
+
+### Emergence - un programme interactif graphiquement complexe avec un algorithme simple
 
 En repartant du programme précédent, nous allons nous attacher à représenter les choses d’un manière différente. Nous verrons qu’en changeant un peu de perspective nous arriverons à des résultats différents et graphiquement plus intéressants.
 
@@ -1389,16 +1411,14 @@ class Mover {
 ```
 ![exemples_pdf/Sketch_2_03.pde](assets/017_oop3.png)
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="Travailler-avec-les-images"/>
-#Travailler avec les images
+## Travailler avec les images
 
 Processing utilise un classe pour travailler avec les images, pour les manipuler nous avons recours à l’objet « PImage ».
 
-<a name="Charger-image"/>
-#Charger et afficher une image
+### Charger et afficher une image
 
 Pour charger et afficher une image dans Processing, il faut d’abord s’assurer qu’elle soit d’un type accepté par processing à savoir : .gif, .jpg, .tga, ou .png.
 
@@ -1431,11 +1451,10 @@ Ce code correspond au *Sketch_4_01.pde*.
 
 ![exemples_pdf/Sketch_4_01.pde](assets/019_image.png)
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="pixels-image"/>
-#Acccéder aux pixels
+### Acceder aux pixels
 
 Une fois l’image chargée, il est possible de faire énormément de manipulations, il existe beaucoup d’exemples dans la documentation en ligne de processing a propos des filtres que l’on peut appliquer. Nous allons plutôt nous intéresser à la manipulation de pixels. 
 
@@ -1470,11 +1489,11 @@ En effet, pixels[] est un tableau, à titre chaque valeur est stockée à un ind
 
 Cette pipette à couleur es disponible dans les exemples : *Sketch_4_02*.
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="pixels-3d"/>
-#Faire « sortir » les pixels en 3D
+
+### Explosion de pixels en 3D
 
 A partir de maintenant il devient très facilement possible d’effectuer tout un tas d’effets artistiques animés, en se basant sur les données des pixels. Dans le programme suivant nous allons nous attacher à déplacer les pixels en fonction de leur luminosité (et de la position de la souris, pour accentuer ou diminuer l’effet).
 
@@ -1533,11 +1552,10 @@ void draw() {
 
 ![exemples_pdf/Sketch_4_03.pde](assets/020_pixels.png)
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="Les-Librairies"/>
-#Les Librairies
+## Les Librairies
 
 Un des grands avantages de Processing est sa vibrante communauté d’utilisateurs, qui écrit des tutoriels, qui documentent et partagent leurs travaux. Les développeurs de Processing ont voulu permettre aux utilisateurs développer leurs propres librairies et de les intégrer dans Processing.
 
@@ -1549,8 +1567,7 @@ Il en existe pour tout un tas d’applications : pour animer, pour contrôler d
 Nous allons nous intéresser principalement à deux librairies, une permettant de créer des boutons et des sliders pour contrôler nos sketch processing : controlP5. L’autre permettant de faire communiquer deux programmes entre eux. Ces deux librairies ont été codées par Andreas Schlegel (http://www.sojamo.de/code/), un grand merci à lui !
 
 
-<a name="installation"/>
-##Installation d'une librairie
+### Installation d'une librairie
 
 Depuis la version 2.0 de processing, il existe un outil permettant d’installer facilement des librairies, c’est le « library manager » accessible depuis le menu « sketch -> Import library -> Add library ». 
 
@@ -1568,11 +1585,11 @@ Dans le dossier /library/ vous devez normalement trouver un fichier *.jar portan
 
 Généralement lorsque vous installez une librairie elle est fournie avec un certains nombres d’exemples censé expliquer son fonctionnement. On y accède via le menu File->Examples, il faut ensuite naviguer jusqu’au menu déroulant intitulé « Contributed Libraries », puis trouver le dossier correspondant à la librairie installée.
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="cp5"/>
-##ControlP5 pour la création de GUI (exemples de niveau intermédiaire)
+
+### ControlP5 pour la creation de GUI 
 
 ControlP5 est une librairie permettant des créer des GUI (« General User Interface »), c’est-à-dire des boutons et des glissières permettant de contrôler certains paramètres de notre programme.
 
@@ -1680,11 +1697,12 @@ File->Examples->ContributerLibrairies-> ControlP5->Extra->ControlP5frame.pde
 
 ControlP5 est une librairie très aboutie avec beaucoup de fonctionnalités, mais sa mise en œuvre peut-être parfois un peu lourde. S’il s’agit de faire des tests, le mode « Tweak » peut  s’avérer être une bonne alternative.
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="oscp5"/>
-##OSCP5 pour la communication avec d’autres programmes
+
+
+### OSCP5 pour la communication avec d’autres programmes
 
 OSCP5 est un support pour processing de la fameuse librairie de communication entre différents paradigmes de programmation. OSC est présent dans quasiment tous les langages c’est donc un classique à connaitre et à utiliser sans modération.
 
@@ -1770,8 +1788,10 @@ N’oubliez pas de faire attention aux adresses ip et au numéros de ports lorsq
 
 Le Chapitre suivant vous donnera un exemple permettant de de commander Processing à l’aide d’une analyse audio faite dans Pure Data.
 
-<a name="audio-réactif"/>
-#3D et audio-réactif avec Pure-Data
+[**home**](#Contenu)<br>
+
+
+###  3D et audio-reactif avec Pure-Data
 
 Pour compléter le petit projet initié dans le chapitre sur les images, nous allons ajouter une partie audio-réactive, le temps pour Pure-Data et OSC de se rappeler à nos bons souvenirs…
 
@@ -1851,22 +1871,23 @@ Le patch Pure-Data est quand à lui très simple : il utilise la librairie « 
 
 et voilà !
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="Trucs-et-astuces"/>
-#Trucs et astuces
+
+
+## Trucs et astuces
 
 Inspiré de la rubrique de Amnon sur son wordpress :
 http://amnonp5.wordpress.com/2012/01/28/25-life-saving-tips-for-processing/
 
-##IDE
+### IDE
 
 * Ctrl + T : permet de formater le texte de notre code en le ré-indentant en fonction des accolades.
 * File -> Preferences : emplacement du sketchbook
 * File -> Examples : exemples de programmes classés selon différentes catégories, la documentation des librairies est aussi disponible sous cet onglet.	
 
-##Programmation abréviation des opérations
+### Programmation abréviation des opérations
 ```java
 i = i+1 ;
 ```
@@ -1875,9 +1896,9 @@ i = i+1 ;
 i+=1 ;
 ```
 
-##Graphisme
+### Graphisme
 
-###Un blur très simple
+#### Un blur très simple
 Au lieu d’effacer le fond à chaque image en utilisant 
 ```java
 background (maCouleur) ;
@@ -1889,12 +1910,13 @@ noStroke();
 rect(0,0,width,height) ;
 ```
 
-###Color Selector
+#### Color Selector
 Utilisez l’outil Color Selector pour spécifier plus facilement vos couleurs dans les different modes.
 Tools -> Color Selector.
 
-###In/Out
-####Sauvegarder une image
+### In/Out
+
+#### Sauvegarder une image
 
 Pour sauvegarder un image on peut utiliser la fonction saveFrame(), on peut la coupler avec une interaction clavier, ainsi qu’une condition pour que la sauvegarde s’effectue lorsqu’on appuie sur la touche S. Le must est de composer une chaîne de caractère pour que chaque fichier ait un nom unique.
 ```java
@@ -1908,7 +1930,7 @@ void keyPressed() {
  }
 }
 ```
-####Redimensionner une image
+#### Redimensionner une image
 
 Il suffit de changer la taille de la fenêtre du programme pour sauvegarder une image au nouvelles dimensions.
 ```java
@@ -1930,14 +1952,15 @@ void draw(){
 }
 ```
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="Ressources"/>
-#Ressoures
 
 
-## Ressources collaboratives
+## Ressources
+
+
+### Ressources collaboratives
 
 Page de ressources sur codelab (fr) : http://codelab.fr/39
 
@@ -1950,7 +1973,7 @@ Plateforme de code ouverte : Openprocessing - http://www.openprocessing.org/
 Code des workshops des Journées du Code Créatif 2014 dédiées à Processing : https://github.com/stereolux/JCC2
 
 
-## Ressources officielles
+### Ressources officielles
 
 Site officiel : http://processing.org/
 
@@ -1963,7 +1986,7 @@ Les tutoriaux officiels : http://processing.org/tutorials/
 Plus à propos de processing :  http://en.wikipedia.org/wiki/Processing_(programming_language)
 
 
-## Tutoriels écrits en français :
+### Tutoriels écrits en français
 
 Initiation (français) : http://fr.flossmanuals.net/processing/
 
@@ -1972,7 +1995,7 @@ Tutoriel (français) : http://www.ecole-art-aix.fr/rubrique81.html
 D’autres tutoriels en français : http://tutoprocessing.com/tutos/
 
 
-## Tutoriels vidéo en anglais :
+### Tutoriels vidéo en anglais
 
 Vidéos de fun programming : http://funprogramming.org/
 
@@ -1983,7 +2006,7 @@ Computer programming for total beginner : https://vimeo.com/channels/introcompm
 Nature of Code : https://vimeo.com/channels/natureofcode
 
 
-## Livres en anglais :
+### Livres en anglais
 
 Generative Art de Matt Pearson - débutant : http://zenbullets.com/book.php
 
@@ -1991,25 +2014,23 @@ Nature of Code de Daniel Shiffman - intermédiaire (gratuit sur internet) : http
 
 Generative Design (en-fr) - intermédiaire : http://www.generative-gestaltung.de/
 
-[^ home](#Contenu)<br>
+[**home**](#Contenu)<br>
 
 
-<a name="References"/>
-#Références
+
+## References
 
 
-# Références artistiques :
+L'excellent **documentaire** : Hello World : https://vimeo.com/60735314
 
-** Documentaire ** : Hello World : https://vimeo.com/60735314
-
-## Quelques exemples de code
+### Quelques exemples de code
 
 My Code History : exemples de generative design revisités - http://mycodehistory.wordpress.com/
 
 Abandoned Art de Matt Pearson - http://abandonedart.org/
 
 
-## Tumblr
+### Tumblr
 
 Processing : http://processing.tumblr.com/ 
 
@@ -2020,7 +2041,7 @@ p5art : http://p5art.tumblr.com/
 hamoid : http://hamoid.tumblr.com/
 
 
-## Artistes
+### Artistes
 
 Ben Fry : http://fathom.info/ 
 
@@ -2045,7 +2066,7 @@ Amnon Owed : http://amnonp5.wordpress.com/
 Cedric Kieffer & Julia Laub : http://www.onformative.com/about/
 
 
-## Quelques Videos et Projets
+### Quelques Videos et Projets
 
 Processing exhibition : https://processing.org/exhibition/
 
@@ -2060,4 +2081,6 @@ Prisms de Matt Pearson : https://vimeo.com/75299268
 Tempest de Antoine Schmitt : https://vimeo.com/49065256
 
 Written Images projet d'édition générative : http://writtenimages.net/
+
+[**home**](#Contenu)<br>
 
