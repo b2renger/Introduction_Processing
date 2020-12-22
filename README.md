@@ -9,7 +9,7 @@ Notes :
 * Ce document a pour but de rappeler les informations vues en cours sous une autre forme et d'en apporter de nouvelles, sa lecture doit donc s’accompagner des exemples de code construits pendant le module.
 
 
-# Contenu
+## Contenu
 
 * [Introduction](#Introduction)<br>
 * [L'IDE](#L'IDE)<br>
